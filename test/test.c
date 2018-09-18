@@ -23,6 +23,8 @@ bool test() {
             all = false;
         }
         printf("Test %zu: %s\n", i, passed ? "true" : "false");
+        fflush(stdout);
+        fflush(stderr);
     }
     return all;
 }

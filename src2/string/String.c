@@ -165,7 +165,7 @@ void String_format(String* const this, const char* const format, ...) {
     }
     const size_t formattedSize = (size_t) iFormattedSize;
     String_ensureMoreCapacity(this, formattedSize);
-    const int iActualFormattedSize = vsnprintf(this->chars + this->size, formattedSize, format, args);
+    const int iActualFormattedSize = vsnprintf(this->chars + this->size, formattedSize + 1, format, args);
     if (iActualFormattedSize < 0) {
         perror("vsnprintf");
     }
