@@ -3,12 +3,16 @@
 //
 
 #include "../stackTrace/StackFrame.h"
+#include "../bfd/BinaryFileDescriptor.h"
 
 #ifndef ADDR_2_LINE_H
 #define ADDR_2_LINE_H
 
 typedef struct Addr2Line {
-
+    const String *demangleStyle;
+    BFD* bfd;
+    const Section* section;
+    const Symbol* const* symbols;
 } Addr2Line;
 
 typedef struct Addr2LineArgs {

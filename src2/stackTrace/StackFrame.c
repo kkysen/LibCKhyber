@@ -15,9 +15,10 @@ void StackTraceFrame_free(const StackFrame* const this) {
 }
 
 void StackTraceFrame_toString(const StackFrame* const this, String* const out) {
-    // for now
-    String_format(out, "%p: %s", this->address, this->message->chars);
-//    String_appendLiteral(out, "\n");
-//    String_append(out, this->message);
+    if (!this->ok) {
+        String_format(out, "%p: %s", this->address, this->message->chars);
+        return;
+    }
+    
     // TODO
 }

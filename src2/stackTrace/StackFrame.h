@@ -12,6 +12,7 @@ typedef struct StackFrame {
     const void *address;
     const String *message;
     
+    bool ok;
     const String *fileName;
     const String *mangledFunctionName;
     const String *functionName;

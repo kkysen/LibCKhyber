@@ -41,7 +41,16 @@ set(SOURCE_FILES
         src2/signal/Signal.h
         src2/programName/programName.c
         src2/programName/programName.h
-        test/testStackTrace.c test/testStackTrace.h src2/string/StringStructs.h test/testStringFormat.c test/testStringFormat.h test/test.c test/test.h)
+        test/testStackTrace.c
+        test/testStackTrace.h
+        src2/string/StringStructs.h
+        test/testStringFormat.c
+        test/testStringFormat.h
+        test/test.c
+        test/test.h
+        src/error/addr2Line.c
+        src/error/addr2Line/addr2line.c
+        )
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 
