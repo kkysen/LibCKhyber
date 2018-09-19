@@ -13,6 +13,16 @@ typedef struct Addr2Line {
     BFD* bfd;
     const Section* section;
     const Symbol* const* symbols;
+    
+    // globals in original addr2line.c
+    // should have shorter lifetime here
+    // have to figure out what it is first though
+    VMA pc;
+    bool found;
+    const char *filename;
+    const char *functionname;
+    unsigned int line;
+    unsigned int discriminator;
 } Addr2Line;
 
 typedef struct Addr2LineArgs {

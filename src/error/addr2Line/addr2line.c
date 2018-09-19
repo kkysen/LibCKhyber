@@ -23,6 +23,7 @@
    both forms write results to stdout, the second form reads addresses
    to be converted from stdin.  */
 #include <stdlib.h>
+#include <string.h>
 #include "sysdep.h"
 #include "bfd.h"
 #include "getopt.h"
@@ -224,6 +225,7 @@ static void translate_addresses(bfd* abfd, asection* section) {
                         free(alloc);
                 }
                 if (base_names && filename != NULL) {
+                    // truncate file path, only show base filename
                     char* h;
                     h = strrchr(filename, '/');
                     if (h != NULL)

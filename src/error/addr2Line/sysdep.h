@@ -52,9 +52,11 @@ extern int errno;
 #include <strings.h>
 #else
 
-extern char* strchr();
+#include <strings.h>
 
-extern char* strrchr();
+//extern char* strchr();
+
+//extern char* strrchr();
 
 #endif
 #endif

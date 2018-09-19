@@ -6,11 +6,13 @@
 
 #include <execinfo.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "../Addr2Line/Addr2Line.h"
 #include "../programName/programName.h"
+#include "../util/utils.h"
 
-bool StackTrace_init(StackTrace* const stackTrace, const Signal* const signal) {
+bool StackTrace_initToDepth(StackTrace* const stackTrace, const Signal* const signal, const stack_size_t maxDepth) {
     #define MAX_STACK_FRAMES SIGSTKSZ
     static void* addresses[MAX_STACK_FRAMES];
     const int traceSize = backtrace(addresses, MAX_STACK_FRAMES);
@@ -19,9 +21,10 @@ bool StackTrace_init(StackTrace* const stackTrace, const Signal* const signal) {
         perror("backtrace");
         return false;
     }
-    const size_t numFrames = (size_t) traceSize;
+    const stack_size_t actualNumFrames = (stack_size_t) traceSize;
+    const stack_size_t numFrames = min(actualNumFrames, maxDepth);
     
-    const char** const charMessages = (const char**) backtrace_symbols(addresses, traceSize);
+    const char** const charMessages = (const char**) backtrace_symbols(addresses, (int) numFrames);
     if (!charMessages) {
         perror("backtrace_symbols");
         return false;
@@ -50,7 +53,7 @@ bool StackTrace_init(StackTrace* const stackTrace, const Signal* const signal) {
         return false;
     }
     
-    for (size_t i = 0; i < numFrames; i++) {
+    for (stack_size_t i = 0; i < numFrames; i++) {
         const String* const message = String_ofChars(charMessages[i]);
         Addr2Line_convert(addr2Line, frames + i, addresses + i, message);
     }
@@ -58,6 +61,7 @@ bool StackTrace_init(StackTrace* const stackTrace, const Signal* const signal) {
     free(charMessages);
     
     const StackTrace localStackTrace = {
+            .maxFrames = actualNumFrames,
             .numFrames = numFrames,
             .frames = frames,
             .signal = signal,
@@ -66,21 +70,29 @@ bool StackTrace_init(StackTrace* const stackTrace, const Signal* const signal) {
     return true;
 }
 
-const StackTrace* StackTrace_new(const Signal* const signal) {
+bool StackTrace_init(StackTrace* const stackTrace, const Signal *const signal) {
+    return StackTrace_initToDepth(stackTrace, signal, SIZE_MAX);
+}
+
+const StackTrace* StackTrace_newToDepth(const Signal *const signal, const stack_size_t maxDepth) {
     StackTrace* const stackTrace = malloc(sizeof(*stackTrace));
     if (!stackTrace) {
         perror("malloc");
         return NULL;
     }
-    if (!StackTrace_init(stackTrace, signal)) {
+    if (!StackTrace_initToDepth(stackTrace, signal, maxDepth)) {
         free(stackTrace);
         return NULL;
     }
     return stackTrace;
 }
 
+const StackTrace* StackTrace_new(const Signal* const signal) {
+    return StackTrace_newToDepth(signal, SIZE_MAX);
+}
+
 void StackTrace_free(const StackTrace* const this) {
-    for (size_t i = 0; i < this->numFrames; i++) {
+    for (stack_size_t  i = 0; i < this->numFrames; i++) {
         StackTraceFrame_free(this->frames + i);
     }
     free((StackFrame*) this->frames);
@@ -92,7 +104,7 @@ void StackTrace_toString(const StackTrace* const this, String* out) {
         // TODO clean up output format
         Signal_toString(this->signal, out);
     }
-    for (size_t i = 0; i < this->numFrames; i++) {
+    for (stack_size_t i = 0; i < this->numFrames; i++) {
         StackTraceFrame_toString(this->frames + i, out);
         String_appendLiteral(out, "\n");
     }

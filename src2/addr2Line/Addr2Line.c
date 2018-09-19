@@ -2,7 +2,15 @@
 // Created by Khyber on 9/16/2018.
 //
 
+#include <stdint.h>
 #include "Addr2Line.h"
+
+static void initLibBFD() {
+    static bool initialized = false;
+    if (!initialized) {
+        bfd_init();
+    }
+}
 
 static char* charsOrNull(const String* const string) {
     return string ? string->chars : NULL;
@@ -61,6 +69,8 @@ static const Symbol* const* const readSymbolTable(const BFD* const bfd) {
 }
 
 Addr2Line* Addr2Line_new(const Addr2LineArgs* const args) {
+    initLibBFD();
+    
     Addr2Line* const this = malloc(sizeof(*this));
     if (!this) {
         perror("malloc");
@@ -105,11 +115,61 @@ void Addr2Line_free(const Addr2Line* const this) {
     bfd_close(this->bfd);
 }
 
+VMA BFD_getPC(const BFD* const bfd, const void* const address) {
+    VMA pc = (VMA) address;
+    if (bfd_get_flavour(bfd) == bfd_target_elf_flavour) {
+        const struct elf_backend_data* bed = get_elf_backend_data(bfd);
+        const VMA sign = (VMA) 1 << (bed->s->arch_size - 1);
+        pc &= (sign << 1u) - 1;
+        if (bed->sign_extend_vma) {
+            pc = (pc ^ sign) - sign;
+        }
+    }
+    return pc;
+}
+
+static void findOffsetInSection(const BFD* const bfd, const Section* const section) {
+
+}
+
+static void findAddressInSection(const BFD* const bfd, const Section* const section,
+                                 const void* const data ATTRIBUTE_UNUSED) {
+    
+}
+
+void StackFrame_demangle(StackFrame* const this, const BFD* const bfd) {
+    this->functionName = String_ofChars(
+            bfd_demangle(bfd, this->mangledFunctionName->chars, DMGL_ANSI | DMGL_PARAMS));
+}
+
+void StackFrame_findInlinerInfo(StackFrame* const this, const BFD* const bfd) {
+    const char* fileName = NULL;
+    const char* functionName = NULL;
+    uint32_t lineNumber = 0;
+    this->isInlined = (bool) bfd_find_inliner_info(bfd, &fileName, &functionName, &lineNumber);
+    this->fileName = String_ofChars(fileName);
+    this->mangledFunctionName = String_ofChars(functionName);
+    this->lineNumber = lineNumber;
+    // TODO check if these have to be freed
+    free((char*) fileName);
+    free((char*) functionName);
+}
+
 void Addr2Line_convert(const Addr2Line* const this, StackFrame* const frame,
                        const void* const address, const String* const message) {
     frame->address = address;
     frame->message = message;
     frame->ok = false;
+    
+    const BFD *const bfd = this->bfd;
+    const VMA pc = BFD_getPC(bfd, address);
+    
+    
+    
+    StackFrame_demangle(frame, bfd);
+    
+    StackFrame_findInlinerInfo(frame, bfd);
+    
     return;
     // TODO
     frame->ok = true;

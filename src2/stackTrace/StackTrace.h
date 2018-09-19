@@ -8,17 +8,25 @@
 #include "StackFrame.h"
 
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "../string/String.h"
 #include "../signal/Signal.h"
 
+typedef uint16_t stack_size_t; // SIGSTKSZ	= 8192
+
 typedef struct StackTrace {
+    const stack_size_t maxFrames;
     const StackFrame* const frames;
-    const size_t numFrames;
+    const stack_size_t numFrames;
     const Signal *const signal;
 } StackTrace;
 
+bool StackTrace_initToDepth(StackTrace *stackTrace, const Signal *signal, stack_size_t maxDepth);
+
 bool StackTrace_init(StackTrace *stackTrace, const Signal *signal);
+
+const StackTrace *StackTrace_newToDepth(const Signal *signal, stack_size_t maxDepth);
 
 const StackTrace *StackTrace_new(const Signal *signal);
 
