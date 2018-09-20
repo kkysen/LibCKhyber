@@ -122,3 +122,19 @@ void StackTrace_printNow(FILE* out) {
     StackTrace_init(&this, NULL);
     StackTrace_print(&this, out);
 }
+
+void StackTrace_walkArg(const StackTrace *this, StackWalkerArg walker, void *arg) {
+    for (stack_size_t i = 0; i < this->numFrames; i++) {
+        if (!walker(this->frames + i, i, this, arg)) {
+            break;
+        }
+    }
+}
+
+void StackTrace_walk(const StackTrace *this, StackWalker walker) {
+    for (stack_size_t i = 0; i < this->numFrames; i++) {
+        if (!walker(this->frames + i, i, this)) {
+            break;
+        }
+    }
+}

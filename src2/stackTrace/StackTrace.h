@@ -38,4 +38,12 @@ void StackTrace_print(const StackTrace *this, FILE *out);
 
 void StackTrace_printNow(FILE *out);
 
+typedef bool (*const StackWalkerArg)(const StackFrame *frame, stack_size_t i, const StackTrace *this, void *arg);
+
+typedef bool (*const StackWalker)(const StackFrame *frame, stack_size_t i, const StackTrace *this);
+
+void StackTrace_walkArg(const StackTrace *this, StackWalkerArg walker, void *arg);
+
+void StackTrace_walk(const StackTrace *this, StackWalker walker);
+
 #endif // STACK_TRACE_H
