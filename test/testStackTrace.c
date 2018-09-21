@@ -8,25 +8,35 @@
 #include "../src2/stackTrace/StackTrace.h"
 #include "../src2/stackTraceSignalHandler/StackTraceSignalHandler.h"
 
-bool testStackTrace() {
-    printf("Hello\n");
-//    return true;
+static void toInline() {
     StackTrace_printNow(stdout);
+}
+
+bool testStackTrace() {
+    toInline();
     return true;
 }
 
-static void causeSegFault(uint32_t level) {
+static void causeSegFault(int level ATTRIBUTE_UNUSED) {
+    const int* p = NULL;
+    printf("%d\n", *p);
+}
+
+static void causeDivByZero(int level) {
+    printf("%d\n", (uint32_t) (uint64_t) &level / level);
+}
+
+static void causeError(uint32_t level, void (*_causeError)(int level)) {
     if (level == 0) {
-        const int* p = NULL;
-        printf("%d\n", (uint32_t) (uint64_t) &level / level);
-        printf("%d\n", *p);
+        _causeError(level);
         return;
     }
-    causeSegFault(level - 1);
+    causeError(level - 1, _causeError);
 }
 
 bool testStackTraceSignalHandler() {
     setStackTraceSignalHandler();
-    causeSegFault(1000);
+    causeError(1000, causeSegFault);
+    causeError(1000, causeDivByZero);
     return false;
 }

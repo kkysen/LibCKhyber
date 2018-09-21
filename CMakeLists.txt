@@ -3,7 +3,7 @@ project(LibCKhyber C)
 
 set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_C_ERROR_FLAGS "-Wall -Werror -Wextra")
+set(CMAKE_C_ERROR_FLAGS "-Wall -Werror -Wextra -O3")
 set(CMAKE_C_NO_ERROR_FLAGS "-Wno-error=unused-function -Wno-error=unused-parameter")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_ERROR_FLAGS} ${CMAKE_C_NO_ERROR_FLAGS}")
 

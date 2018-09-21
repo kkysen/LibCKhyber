@@ -12,7 +12,7 @@
 
 typedef bool (*Test)();
 
-static const Test tests[] = {testStringFormat, testStackTrace, testStackTraceSignalHandler};
+static const Test tests[] = {testStringFormat, testStackTrace};
 
 bool test() {
     bool all = true;

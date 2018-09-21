@@ -215,5 +215,8 @@ ssize_t String_rfind(const String* const this, const char c) {
         }
     }
     return s - this->chars;
-    
+}
+
+const char *String_nullableChars(const String *const this) {
+    return this ? this->chars : NULL;
 }

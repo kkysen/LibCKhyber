@@ -21,7 +21,8 @@ bool StackTrace_initToDepth(StackTrace* const this, const Signal* const signal, 
         perror("backtrace");
         return false;
     }
-    const stack_size_t actualNumFrames = (stack_size_t) traceSize;
+    const stack_size_t shift = 0; // TODO remove
+    const stack_size_t actualNumFrames = (stack_size_t) (traceSize - shift);
     const stack_size_t numFrames = min(actualNumFrames, maxDepth);
     
     const char** const charMessages = (const char**) backtrace_symbols(addresses, (int) numFrames);
@@ -56,7 +57,7 @@ bool StackTrace_initToDepth(StackTrace* const this, const Signal* const signal, 
     for (stack_size_t i = 0; i < numFrames; i++) {
         const String* const message = String_ofChars(charMessages[i]);
         frames[i].inlined = NULL; // default value, convert() will add linked inlined frames if needed
-        Addr2Line_convert(addr2Line, frames + i, addresses[i], message);
+        Addr2Line_convert(addr2Line, frames + i, addresses[i + shift], message);
     }
     
     free(charMessages);

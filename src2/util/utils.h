@@ -90,4 +90,6 @@ void double_sleep(double seconds);
 //    type *const var_name = (type *) malloc(sizeof(type));
 //    memcpy(var_name, &_type, sizeof(type))
 
+#define memClear(ptr) memset(ptr, 0, sizeof(*(ptr)))
+
 #endif // UTILS_H

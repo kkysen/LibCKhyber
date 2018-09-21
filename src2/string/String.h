@@ -124,4 +124,6 @@ String* String_subString(const String *this, size_t begin, size_t end);
 
 ssize_t String_rfind(const String *this, char c);
 
+const char *String_nullableChars(const String *this);
+
 #endif // STRING_BUILDER_H

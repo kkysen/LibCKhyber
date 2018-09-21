@@ -24,12 +24,8 @@ static void initLibBFD() {
     }
 }
 
-static char* charsOrNull(const String* const string) {
-    return string ? string->chars : NULL;
-}
-
 static BFD* initBFD(const Addr2LineArgs* const args) {
-    BFD* bfd = bfd_openr(charsOrNull(args->fileName), charsOrNull(args->bfdTarget));
+    BFD* bfd = bfd_openr(String_nullableChars(args->fileName), String_nullableChars(args->bfdTarget));
     if (!bfd) {
         bfd_perror("bfd_openr");
         perror("bfd_openr");
@@ -45,11 +41,6 @@ static BFD* initBFD(const Addr2LineArgs* const args) {
     }
     
     return bfd;
-}
-
-static Section* getSectionByName(const String* const sectionName) {
-    perror("NOT IMPLEMENTED");
-    exit(EXIT_FAILURE);
 }
 
 static const Symbol* const* readSymbolTable(const BFD* const bfd) {
@@ -103,7 +94,7 @@ Addr2Line* Addr2Line_new(const Addr2LineArgs* const args) {
     
     const Section* section;
     if (args->sectionName) {
-        section = getSectionByName(args->sectionName);
+        section = bfd_get_section_by_name(bfd, args->sectionName->chars);
         if (!section) {
             perror("getSectionByName(): section doesn't exist");
             bfd_close(bfd);
@@ -156,53 +147,19 @@ bfd_vma BFD_getPC(const BFD* const bfd, const void* const address) {
     return pc;
 }
 
-static void Addr2Line_findOffsetInSection(const Addr2Line* const this) {
-    Addr2LineFrame* const frame = this->frame;
-    if (frame->found) {
-        return;
-    }
-    if (!(this->section->flags & (flagword) SEC_ALLOC)) {
-        return;
-    }
-    const bfd_size_type size = this->section->size;
-    if (frame->pc >= size) {
-        return;
-    }
-    frame->found = (bool) bfd_find_nearest_line_discriminator(
-            this->bfd,
-            (Section*) this->section,
-            (Symbol**) this->symbols,
-            frame->pc,
-            &frame->filename,
-            &frame->functionname,
-            &frame->line,
-            &frame->discriminator
-    );
-}
-
-// TODO refactor to join these two functions
-
 static void Addr2Line_findAddressInSection(const Addr2Line* const this, const Section* const section) {
     Addr2LineFrame* const frame = this->frame;
-    if (frame->found) {
-        return;
-    }
-    if (!(section->flags & (flagword) SEC_ALLOC)) {
-        return;
-    }
-    const bfd_vma vma = section->vma;
-    if (frame->pc < vma) {
-        return;
-    }
-    bfd_size_type size = section->size;
-    if (frame->pc >= vma + size) {
+    if (frame->found
+        || !(section->flags & (flagword) SEC_ALLOC)
+        || frame->pc < section->vma
+        || frame->pc >= section->vma + section->size) {
         return;
     }
     frame->found = (bool) bfd_find_nearest_line_discriminator(
             this->bfd,
             (Section*) section,
             (Symbol**) this->symbols,
-            frame->pc - vma,
+            frame->pc - section->vma,
             &frame->filename,
             &frame->functionname,
             &frame->line,
@@ -212,6 +169,18 @@ static void Addr2Line_findAddressInSection(const Addr2Line* const this, const Se
 
 static void findAddressInSection(BFD* bfd ATTRIBUTE_UNUSED, Section* section, void* data) {
     Addr2Line_findAddressInSection((const Addr2Line*) data, section);
+}
+
+static bool Addr2Line_findOffsetInSection(const Addr2Line* const this) {
+    Section *section = malloc(sizeof(*section));
+    if (!section) {
+        perror("malloc");
+        return false;
+    }
+    memcpy(section, this->section, sizeof(*section));
+    section->vma = 0;
+    Addr2Line_findAddressInSection(this, section);
+    return true;
 }
 
 static void StackFrame_setFile(StackFrame *const this, const char *const filePath) {
@@ -241,17 +210,21 @@ static void StackFrame_fill(StackFrame* this, const Addr2LineFrame* frame, const
 
 static void StackFrame_findInlinerInfo(StackFrame* const this, const Addr2LineFrame *const frame,
                                        const BFD* const bfd) {
+//    printf("%s: %s:%zu\n", this->functionName->chars, this->fileName->chars, this->lineNumber);
+    
     const char* fileName = NULL;
     const char* functionName = NULL;
     uint32_t lineNumber = 0;
     this->isInlined = (bool) bfd_find_inliner_info((BFD*) bfd, &fileName, &functionName, &lineNumber);
     if (this->isInlined) {
-        this->fileName = String_ofChars(fileName);
-        this->mangledFunctionName = String_ofChars(functionName);
-        this->lineNumber = lineNumber;
+        // TODO FIXME fix this
+        printf("%s: %s:%u\n", functionName, fileName, lineNumber);
+//        this->fileName = String_ofChars(fileName);
+//        this->mangledFunctionName = String_ofChars(functionName);
+//        this->lineNumber = lineNumber;
     }
-    free((char*) fileName);
-    free((char*) functionName);
+//    free((char*) fileName);
+//    free((char*) functionName);
     if (this->isInlined) {
         StackFrame *const inlined = malloc(sizeof(*this->inlined));
         if (inlined) {
@@ -272,9 +245,8 @@ static void StackFrame_fill(StackFrame* const this, const Addr2LineFrame* const 
 
 void Addr2Line_convert(const Addr2Line* const this, StackFrame* const frame,
                        const void* const address, const String* const message) {
-    // debug TODO remove
-    memset(frame, 0, sizeof(*frame));
-    memset(this->frame, 0, sizeof(*this->frame));
+    memClear(frame);
+    memClear(this->frame);
     
     frame->address = address;
     frame->message = message;
@@ -285,15 +257,20 @@ void Addr2Line_convert(const Addr2Line* const this, StackFrame* const frame,
     this->frame->pc = pc;
     
     if (this->section) {
-        Addr2Line_findOffsetInSection(this);
+        if (!Addr2Line_findOffsetInSection(this)) {
+            goto error;
+        }
     } else {
         bfd_map_over_sections(this->bfd, findAddressInSection, (void*) this);
     }
     
     if (!this->frame->found) {
-        frame->ok = false;
-        return;
+        goto error;
     }
     
     StackFrame_fill(frame, this->frame, bfd);
+    return;
+    
+    error:
+    frame->ok = false;
 }
