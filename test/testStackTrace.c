@@ -2,6 +2,7 @@
 // Created by Khyber on 9/17/2018.
 //
 
+#include <bfd.h>
 #include "testStackTrace.h"
 
 #include "../src2/stackTrace/StackTrace.h"
@@ -26,6 +27,6 @@ static void causeSegFault(uint32_t level) {
 
 bool testStackTraceSignalHandler() {
     setStackTraceSignalHandler();
-    causeSegFault(10);
+    causeSegFault(1000);
     return false;
 }

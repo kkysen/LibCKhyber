@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <libiberty/demangle.h>
 #include <string.h>
+#include <fcntl.h>
 #include "../../../binutils-gdb/bfd/elf-bfd.h"
 
 #include "../util/utils.h"
@@ -30,7 +31,7 @@ static char* charsOrNull(const String* const string) {
 static BFD* initBFD(const Addr2LineArgs* const args) {
     BFD* bfd = bfd_openr(charsOrNull(args->fileName), charsOrNull(args->bfdTarget));
     if (!bfd) {
-        printf("%s\n", charsOrNull(args->fileName));
+        bfd_perror("bfd_openr");
         perror("bfd_openr");
         return NULL;
     }

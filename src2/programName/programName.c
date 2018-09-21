@@ -13,7 +13,7 @@ const String* getProgramName() {
     if (programName) {
         return programName;
     }
-    char programNameChars[PATH_MAX];
+    char programNameChars[PATH_MAX] = {};
     if (readlink("/proc/self/exe", programNameChars, PATH_MAX) == -1) {
         perror("readlink");
         String_free(programName);
