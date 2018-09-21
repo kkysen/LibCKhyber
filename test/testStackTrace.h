@@ -9,4 +9,6 @@
 
 bool testStackTrace();
 
+bool testStackTraceSignalHandler();
+
 #endif // TEST_STACK_TRACE_H

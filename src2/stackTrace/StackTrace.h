@@ -15,11 +15,15 @@
 
 typedef uint16_t stack_size_t; // SIGSTKSZ	= 8192
 
+#define STACK_SIZE_MAX ((stack_size_t) SIGSTKSZ)
+
 typedef struct StackTrace {
     const stack_size_t maxFrames;
     const StackFrame* const frames;
     const stack_size_t numFrames;
     const Signal *const signal;
+    const pid_t processId;
+    const pid_t threadId;
 } StackTrace;
 
 bool StackTrace_initToDepth(StackTrace *stackTrace, const Signal *signal, stack_size_t maxDepth);

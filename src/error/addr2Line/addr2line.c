@@ -27,10 +27,10 @@
 #include "sysdep.h"
 #include "bfd.h"
 #include "getopt.h"
-#include "libiberty.h"
-#include "demangle.h"
+#include "libiberty/libiberty.h"
+#include "libiberty/demangle.h"
 #include "bucomm.h"
-#include "elf-bfd.h"
+#include "../../../../binutils-gdb/bfd/elf-bfd.h"
 
 static bfd_boolean unwind_inlines;    /* -i, unwind inlined functions. */
 static bfd_boolean with_addresses;    /* -a, show addresses.  */

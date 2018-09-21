@@ -10,7 +10,5 @@
 typedef bfd BFD;
 typedef asection Section;
 typedef asymbol Symbol;
-typedef bfd_vma VMA;
-
 
 #endif // BINARY_FILE_DESCRIPTOR_H

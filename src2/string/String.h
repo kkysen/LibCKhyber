@@ -89,6 +89,8 @@ void String_appendChars(String* this, const char* chars);
 
 #define String_appendLiteral(this, literalString) String_appendCharsN(this, literalString, sizeof(literalString) - 1)
 
+#define String_appendNewLine(this) String_appendLiteral(out, "\n")
+
 void String_append(String* this, const String *string);
 
 /**
@@ -117,5 +119,9 @@ String* String_concat(const String* s1, const String* s2);
 void String_format(String* this, const char* format, ...);
 
 Strings* String_split(const String* this, const String* separator);
+
+String* String_subString(const String *this, size_t begin, size_t end);
+
+ssize_t String_rfind(const String *this, char c);
 
 #endif // STRING_BUILDER_H

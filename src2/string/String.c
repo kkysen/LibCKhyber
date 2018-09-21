@@ -13,14 +13,15 @@
 
 String* String_allocate(const size_t initialSize) {
     String* const this = (String*) malloc(sizeof(String));
-    this->size = initialSize;
-    this->capacity = initialSize;
+    this->size = 0;
+    this->capacity = 0;
     this->ptr = NULL;
     return this;
 }
 
 String* String_allocateChars(String* const this, const size_t initialSize) {
     this->ptr = malloc(initialSize + 1);
+    this->capacity = initialSize;
     String_terminate();
     return this;
 }
@@ -114,7 +115,7 @@ void String_appendChars(String* const this, const char* const chars) {
     String_appendCharsN(this, chars, strlen(chars));
 }
 
-void String_append(String* const this, const String *const string) {
+void String_append(String* const this, const String* const string) {
     String_appendCharsN(this, string->chars, string->size);
 }
 
@@ -178,6 +179,8 @@ void String_format(String* const this, const char* const format, ...) {
 }
 
 static size_t splitInPlaceAndCountTokens(char* const chars, const char* const separator) {
+    perror("NOT IMPLEMENTED");
+    exit(EXIT_FAILURE);
     // TODO use strsep or strtok
 }
 
@@ -198,4 +201,19 @@ Strings* String_split(const String* const this, const String* const separator) {
         nextToken += separator->size;
     }
     return Strings_new(tokens, numTokens);
+}
+
+String* String_subString(const String* this, size_t begin, size_t end) {
+    return String_ofCharsN(this->chars + begin, end - begin);
+}
+
+ssize_t String_rfind(const String* const this, const char c) {
+    const char* s = this->chars + this->size;
+    while (*--s != c) {
+        if (s == this->chars) {
+            return -1;
+        }
+    }
+    return s - this->chars;
+    
 }

@@ -47,9 +47,9 @@ static void catchSignalAndPrintMessage(int signal, int code, String* const out) 
         catchSignal(SIGTSTP, "Terminal stop");
         case SIGFPE:
             switch (code) {
-                catch_FPE(FPE_INTDIV, "integer divide by zero");
+                catch_FPE(FPE_INTDIV, "integer division by zero");
                 catch_FPE(FPE_INTOVF, "integer overflow");
-                catch_FPE(FPE_FLTDIV, "floating-point divide by zero");
+                catch_FPE(FPE_FLTDIV, "floating-point division by zero");
                 catch_FPE(FPE_FLTUND, "floating-point overflow");
                 catch_FPE(FPE_FLTRES, "floating-point underflow");
                 catch_FPE(FPE_FLTINV, "floating-point inexact result");

@@ -3,7 +3,9 @@ project(LibCKhyber C)
 
 set(CMAKE_C_STANDARD 11)
 
-#find_package(libbfd)
+set(CMAKE_C_ERROR_FLAGS "-Wall -Werror -Wextra")
+set(CMAKE_C_NO_ERROR_FLAGS "-Wno-error=unused-function -Wno-error=unused-parameter")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_ERROR_FLAGS} ${CMAKE_C_NO_ERROR_FLAGS}")
 
 set(SOURCE_FILES
 #        src/error/stackTrace.h
@@ -48,10 +50,11 @@ set(SOURCE_FILES
         test/testStringFormat.h
         test/test.c
         test/test.h
-        src/error/addr2Line.c
-        src/error/addr2Line/addr2line.c
+#        src/error/addr2Line.c
+#        src/error/addr2Line/addr2line.c
+        ../binutils-gdb/bfd/elf-bfd.h
         )
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 
-target_link_libraries(LibCKhyber m)
+target_link_libraries(LibCKhyber m bfd)

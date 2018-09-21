@@ -8,20 +8,25 @@
 #include <stdbool.h>
 #include "../string/String.h"
 
-typedef struct StackFrame {
+typedef struct StackFrame StackFrame;
+
+struct StackFrame {
     const void *address;
     const String *message;
     
     bool ok;
+    const String *filePath;
     const String *fileName;
     const String *mangledFunctionName;
     const String *functionName;
     size_t lineNumber;
+    
     bool isInlined;
-} StackFrame;
+    const StackFrame *inlined;
+};
 
-void StackTraceFrame_free(const StackFrame* this);
+void StackFrame_free(const StackFrame* const this);
 
-void StackTraceFrame_toString(const StackFrame* this, String* out);
+void StackFrame_toString(const StackFrame* const this, String* const out);
 
 #endif // STACK_TRACE_FRAME_H

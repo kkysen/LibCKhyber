@@ -7,16 +7,16 @@
 #include <execinfo.h>
 #include <string.h>
 #include <stdint.h>
+#include <sys/types.h>
+#include <syscall.h>
 
 #include "../Addr2Line/Addr2Line.h"
 #include "../programName/programName.h"
 #include "../util/utils.h"
 
-bool StackTrace_initToDepth(StackTrace* const stackTrace, const Signal* const signal, const stack_size_t maxDepth) {
-    #define MAX_STACK_FRAMES SIGSTKSZ
-    static void* addresses[MAX_STACK_FRAMES];
-    const int traceSize = backtrace(addresses, MAX_STACK_FRAMES);
-    #undef MAX_STACK_FRAMES
+bool StackTrace_initToDepth(StackTrace* const this, const Signal* const signal, const stack_size_t maxDepth) {
+    static void* addresses[STACK_SIZE_MAX];
+    const int traceSize = backtrace(addresses, STACK_SIZE_MAX);
     if (traceSize < 0) {
         perror("backtrace");
         return false;
@@ -55,7 +55,8 @@ bool StackTrace_initToDepth(StackTrace* const stackTrace, const Signal* const si
     
     for (stack_size_t i = 0; i < numFrames; i++) {
         const String* const message = String_ofChars(charMessages[i]);
-        Addr2Line_convert(addr2Line, frames + i, addresses + i, message);
+        frames[i].inlined = NULL; // default value, convert() will add linked inlined frames if needed
+        Addr2Line_convert(addr2Line, frames + i, addresses[i], message);
     }
     
     free(charMessages);
@@ -65,13 +66,15 @@ bool StackTrace_initToDepth(StackTrace* const stackTrace, const Signal* const si
             .numFrames = numFrames,
             .frames = frames,
             .signal = signal,
+            .processId = getpid(),
+            .threadId = (pid_t) syscall(SYS_gettid),
     };
-    memcpy(stackTrace, &localStackTrace, sizeof(localStackTrace));
+    memcpy(this, &localStackTrace, sizeof(localStackTrace));
     return true;
 }
 
 bool StackTrace_init(StackTrace* const stackTrace, const Signal *const signal) {
-    return StackTrace_initToDepth(stackTrace, signal, SIZE_MAX);
+    return StackTrace_initToDepth(stackTrace, signal, STACK_SIZE_MAX);
 }
 
 const StackTrace* StackTrace_newToDepth(const Signal *const signal, const stack_size_t maxDepth) {
@@ -88,25 +91,28 @@ const StackTrace* StackTrace_newToDepth(const Signal *const signal, const stack_
 }
 
 const StackTrace* StackTrace_new(const Signal* const signal) {
-    return StackTrace_newToDepth(signal, SIZE_MAX);
+    return StackTrace_newToDepth(signal, STACK_SIZE_MAX);
 }
 
 void StackTrace_free(const StackTrace* const this) {
     for (stack_size_t  i = 0; i < this->numFrames; i++) {
-        StackTraceFrame_free(this->frames + i);
+        StackFrame_free(this->frames + i);
     }
     free((StackFrame*) this->frames);
     free((StackTrace*) this);
 }
 
 void StackTrace_toString(const StackTrace* const this, String* out) {
+    String_format(out, "\n\n[pid=%d][tid=%d] StackTrace\n", this->processId, this->threadId);
     if (this->signal) {
-        // TODO clean up output format
+        String_appendLiteral(out, "Caused By: ");
         Signal_toString(this->signal, out);
+        String_appendNewLine(out);
     }
     for (stack_size_t i = 0; i < this->numFrames; i++) {
-        StackTraceFrame_toString(this->frames + i, out);
-        String_appendLiteral(out, "\n");
+        String_appendLiteral(out, "\t");
+        StackFrame_toString(this->frames + i, out);
+        String_appendNewLine(out);
     }
 }
 

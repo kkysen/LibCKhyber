@@ -4,21 +4,37 @@
 
 #include "StackFrame.h"
 
-void StackTraceFrame_free(const StackFrame* const this) {
+void StackFrame_free(const StackFrame* const this) {
+    free((StackFrame*) this->inlined);
     #define free(field) String_free((String *) this->field)
     free(message);
     free(fileName);
     free(mangledFunctionName);
     free(functionName);
-    String_free((String *) this->message);
+    String_free((String*) this->message);
     #undef free
 }
 
-void StackTraceFrame_toString(const StackFrame* const this, String* const out) {
+static const char *charsOrQuestionMarks(const String *const s) {
+    return s ? s->chars : "??";
+}
+
+void StackFrame_toString(const StackFrame* const this, String* const out) {
     if (!this->ok) {
         String_format(out, "%p: %s", this->address, this->message->chars);
         return;
     }
     
-    // TODO
+    String_format(out, "%s: %s:%zu (%s:%zu)",
+                  charsOrQuestionMarks(this->functionName),
+                  charsOrQuestionMarks(this->fileName),
+                  this->lineNumber,
+                  charsOrQuestionMarks(this->filePath),
+                  this->lineNumber
+    );
+    
+    if (this->inlined) {
+        // TODO should this come before or after rest of toString()
+        StackFrame_toString(this->inlined, out);
+    }
 }
