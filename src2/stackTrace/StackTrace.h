@@ -19,7 +19,7 @@ typedef uint16_t stack_size_t; // SIGSTKSZ	= 8192
 
 typedef struct StackTrace {
     const stack_size_t maxFrames;
-    const StackFrame* const frames;
+    const StackFrame *const frames;
     const stack_size_t numFrames;
     const Signal *const signal;
     const pid_t processId;
@@ -34,9 +34,11 @@ const StackTrace *StackTrace_newToDepth(const Signal *signal, stack_size_t maxDe
 
 const StackTrace *StackTrace_new(const Signal *signal);
 
+void StackTrace_clear(const StackTrace *this);
+
 void StackTrace_free(const StackTrace *this);
 
-void StackTrace_toString(const StackTrace *this, String* out);
+void StackTrace_toString(const StackTrace *this, String *out);
 
 void StackTrace_print(const StackTrace *this, FILE *out);
 

@@ -4,21 +4,27 @@
 
 #include "programName.h"
 
-#include <stdbool.h>
-
 #include "../util/utils.h"
 
-const String* getProgramName() {
-    static String* programName = NULL;
+static String *programName = NULL;
+
+static void freeProgramName() {
+    String_free(programName);
+}
+
+const String *getProgramName() {
     if (programName) {
         return programName;
     }
-    char programNameChars[PATH_MAX] = {};
+    char *const programNameChars = calloc(PATH_MAX, sizeof(char));
     if (readlink("/proc/self/exe", programNameChars, PATH_MAX) == -1) {
         perror("readlink");
-        String_free(programName);
+        free(programNameChars);
         programName = NULL;
         return NULL;
     }
-    return String_ofChars(programNameChars);
+    programName = String_ofChars(programNameChars);
+    free(programNameChars);
+    atexit(freeProgramName);
+    return programName;
 }

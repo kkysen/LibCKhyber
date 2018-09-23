@@ -6,7 +6,7 @@
 
 #include "String.h"
 
-Strings* Strings_new(String *const strings, const size_t size) {
+Strings *Strings_new(String *const strings, const size_t size) {
     Strings *const this = malloc(sizeof(Strings));
     this->strings = strings;
     this->size = size;

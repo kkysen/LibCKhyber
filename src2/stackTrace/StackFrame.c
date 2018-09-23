@@ -4,14 +4,19 @@
 
 #include "StackFrame.h"
 
-void StackFrame_free(const StackFrame* const this) {
-    free((StackFrame*) this->inlined);
+void StackFrame_free(const StackFrame *const this) {
+    if (this->ok) {
+        free((StackFrame *) this->inlined);
+    }
     #define free(field) String_free((String *) this->field)
     free(message);
+    if (!this->ok) {
+        return;
+    }
+    free(filePath);
     free(fileName);
     free(mangledFunctionName);
     free(functionName);
-    String_free((String*) this->message);
     #undef free
 }
 
@@ -19,7 +24,7 @@ static const char *charsOrQuestionMarks(const String *const s) {
     return s ? s->chars : "??";
 }
 
-void StackFrame_toString(const StackFrame* const this, String* const out) {
+void StackFrame_toString(const StackFrame *const this, String *const out) {
     if (!this->ok) {
         String_format(out, "%p: %s", this->address, this->message->chars);
         return;

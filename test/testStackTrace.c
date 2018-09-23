@@ -7,6 +7,7 @@
 
 #include "../src2/stackTrace/StackTrace.h"
 #include "../src2/stackTraceSignalHandler/StackTraceSignalHandler.h"
+#include "../src2/programName/programName.h"
 
 static void toInline() {
     StackTrace_printNow(stdout);
@@ -18,7 +19,7 @@ bool testStackTrace() {
 }
 
 static void causeSegFault(int level ATTRIBUTE_UNUSED) {
-    const int* p = NULL;
+    const int *p = NULL;
     printf("%d\n", *p);
 }
 
@@ -36,7 +37,7 @@ static void causeError(uint32_t level, void (*_causeError)(int level)) {
 
 bool testStackTraceSignalHandler() {
     setStackTraceSignalHandler();
-    causeError(1000, causeSegFault);
-    causeError(1000, causeDivByZero);
+    causeError(10, causeSegFault);
+    causeError(10, causeDivByZero);
     return false;
 }

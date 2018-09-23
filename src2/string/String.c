@@ -11,15 +11,15 @@
 
 #define String_terminate() this->chars[this->size] = 0
 
-String* String_allocate(const size_t initialSize) {
-    String* const this = (String*) malloc(sizeof(String));
+String *String_allocate(const size_t initialSize) {
+    String *const this = (String *) malloc(sizeof(String));
     this->size = 0;
     this->capacity = 0;
     this->ptr = NULL;
     return this;
 }
 
-String* String_allocateChars(String* const this, const size_t initialSize) {
+String *String_allocateChars(String *const this, const size_t initialSize) {
     this->ptr = malloc(initialSize + 1);
     this->capacity = initialSize;
     String_terminate();
@@ -35,39 +35,47 @@ String String_onStackOfSize(const size_t initialSize) {
     return this;
 }
 
-String* String_ofSize(const size_t initialSize) {
+String *String_ofSize(const size_t initialSize) {
     return String_allocateChars(String_allocate(initialSize), initialSize);
 }
 
-String* String_empty() {
+String *String_empty() {
     static const size_t DEFAULT_SIZE = 16;
     return String_ofSize(DEFAULT_SIZE);
 }
 
-String* String_ofBytes(const void* const bytes, const size_t size) {
-    String* const this = String_ofSize(size);
+String *String_ofBytes(const void *const bytes, const size_t size) {
+    String *const this = String_ofSize(size);
     String_appendBytes(this, bytes, size);
     return this;
 }
 
-String* String_ofCharsN(const char* const chars, const size_t size) {
-    String* const this = String_ofSize(size);
+String *String_ofCharsN(const char *const chars, const size_t size) {
+    String *const this = String_ofSize(size);
     String_appendCharsN(this, chars, size);
     return this;
 }
 
-String* String_ofChars(const char* const chars) {
-    String* const this = String_ofSize(0);
+String *String_ofChars(const char *const chars) {
+    String *const this = String_ofSize(0);
     String_appendChars(this, chars);
     return this;
 }
 
-void String_free(String* const this) {
-    String_clear(this);
+void String_clear(String *const this) {
+    free(this->ptr);
+    this->ptr = NULL;
+    this->size = this->capacity = 0;
+}
+
+void String_free(String *const this) {
+    if (this) {
+        String_clear(this);
+    }
     free(this);
 }
 
-void String_ensureCapacity(String* const this, const size_t capacity) {
+void String_ensureCapacity(String *const this, const size_t capacity) {
     if (this->capacity < capacity) {
         this->capacity = capacity;
         this->ptr = realloc(this->ptr, capacity + 1);
@@ -75,17 +83,17 @@ void String_ensureCapacity(String* const this, const size_t capacity) {
     }
 }
 
-void String_ensureMoreCapacity(String* const this, const size_t moreCapacity) {
+void String_ensureMoreCapacity(String *const this, const size_t moreCapacity) {
     String_ensureCapacity(this, moreCapacity + this->size);
 }
 
-void String_shrinkToSize(String* const this) {
+void String_shrinkToSize(String *const this) {
     this->capacity = this->size;
     this->ptr = realloc(this->ptr, this->capacity + 1);
     String_terminate();
 }
 
-void String_shrinkToMoreCapacity(String* this, size_t moreCapacity) {
+void String_shrinkToMoreCapacity(String *this, size_t moreCapacity) {
     const size_t newCapacity = this->size + moreCapacity;
     if (newCapacity > this->capacity) {
         String_ensureMoreCapacity(this, moreCapacity);
@@ -96,7 +104,7 @@ void String_shrinkToMoreCapacity(String* this, size_t moreCapacity) {
     }
 }
 
-void String_appendBytes(String* const this, const void* restrict const bytes, const size_t size) {
+void String_appendBytes(String *const this, const void *restrict const bytes, const size_t size) {
     const size_t remaining = this->capacity - this->size;
     if (remaining < size) {
         this->capacity = this->size + size;
@@ -107,19 +115,19 @@ void String_appendBytes(String* const this, const void* restrict const bytes, co
     String_terminate();
 }
 
-void String_appendCharsN(String* const this, const char* const chars, const size_t size) {
+void String_appendCharsN(String *const this, const char *const chars, const size_t size) {
     String_appendBytes(this, chars, size * sizeof(char));
 }
 
-void String_appendChars(String* const this, const char* const chars) {
+void String_appendChars(String *const this, const char *const chars) {
     String_appendCharsN(this, chars, strlen(chars));
 }
 
-void String_append(String* const this, const String* const string) {
+void String_append(String *const this, const String *const string) {
     String_appendCharsN(this, string->chars, string->size);
 }
 
-size_t String_appendStream(String* const this, FILE* const file) {
+size_t String_appendStream(String *const this, FILE *const file) {
     char buffer[4096] = {0};
     size_t totalNumBytes = 0;
     size_t numBytes;
@@ -130,32 +138,26 @@ size_t String_appendStream(String* const this, FILE* const file) {
     return totalNumBytes;
 }
 
-void String_clear(String* const this) {
-    free(this->ptr);
-    this->ptr = NULL;
-    this->size = this->capacity = 0;
-}
-
-String* String_reReference(const String* const this) {
-    String* const reference = String_ofSize(this->size);
+String *String_reReference(const String *const this) {
+    String *const reference = String_ofSize(this->size);
     reference->chars = this->chars;
     return reference;
 }
 
-String* String_copy(const String* const this) {
-    String* const copy = String_ofSize(this->size);
+String *String_copy(const String *const this) {
+    String *const copy = String_ofSize(this->size);
     memcpy(copy->chars, this->chars, this->size);
     return copy;
 }
 
-String* String_concat(const String* const s1, const String* const s2) {
-    String* const result = String_ofSize(s1->size + s2->size);
+String *String_concat(const String *const s1, const String *const s2) {
+    String *const result = String_ofSize(s1->size + s2->size);
     memcpy(result->chars, s1->chars, s1->size);
     memcpy(result->chars + s1->size, s2->chars, s2->size);
     return result;
 }
 
-void String_format(String* const this, const char* const format, ...) {
+void String_format(String *const this, const char *const format, ...) {
     va_list args;
     va_start(args, format);
     va_list argsCopy;
@@ -178,19 +180,19 @@ void String_format(String* const this, const char* const format, ...) {
     va_end(args);
 }
 
-static size_t splitInPlaceAndCountTokens(char* const chars, const char* const separator) {
+static size_t splitInPlaceAndCountTokens(char *const chars, const char *const separator) {
     perror("NOT IMPLEMENTED");
     exit(EXIT_FAILURE);
     // TODO use strsep or strtok
 }
 
-Strings* String_split(const String* const this, const String* const separator) {
+Strings *String_split(const String *const this, const String *const separator) {
     const size_t numTokens = splitInPlaceAndCountTokens(this->chars, separator->chars);
-    String* const tokens = malloc(sizeof(String*) * numTokens);
-    char* nextToken = this->chars;
+    String *const tokens = malloc(sizeof(String *) * numTokens);
+    char *nextToken = this->chars;
     for (size_t i = 0;; ++i) {
         const size_t tokenLength = strlen(nextToken);
-        const String* const token = String_ofCharsN(nextToken, tokenLength);
+        const String *const token = String_ofCharsN(nextToken, tokenLength);
         memcpy(tokens + i, token, sizeof(String));
         if (i == numTokens - 1) {
             break;
@@ -203,12 +205,12 @@ Strings* String_split(const String* const this, const String* const separator) {
     return Strings_new(tokens, numTokens);
 }
 
-String* String_subString(const String* this, size_t begin, size_t end) {
+String *String_subString(const String *this, size_t begin, size_t end) {
     return String_ofCharsN(this->chars + begin, end - begin);
 }
 
-ssize_t String_rfind(const String* const this, const char c) {
-    const char* s = this->chars + this->size;
+ssize_t String_rfind(const String *const this, const char c) {
+    const char *s = this->chars + this->size;
     while (*--s != c) {
         if (s == this->chars) {
             return -1;

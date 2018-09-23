@@ -7,7 +7,7 @@
 
 #include "StringStructs.h"
 
-Strings* Strings_new(String *strings, size_t size);
+Strings *Strings_new(String *strings, size_t size);
 
 void Strings_clear(Strings *this);
 

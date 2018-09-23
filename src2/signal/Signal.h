@@ -11,8 +11,8 @@
 
 typedef struct Signal {
     const int signal;
-    const siginfo_t* const sigInfo;
-    const void* const context;
+    const siginfo_t *const sigInfo;
+    const void *const context;
 } Signal;
 
 void Signal_toString(const Signal *this, String *out);

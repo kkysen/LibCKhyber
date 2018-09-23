@@ -26,7 +26,7 @@
 
 #ifndef SA_ONSTACK
 // Call signal handler on alternate signal stack provided by sigaltstack(2).
-    #define SA_ONSTACK   0x20000000
+#define SA_ONSTACK   0x20000000
 #endif
 
 //int sigaction(int signum, const struct sigaction *action, struct sigaction *old_action);
@@ -46,7 +46,7 @@ typedef void (*Runnable)();
 
 typedef void (*SignalHandler)(const int);
 
-void addSigAction(int signal, const struct sigaction* sigAction);
+void addSigAction(int signal, const struct sigaction *sigAction);
 
 void addSignalHandler(int signal, SignalHandler signalHandler);
 

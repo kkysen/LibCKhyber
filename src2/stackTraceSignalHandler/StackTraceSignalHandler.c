@@ -24,7 +24,7 @@ Runnable postStackTraceSignalHandler = NULL;
  * @param sigInfo extra info about the signal caught
  * @param context extra context about the signal caught
  */
-static void stackTraceSignalHandlerPosix(int _signal, siginfo_t* sigInfo, void* context) {
+static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *context) {
     if (stackTraceSignalHandlerLevel != 0) {
         perror("Recursive signal raised in StackTraceSignalHandler");
         _Exit(1);
@@ -47,6 +47,7 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t* sigInfo, void* 
             goto exit;
         }
         StackTrace_print(&stackTrace, stderr);
+        StackTrace_clear(&stackTrace);
     }
     
     if (postStackTraceSignalHandler) {
@@ -56,7 +57,7 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t* sigInfo, void* 
     stackTraceSignalHandlerLevel--;
     
     exit:
-    *((char*) context) = 0;
+    *((char *) context) = 0;
     exit(EXIT_FAILURE);
 }
 

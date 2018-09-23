@@ -10,9 +10,9 @@
 typedef struct String {
     
     union {
-        char* chars;
+        char *chars;
         
-        void* ptr;
+        void *ptr;
     };
     
     size_t size;

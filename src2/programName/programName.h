@@ -7,6 +7,6 @@
 
 #include "../string/String.h"
 
-const String* getProgramName();
+const String *getProgramName();
 
 #endif // PROGRAM_NAME_H

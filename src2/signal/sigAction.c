@@ -9,7 +9,7 @@
 
 #include "../util/utils.h"
 
-void addSigAction(int signal, const struct sigaction* sigAction) {
+void addSigAction(int signal, const struct sigaction *sigAction) {
     if (sigaction(signal, sigAction, NULL) != 0) {
         perror("sigaction(signal, sig_action, NULL)");
         err(EXIT_FAILURE, "sigaction");

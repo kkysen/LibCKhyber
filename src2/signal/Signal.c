@@ -36,7 +36,7 @@
  * @param code the siginfo->si_code of the signal caught
  * @param out the String to append the message to
  */
-static void catchSignalAndPrintMessage(int signal, int code, String* const out) {
+static void catchSignalAndPrintMessage(int signal, int code, String *const out) {
     switch (signal) {
         catchSignal(SIGSEGV, "Segmentation Fault");
         catchSignal(SIGINT, "Interrupt: Interactive attention signal, usually Ctrl+C");

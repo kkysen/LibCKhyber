@@ -25,8 +25,8 @@ struct StackFrame {
     const StackFrame *inlined;
 };
 
-void StackFrame_free(const StackFrame* const this);
+void StackFrame_free(const StackFrame *this);
 
-void StackFrame_toString(const StackFrame* const this, String* const out);
+void StackFrame_toString(const StackFrame *this, String *out);
 
 #endif // STACK_TRACE_FRAME_H
