@@ -109,15 +109,15 @@ void String_shrinkToMoreCapacity(String *this, size_t moreCapacity) {
     }
 }
 
-void String_appendBytes(String *const this, const void *restrict const bytes, const size_t size) {
-    const size_t remaining = this->capacity - this->size;
-    if (remaining < size) {
-        this->capacity = this->size + size;
-        this->ptr = realloc(this->ptr, this->capacity + 1);
-    }
+static void String_appendBytesUnchecked(String *const this, const void *restrict const bytes, const size_t size) {
     memcpy(this->ptr + this->size, bytes, size);
     this->size += size;
     String_terminate();
+}
+
+void String_appendBytes(String *const this, const void *restrict const bytes, const size_t size) {
+    String_ensureMoreCapacity(this, size);
+    String_appendBytesUnchecked(this, bytes, size);
 }
 
 void String_appendCharsN(String *const this, const char *const chars, const size_t size) {
@@ -152,17 +152,15 @@ String *String_reReference(const String *const this) {
 
 String *String_copy(const String *const this) {
     String *const copy = String_withCapacity(this->size);
-    memcpy(copy->chars, this->chars, this->size);
-    copy->size = this->size;
+    String_appendBytesUnchecked(copy, this->ptr, this->size);
     return copy;
 }
 
 String *String_concat(const String *const s1, const String *const s2) {
     const size_t size = s1->size + s2->size;
     String *const result = String_withCapacity(size);
-    memcpy(result->chars, s1->chars, s1->size);
-    memcpy(result->chars + s1->size, s2->chars, s2->size);
-    result->size = size;
+    String_appendBytesUnchecked(result, s1->ptr, s1->size);
+    String_appendBytesUnchecked(result, s2->ptr, s2->size);
     return result;
 }
 

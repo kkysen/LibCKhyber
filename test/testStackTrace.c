@@ -19,7 +19,7 @@ bool testStackTrace() {
 }
 
 static void causeSegFault(int level ATTRIBUTE_UNUSED) {
-    const int *p = NULL;
+    int *p = NULL;
     printf("%d\n", *p);
 }
 
@@ -37,7 +37,8 @@ static void causeError(uint32_t level, void (*_causeError)(int level)) {
 
 bool testStackTraceSignalHandler() {
     setStackTraceSignalHandler();
-    causeError(10, causeSegFault);
-    causeError(10, causeDivByZero);
+    const uint32_t level = 100;
+    causeError(level, causeSegFault);
+    causeError(level, causeDivByZero);
     return false;
 }
