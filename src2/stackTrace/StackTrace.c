@@ -53,6 +53,12 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
     }
     
     for (stack_size_t i = 0; i < numFrames; i++) {
+        char cmd[1000] = {};
+        sprintf(cmd, "addr2line -f -s -p -e %s %p", getProgramName()->chars, addresses[i + shift]);
+        printf("%s\n", cmd);
+        if (system(cmd) == -1) {
+            perror(cmd);
+        }
         const String *const message = String_ofChars(charMessages[i]);
         frames[i].inlined = NULL; // default value, convert() will add linked inlined frames if needed
         Addr2Line_convert(addr2Line, frames + i, addresses[i + shift], message);
