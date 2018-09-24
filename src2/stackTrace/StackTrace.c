@@ -54,7 +54,7 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
     
     for (stack_size_t i = 0; i < numFrames; i++) {
         char cmd[1000] = {};
-        sprintf(cmd, "addr2line -f -s -p -e %s %p", getProgramName()->chars, addresses[i + shift]);
+        sprintf(cmd, "addr2line -f -i -s -p -e %s %p", getProgramName()->chars, addresses[i + shift]);
         printf("%s\n", cmd);
         if (system(cmd) == -1) {
             perror(cmd);
@@ -126,7 +126,7 @@ void StackTrace_toString(const StackTrace *const this, String *out) {
     }
 }
 
-void StackTrace_print(const StackTrace *this, FILE *out) {
+void __attribute__ ((noinline)) StackTrace_print(const StackTrace *this, FILE *out) {
     String *const stringOut = String_ofSize(0);
     StackTrace_toString(this, stringOut);
     fputs(stringOut->chars, out);
