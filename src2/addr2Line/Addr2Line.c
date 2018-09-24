@@ -206,42 +206,36 @@ static void StackFrame_copyFrame(StackFrame *const this, const Addr2LineFrame *c
 static void StackFrame_demangle(StackFrame *const this, const BFD *const bfd) {
     const char *const functionName = bfd_demangle((BFD *) bfd, this->mangledFunctionName->chars,
                                                   DMGL_ANSI | DMGL_PARAMS);
-    this->functionName = functionName ? String_ofChars(functionName) : String_copy(this->mangledFunctionName);
     // TODO check if other flags should be included too for more info
+//    if (functionName) {
+//        perror("bfd_demange");
+//        exit(1);
+//    }
+    this->functionName = functionName ? String_ofChars(functionName) : String_copy(this->mangledFunctionName);
 }
 
-static void StackFrame_fill(StackFrame *this, const Addr2LineFrame *frame, const BFD *bfd);
+static void StackFrame_fill(StackFrame *this, Addr2LineFrame *frame, const BFD *bfd);
 
-static void StackFrame_findInlinerInfo(StackFrame *const this, const Addr2LineFrame *const frame,
+static void StackFrame_findInlinerInfo(StackFrame *const this, Addr2LineFrame *const frame,
                                        const BFD *const bfd) {
-//    printf("%s: %s:%zu\n", this->functionName->chars, this->fileName->chars, this->lineNumber);
-    
-    const char *fileName = NULL;
-    const char *functionName = NULL;
-    uint32_t lineNumber = 0;
-    this->isInlined = (bool) bfd_find_inliner_info((BFD *) bfd, &fileName, &functionName, &lineNumber);
-    if (this->isInlined) {
-        // TODO FIXME fix this
-        printf("%s: %s:%u\n", functionName, fileName, lineNumber);
-        fflush(stdout);
-//        this->fileName = String_ofChars(fileName);
-//        this->mangledFunctionName = String_ofChars(functionName);
-//        this->lineNumber = lineNumber;
+    this->inlinedBy = NULL;
+    this->inlinedDepth = 0;
+    if (!bfd_find_inliner_info((BFD *) bfd,
+                               &frame->filePath, &frame->functionName, &frame->lineNumber)) {
+        return;
     }
-    free((char*) fileName);
-    free((char*) functionName);
-    if (this->isInlined) {
-        StackFrame *const inlined = malloc(sizeof(*this->inlined));
-        if (inlined) {
-            StackFrame_fill(inlined, frame, bfd);
-        }
-        this->inlined = inlined;
-    } else {
-        this->inlined = NULL;
+    StackFrame *const inlinedBy = malloc(sizeof(*this->inlinedBy));
+    if (!inlinedBy) {
+        perror("malloc");
+        return;
     }
+    memClear(inlinedBy);
+    StackFrame_fill(inlinedBy, frame, bfd);
+    this->inlinedDepth = inlinedBy->inlinedDepth + (stack_size_t) 1;
+    this->inlinedBy = inlinedBy;
 }
 
-static void StackFrame_fill(StackFrame *const this, const Addr2LineFrame *const frame, const BFD *const bfd) {
+static void StackFrame_fill(StackFrame *const this, Addr2LineFrame *const frame, const BFD *const bfd) {
     StackFrame_copyFrame(this, frame);
     StackFrame_demangle(this, bfd);
     StackFrame_findInlinerInfo(this, frame, bfd);
@@ -277,5 +271,17 @@ void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,
     return;
     
     error:
+    /**
+     * TODO
+     * when the function is dynamically linked (like from libc.so),
+     * Addr2Line won't work b/c the exe file isn't the main program,
+     * it's the shared library.
+     * message usually contains the shared library file and its address in it,
+     * so I can use that
+     * I'll have to open a new Addr2Line object in that case, though,
+     * so I'll need to have some way of caching them.
+     * I could try to just have a libc.so specific cache,
+     * since that'll be the most common shared library.
+     */
     frame->ok = false;
 }

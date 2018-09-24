@@ -8,7 +8,7 @@
 
 bool testStringFormat() {
     printf("start\n");
-    String* const s = String_ofSize(0);
+    String* const s = String_empty();
     String_format(s, "%d\n", 10);
     String_appendLiteral(s, "Hello\n");
     printf("%s", s->chars);

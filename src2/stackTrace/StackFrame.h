@@ -6,7 +6,9 @@
 #define STACK_TRACE_FRAME_H
 
 #include <stdbool.h>
+
 #include "../string/String.h"
+#include "stack_size_t.h"
 
 typedef struct StackFrame StackFrame;
 
@@ -21,9 +23,11 @@ struct StackFrame {
     const String *functionName;
     size_t lineNumber;
     
-    bool isInlined;
-    const StackFrame *inlined;
+    stack_size_t inlinedDepth;
+    const StackFrame *inlinedBy;
 };
+
+void StackFrame_clear(const StackFrame *this);
 
 void StackFrame_free(const StackFrame *this);
 

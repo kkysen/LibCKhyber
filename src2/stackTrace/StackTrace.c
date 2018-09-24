@@ -52,16 +52,12 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
         return false;
     }
     
+    stack_size_t totalNumFrames = 0;
     for (stack_size_t i = 0; i < numFrames; i++) {
-        char cmd[1000] = {};
-        sprintf(cmd, "addr2line -f -i -s -p -e %s %p", getProgramName()->chars, addresses[i + shift]);
-        printf("%s\n", cmd);
-        if (system(cmd) == -1) {
-            perror(cmd);
-        }
         const String *const message = String_ofChars(charMessages[i]);
-        frames[i].inlined = NULL; // default value, convert() will add linked inlined frames if needed
-        Addr2Line_convert(addr2Line, frames + i, addresses[i + shift], message);
+        StackFrame *const frame = frames + i;
+        Addr2Line_convert(addr2Line, frame, addresses[i + shift], message);
+        totalNumFrames += 1 + frame->inlinedDepth;
     }
     
     Addr2Line_free(addr2Line);
@@ -70,6 +66,7 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
     const StackTrace localStackTrace = {
             .maxFrames = actualNumFrames,
             .numFrames = numFrames,
+            .totalNumFrames = totalNumFrames,
             .frames = frames,
             .signal = signal,
             .processId = getpid(),
@@ -102,7 +99,7 @@ const StackTrace *StackTrace_new(const Signal *const signal) {
 
 void StackTrace_clear(const StackTrace *const this) {
     for (stack_size_t i = 0; i < this->numFrames; i++) {
-        StackFrame_free(this->frames + i);
+        StackFrame_clear(this->frames + i);
     }
     free((StackFrame *) this->frames);
 }
@@ -112,22 +109,45 @@ void StackTrace_free(const StackTrace *const this) {
     free((StackTrace *) this);
 }
 
+static void StackTraceFrame_toString(const StackFrame *const this, String *const out) {
+    String_appendLiteral(out, "\t");
+    StackFrame_toString(this, out);
+    String_appendNewLine(out);
+}
+
+static bool StackWalker_frameToString(
+        const StackFrame *frame, stack_size_t ATTRIBUTE_UNUSED i,
+        const StackTrace *ATTRIBUTE_UNUSED this, void *arg) {
+    StackTraceFrame_toString(frame, (String *) arg);
+    return true;
+}
+
 void StackTrace_toString(const StackTrace *const this, String *out) {
+    // over malloc in one malloc, instead of many small, exact malloc's
+    static const size_t declarationSizeEstimate = 50;
+    static const size_t signalSizeEstimate = 50;
+    static const size_t frameSizeEstimate = 150;
+    const size_t sizeEstimate = (size_t) 1.2 * (
+            +declarationSizeEstimate
+            + (this->signal ? signalSizeEstimate : 0)
+            + frameSizeEstimate * this->totalNumFrames
+    );
+    String_ensureMoreCapacity(out, sizeEstimate);
+    
     String_format(out, "\n\n[pid=%d][tid=%d] StackTrace\n", this->processId, this->threadId);
     if (this->signal) {
         String_appendLiteral(out, "Caused By: ");
         Signal_toString(this->signal, out);
         String_appendNewLine(out);
     }
-    for (stack_size_t i = 0; i < this->numFrames; i++) {
-        String_appendLiteral(out, "\t");
-        StackFrame_toString(this->frames + i, out);
-        String_appendNewLine(out);
-    }
+    
+    StackTrace_walkArg(this, StackWalker_frameToString, out);
+    
+    String_shrinkToSize(out); // trim extra malloc'd memory
 }
 
-void __attribute__ ((noinline)) StackTrace_print(const StackTrace *this, FILE *out) {
-    String *const stringOut = String_ofSize(0);
+void StackTrace_print(const StackTrace *this, FILE *out) {
+    String *const stringOut = String_empty();
     StackTrace_toString(this, stringOut);
     fputs(stringOut->chars, out);
     String_free(stringOut);
@@ -141,19 +161,21 @@ void StackTrace_printNow(FILE *out) {
 }
 
 void StackTrace_walkArg(const StackTrace *this, StackWalkerArg walker, void *arg) {
-    // TODO include inline frames
-    for (stack_size_t i = 0; i < this->numFrames; i++) {
-        if (!walker(this->frames + i, i, this, arg)) {
-            break;
+    for (stack_size_t i = 0, frameNum = 0; i < this->numFrames; i++) {
+        for (const StackFrame *frame = this->frames + i; frame; frame = frame->inlinedBy) {
+            if (!walker(frame, frameNum++, this, arg)) {
+                return;
+            }
         }
     }
 }
 
 void StackTrace_walk(const StackTrace *this, StackWalker walker) {
-    // TODO include inline frames
     for (stack_size_t i = 0; i < this->numFrames; i++) {
-        if (!walker(this->frames + i, i, this)) {
-            break;
+        for (const StackFrame *frame = this->frames + i; frame; frame = frame->inlinedBy) {
+            if (!walker(frame, i, this)) {
+                return;
+            }
         }
     }
 }

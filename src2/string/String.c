@@ -6,12 +6,13 @@
 
 #include <string.h>
 #include <stdarg.h>
+#include <ansidecl.h>
 
 #include "Strings.h"
 
 #define String_terminate() this->chars[this->size] = 0
 
-String *String_allocate(const size_t initialSize) {
+static String *String_allocate() {
     String *const this = (String *) malloc(sizeof(String));
     this->size = 0;
     this->capacity = 0;
@@ -19,7 +20,7 @@ String *String_allocate(const size_t initialSize) {
     return this;
 }
 
-String *String_allocateChars(String *const this, const size_t initialSize) {
+static String *String_allocateChars(String *const this, const size_t initialSize) {
     this->ptr = malloc(initialSize + 1);
     this->capacity = initialSize;
     String_terminate();
@@ -35,29 +36,33 @@ String String_onStackOfSize(const size_t initialSize) {
     return this;
 }
 
-String *String_ofSize(const size_t initialSize) {
-    return String_allocateChars(String_allocate(initialSize), initialSize);
+String *String_withCapacity(const size_t initialSize) {
+    return String_allocateChars(String_allocate(), initialSize);
 }
 
 String *String_empty() {
+    return String_withCapacity(0);
+}
+
+String *String_default() {
     static const size_t DEFAULT_SIZE = 16;
-    return String_ofSize(DEFAULT_SIZE);
+    return String_withCapacity(DEFAULT_SIZE);
 }
 
 String *String_ofBytes(const void *const bytes, const size_t size) {
-    String *const this = String_ofSize(size);
+    String *const this = String_withCapacity(size);
     String_appendBytes(this, bytes, size);
     return this;
 }
 
 String *String_ofCharsN(const char *const chars, const size_t size) {
-    String *const this = String_ofSize(size);
+    String *const this = String_withCapacity(size);
     String_appendCharsN(this, chars, size);
     return this;
 }
 
 String *String_ofChars(const char *const chars) {
-    String *const this = String_ofSize(0);
+    String *const this = String_withCapacity(0);
     String_appendChars(this, chars);
     return this;
 }
@@ -139,21 +144,25 @@ size_t String_appendStream(String *const this, FILE *const file) {
 }
 
 String *String_reReference(const String *const this) {
-    String *const reference = String_ofSize(this->size);
+    String *const reference = String_withCapacity(this->size);
+    reference->size = this->size;
     reference->chars = this->chars;
     return reference;
 }
 
 String *String_copy(const String *const this) {
-    String *const copy = String_ofSize(this->size);
+    String *const copy = String_withCapacity(this->size);
     memcpy(copy->chars, this->chars, this->size);
+    copy->size = this->size;
     return copy;
 }
 
 String *String_concat(const String *const s1, const String *const s2) {
-    String *const result = String_ofSize(s1->size + s2->size);
+    const size_t size = s1->size + s2->size;
+    String *const result = String_withCapacity(size);
     memcpy(result->chars, s1->chars, s1->size);
     memcpy(result->chars + s1->size, s2->chars, s2->size);
+    result->size = size;
     return result;
 }
 

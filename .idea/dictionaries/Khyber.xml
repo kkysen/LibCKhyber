@@ -6,6 +6,7 @@
       <w>demangle</w>
       <w>inlined</w>
       <w>inliner</w>
+      <w>inlining</w>
       <w>memcpy</w>
       <w>popen</w>
       <w>readlink</w>

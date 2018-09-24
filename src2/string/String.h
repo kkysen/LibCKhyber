@@ -15,11 +15,13 @@
  * @param [in] initialSize the initial size and capacity of the String
  * @return the String
  */
-String *String_ofSize(size_t initialSize);
+String *String_withCapacity(size_t initialSize);
 
 String String_onStackOfSize(size_t initialSize);
 
 String *String_empty();
+
+String *String_default();
 
 String *String_ofBytes(const void *bytes, size_t size);
 

@@ -8,12 +8,10 @@
 #include "StackFrame.h"
 
 #include <stdbool.h>
-#include <stdint.h>
 
 #include "../string/String.h"
 #include "../signal/Signal.h"
-
-typedef uint16_t stack_size_t; // SIGSTKSZ	= 8192
+#include "stack_size_t.h"
 
 #define STACK_SIZE_MAX ((stack_size_t) SIGSTKSZ)
 
@@ -21,6 +19,7 @@ typedef struct StackTrace {
     const stack_size_t maxFrames;
     const StackFrame *const frames;
     const stack_size_t numFrames;
+    const stack_size_t totalNumFrames; // includes inlined frames
     const Signal *const signal;
     const pid_t processId;
     const pid_t threadId;
