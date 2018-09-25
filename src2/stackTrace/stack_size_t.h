@@ -2,11 +2,11 @@
 // Created by Khyber on 9/23/2018.
 //
 
-#ifndef STACK_SIZE_T
-#define STACK_SIZE_T
+#ifndef STACK_SIZE_T_H
+#define STACK_SIZE_T_H
 
 #include <stdint.h>
 
-typedef uint16_t stack_size_t; // SIGSTKSZ	= 8192
+typedef u16 stack_size_t; // SIGSTKSZ	= 8192
 
-#endif // STACK_SIZE_T
+#endif // STACK_SIZE_T_H

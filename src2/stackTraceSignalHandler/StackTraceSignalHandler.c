@@ -71,7 +71,7 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *
 
 void setStackTraceSignalHandler() {
     {
-        static uint8_t alternateStack[SIGSTKSZ];
+        static u8 alternateStack[SIGSTKSZ];
         // setup alternate stack
         stack_t ss = {.ss_sp = alternateStack, .ss_size = SIGSTKSZ, .ss_flags = 0};
         if (sigaltstack(&ss, NULL) != 0) {

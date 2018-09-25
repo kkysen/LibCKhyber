@@ -17,8 +17,8 @@ typedef struct Addr2LineFrame {
     bool found;
     const char *filePath;
     const char *functionName;
-    uint32_t lineNumber;
-    uint32_t discriminator;
+    u32 lineNumber;
+    u32 discriminator;
 } Addr2LineFrame;
 
 typedef struct Addr2Line {

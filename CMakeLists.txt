@@ -53,7 +53,7 @@ set(SOURCE_FILES
 #        src/error/addr2Line.c
 #        src/error/addr2Line/addr2line.c
         ../binutils-gdb/bfd/elf-bfd.h
-        src2/stackTrace/stack_size_t.h)
+        src2/stackTrace/stack_size_t.h src2/hash/fnv1a.c src2/hash/fnv1a.h src2/util/numbers.h)
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

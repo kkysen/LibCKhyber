@@ -19,6 +19,8 @@ typedef struct String {
     
     size_t capacity;
     
+   i64 hash;
+    
 } String;
 
 typedef struct Strings {

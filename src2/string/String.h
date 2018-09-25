@@ -6,8 +6,11 @@
 #define STRING_BUILDER_H
 
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #include "StringStructs.h"
+#include "../util/numbers.h"
 
 /**
  * Create a new String with an \param initialSize.
@@ -127,5 +130,12 @@ String *String_subString(const String *this, size_t begin, size_t end);
 ssize_t String_rfind(const String *this, char c);
 
 const char *String_nullableChars(const String *this);
+
+// might modify this->hash, but will act as a const object
+u64 String_hash(const String *this);
+
+bool String_equals(const String *s1, const String *s2);
+
+int String_compare(const String *s1, const String *s2);
 
 #endif // STRING_BUILDER_H

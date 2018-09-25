@@ -6,9 +6,10 @@
 
 #include <string.h>
 #include <stdarg.h>
-#include <ansidecl.h>
 
 #include "Strings.h"
+#include "../util/utils.h"
+#include "../hash/fnv1a.h"
 
 #define String_terminate() this->chars[this->size] = 0
 
@@ -17,6 +18,7 @@ static String *String_allocate() {
     this->size = 0;
     this->capacity = 0;
     this->ptr = NULL;
+    this->hash = -1;
     return this;
 }
 
@@ -71,6 +73,7 @@ void String_clear(String *const this) {
     free(this->ptr);
     this->ptr = NULL;
     this->size = this->capacity = 0;
+    this->hash = -1;
 }
 
 void String_free(String *const this) {
@@ -110,8 +113,12 @@ void String_shrinkToMoreCapacity(String *this, size_t moreCapacity) {
 }
 
 static void String_appendBytesUnchecked(String *const this, const void *restrict const bytes, const size_t size) {
+    if (size == 0) {
+        return;
+    }
     memcpy(this->ptr + this->size, bytes, size);
     this->size += size;
+    this->hash = -1;
     String_terminate();
 }
 
@@ -153,6 +160,7 @@ String *String_reReference(const String *const this) {
 String *String_copy(const String *const this) {
     String *const copy = String_withCapacity(this->size);
     String_appendBytesUnchecked(copy, this->ptr, this->size);
+    copy->hash = this->hash;
     return copy;
 }
 
@@ -170,12 +178,20 @@ void String_format(String *const this, const char *const format, ...) {
     va_list argsCopy;
     va_copy(argsCopy, args);
     const int iFormattedSize = vsnprintf(NULL, 0, format, argsCopy);
+    if (iFormattedSize == 0) {
+        return;
+    }
     if (iFormattedSize < 0) {
         perror("vsnprinf");
     }
     const size_t formattedSize = (size_t) iFormattedSize;
     String_ensureMoreCapacity(this, formattedSize);
+    
     const int iActualFormattedSize = vsnprintf(this->chars + this->size, formattedSize + 1, format, args);
+    if (iActualFormattedSize == 0) {
+        return;
+    }
+    this->hash = -1;
     if (iActualFormattedSize < 0) {
         perror("vsnprintf");
     }
@@ -228,4 +244,42 @@ ssize_t String_rfind(const String *const this, const char c) {
 
 const char *String_nullableChars(const String *const this) {
     return this ? this->chars : NULL;
+}
+
+static u64 computeHash(const String *const this) {
+    return fnv1a64Hash(this->ptr, this->size);
+}
+
+u64 String_hash(const String *const this) {
+    if (this->hash != -1) {
+        return (u64) this->hash;
+    }
+    const u64 hash = computeHash(this) & (1UL << (sizeof(u64) - 1)); // clear leading bit
+    ((String *) this)->hash = hash;
+    return hash;
+}
+
+bool String_equals(const String *const s1, const String *const s2) {
+    if (s1 == s2) {
+        return true;
+    }
+    if (!s1 || !s2) {
+        return false;
+    }
+    if (s1->size != s2->size) {
+        return false;
+    }
+    if (s1->hash != -1 && s2->hash != -1 && s1->hash != s2->hash) {
+        return false;
+    }
+    return String_compare(s1, s2) == 0;
+}
+
+int String_compare(const String *const s1, const String *const s2) {
+    ssize_t sizeDiff = s1->size - s2->size;
+    const int cmp = memcmp(s1->ptr, s2->ptr, min(s1->size, s2->size));
+    if (sizeDiff == 0 || cmp != 0) {
+        return cmp;
+    }
+    return sizeDiff < 0 ? -1 : 1;
 }

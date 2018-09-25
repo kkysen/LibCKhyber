@@ -207,10 +207,6 @@ static void StackFrame_demangle(StackFrame *const this, const BFD *const bfd) {
     const char *const functionName = bfd_demangle((BFD *) bfd, this->mangledFunctionName->chars,
                                                   DMGL_ANSI | DMGL_PARAMS);
     // TODO check if other flags should be included too for more info
-//    if (functionName) {
-//        perror("bfd_demange");
-//        exit(1);
-//    }
     this->functionName = functionName ? String_ofChars(functionName) : String_copy(this->mangledFunctionName);
 }
 
