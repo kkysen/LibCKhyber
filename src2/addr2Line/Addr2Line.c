@@ -275,7 +275,25 @@ typedef struct SharedLibraryAddress {
 } SharedLibraryAddress;
 
 static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *const message) {
-    return {.ok = false};
+    const ssize_t iOpenParenIndex = String_find(message, '(');
+    const size_t openParenIndex = (size_t) iOpenParenIndex;
+    const ssize_t iCloseParenIndex = String_findFrom(message, openParenIndex, ')');
+    const size_t closeParenIndex = (size_t) iCloseParenIndex;
+    if (iOpenParenIndex == -1 || iCloseParenIndex == -1) {
+        return {.ok = false};
+    }
+    const String *const filePath = String_subString(message, 0, openParenIndex);
+    const String *const addressString = String_subString(message, openParenIndex + 1, closeParenIndex);
+    const u64 address = strtoull(addressString->chars, NULL, 16);
+    if (errno == ERANGE || errno == EINVAL) {
+        errno = 0;
+        return {.ok = false};
+    }
+    return {
+            .filePath = filePath,
+            .address = (void *) address,
+            .ok = true,
+    };
 }
 
 static void StackFrame_convertSharedLibrary(StackFrame *const frame) {

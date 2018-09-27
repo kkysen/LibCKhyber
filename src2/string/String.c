@@ -232,6 +232,22 @@ String *String_subString(const String *this, size_t begin, size_t end) {
     return String_ofCharsN(this->chars + begin, end - begin);
 }
 
+ssize_t String_find(const String *const this, const char c) {
+    return String_findFrom(this, 0, c);
+}
+
+ssize_t String_findFrom(const String *this, size_t offset, char c) {
+    if (offset >= this->size) {
+        return -1;
+    }
+    const char *s = this->chars + offset;
+    const char *location = strchr(s, c);
+    if (!location) {
+        return -1;
+    }
+    return location - s;
+}
+
 ssize_t String_rfind(const String *const this, const char c) {
     const char *s = this->chars + this->size;
     while (*--s != c) {

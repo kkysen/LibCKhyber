@@ -127,6 +127,10 @@ Strings *String_split(const String *this, const String *separator);
 
 String *String_subString(const String *this, size_t begin, size_t end);
 
+ssize_t String_find(const String *this, char c);
+
+ssize_t String_findFrom(const String *this, size_t offset, char c);
+
 ssize_t String_rfind(const String *this, char c);
 
 const char *String_nullableChars(const String *this);
