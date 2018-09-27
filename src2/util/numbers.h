@@ -17,16 +17,8 @@ typedef int16_t i16;
 typedef int32_t i32;
 typedef int64_t i64;
 
-#if sizeof(float) == 32
 typedef float f32;
-#endif
-
-#if sizeof(double) == 64
 typedef double f64;
-#endif
-
-#if sizeof(long double) == 128
 typedef long double f128;
-#endif
 
 #endif // NUMBERS_H

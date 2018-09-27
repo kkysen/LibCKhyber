@@ -30,7 +30,7 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
     }
     
     const Addr2LineArgs addr2LineArgs = {
-            .fileName = getProgramName(),
+            .filePath = getProgramName(),
             // TODO
     };
     const Addr2Line *const addr2Line = Addr2Line_new(&addr2LineArgs);

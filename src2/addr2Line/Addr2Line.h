@@ -22,7 +22,9 @@ typedef struct Addr2LineFrame {
 } Addr2LineFrame;
 
 typedef struct Addr2Line {
-    const String *demangleStyle;
+    const String *filePath;
+    int fd;
+    
     BFD *bfd;
     const Section *section;
     const Symbol *const *symbols;
@@ -31,9 +33,8 @@ typedef struct Addr2Line {
 } Addr2Line;
 
 typedef struct Addr2LineArgs {
-    const String *const fileName;
+    const String *const filePath;
     const String *const sectionName;
-    const String *const demangleStyle;
     const String *const bfdTarget;
 } Addr2LineArgs;
 

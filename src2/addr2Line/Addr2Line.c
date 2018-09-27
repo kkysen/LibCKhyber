@@ -11,9 +11,19 @@
 
 #include <libiberty/demangle.h>
 #include <string.h>
+#include <fcntl.h>
 #include "../../../binutils-gdb/bfd/elf-bfd.h"
 
 #include "../util/utils.h"
+#include "../collections/HashMap/HashMap_String_Addr2Line.h"
+
+static HashMap_String_Addr2Line *getCache() {
+    static HashMap_String_Addr2Line *cache = NULL;
+    if (!cache) {
+        HashMap_String_Addr2Line_init(cache);
+    }
+    return cache;
+}
 
 static void initLibBFD() {
     static bool initialized = false;
@@ -22,23 +32,33 @@ static void initLibBFD() {
     }
 }
 
-static BFD *initBFD(const Addr2LineArgs *const args) {
-    BFD *bfd = bfd_openr(String_nullableChars(args->fileName), String_nullableChars(args->bfdTarget));
+static bool Addr2Line_initBFD(Addr2Line *const this, const Addr2LineArgs *const args) {
+    const char *filePath = String_nullableChars(args->filePath);
+    const char *bfdTarget = String_nullableChars(args->bfdTarget);
+    const int fd = open(filePath, O_RDONLY);
+    if (fd == -1) {
+        perror("open");
+        return false;
+    }
+    BFD *bfd = bfd_fdopenr(filePath, bfdTarget, fd);
     if (!bfd) {
-        bfd_perror("bfd_openr");
-        perror("bfd_openr");
-        return NULL;
+        bfd_perror("bfd_fdopenr");
+        perror("bfd_fdopenr");
+        close(fd);
+        return false;
     }
     
     bfd->flags |= BFD_DECOMPRESS;
     if (bfd_check_format(bfd, bfd_archive)) {
-        return NULL;
+        return false;
     }
     if (!bfd_check_format_matches(bfd, bfd_object, NULL)) {
-        return NULL; // TODO check NULL argument instead of char***
+        return false; // TODO check NULL argument instead of char***
     }
     
-    return bfd;
+    this->filePath = args->filePath;
+    this->fd = fd;
+    this->bfd = bfd;
 }
 
 static const Symbol *const *readSymbolTable(const BFD *const bfd) {
@@ -81,14 +101,11 @@ Addr2Line *Addr2Line_new(const Addr2LineArgs *const args) {
         return NULL;
     }
     
-    this->demangleStyle = args->demangleStyle; // TODO check use of demangleStyle
-    
-    BFD *const bfd = initBFD(args);
-    if (!bfd) {
-        perror("initBFD");
+    if (!Addr2Line_initBFD(this, args)) {
+        perror("Addr2Line_initBFD");
         return NULL;
     }
-    this->bfd = bfd;
+    BFD *const bfd = this->bfd;
     
     const Section *section;
     if (args->sectionName) {
@@ -238,6 +255,47 @@ static void StackFrame_fill(StackFrame *const this, Addr2LineFrame *const frame,
     this->ok = true;
 }
 
+/**
+     * TODO
+     * when the function is dynamically linked (like from libc.so),
+     * Addr2Line won't work b/c the exe file isn't the main program,
+     * it's the shared library.
+     * message usually contains the shared library file and its address in it,
+     * so I can use that
+     * I'll have to open a new Addr2Line object in that case, though,
+     * so I'll need to have some way of caching them.
+     * I could try to just have a libc.so specific cache,
+     * since that'll be the most common shared library.
+     */
+
+typedef struct SharedLibraryAddress {
+    const String *filePath;
+    const void *address;
+    bool ok;
+} SharedLibraryAddress;
+
+static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *const message) {
+    return {.ok = false};
+}
+
+static void StackFrame_convertSharedLibrary(StackFrame *const frame) {
+    const SharedLibraryAddress libraryAddress = SharedLibraryAddress_parseFromMessage(frame->message);
+    if (!libraryAddress.ok) {
+        return;
+    }
+    HashMap_String_Addr2Line *const cache = getCache();
+    const Addr2Line *addr2Line = HashMap_String_Addr2Line_get(cache, libraryAddress.filePath);
+    if (!addr2Line) {
+        Addr2LineArgs args = {.filePath = libraryAddress.filePath};
+        addr2Line = Addr2Line_new(&args);
+        if (!addr2Line) {
+            return;
+        }
+        HashMap_String_Addr2Line_put(cache, libraryAddress.filePath, addr2Line);
+    }
+    Addr2Line_convert(addr2Line, frame, libraryAddress.address, frame->message);
+}
+
 void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,
                        const void *const address, const String *const message) {
     memClear(frame);
@@ -267,17 +325,5 @@ void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,
     return;
     
     error:
-    /**
-     * TODO
-     * when the function is dynamically linked (like from libc.so),
-     * Addr2Line won't work b/c the exe file isn't the main program,
-     * it's the shared library.
-     * message usually contains the shared library file and its address in it,
-     * so I can use that
-     * I'll have to open a new Addr2Line object in that case, though,
-     * so I'll need to have some way of caching them.
-     * I could try to just have a libc.so specific cache,
-     * since that'll be the most common shared library.
-     */
-    frame->ok = false;
+    StackFrame_convertSharedLibrary(frame);
 }
