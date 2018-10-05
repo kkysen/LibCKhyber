@@ -5,23 +5,12 @@
 #ifndef STRING_BUILDER_H
 #define STRING_BUILDER_H
 
-#include <stdlib.h>
 #include <stdio.h>
-#include "Strings.h"
+#include <stdint.h>
+#include <stdbool.h>
 
-typedef struct String {
-    
-    union {
-        char *chars;
-        
-        void *ptr;
-    };
-    
-    size_t size;
-    
-    size_t capacity;
-    
-} String;
+#include "StringStructs.h"
+#include "../util/numbers.h"
 
 /**
  * Create a new String with an \param initialSize.
@@ -29,11 +18,13 @@ typedef struct String {
  * @param [in] initialSize the initial size and capacity of the String
  * @return the String
  */
-String *String_ofSize(size_t initialSize);
+String *String_withCapacity(size_t initialSize);
 
 String String_onStackOfSize(size_t initialSize);
 
 String *String_empty();
+
+String *String_default();
 
 String *String_ofBytes(const void *bytes, size_t size);
 
@@ -55,7 +46,7 @@ void String_free(String *this);
  * @param [in, out] this this String
  * @param [in] capacity the minimum capacity
  */
-void String_ensureCapacity(String* this, size_t capacity);
+void String_ensureCapacity(String *this, size_t capacity);
 
 /**
  * Ensure this String has a capacity of at least
@@ -64,14 +55,14 @@ void String_ensureCapacity(String* this, size_t capacity);
  * @param [in, out] this this String
  * @param [in] moreCapacity the minimum capacity to add to the current size
  */
-void String_ensureMoreCapacity(String* this, size_t moreCapacity);
+void String_ensureMoreCapacity(String *this, size_t moreCapacity);
 
 /**
  * Shrink the capacity of this String to the current size.
  *
  * @param [in, out] this this String
  */
-void String_shrinkToSize(String* this);
+void String_shrinkToSize(String *this);
 
 void String_shrinkToMoreCapacity(String *this, size_t moreCapacity);
 
@@ -82,7 +73,7 @@ void String_shrinkToMoreCapacity(String *this, size_t moreCapacity);
  * @param [in] bytes the bytes to append
  * @param [in] size the size of the \param bytes
  */
-void String_appendBytes(String* this, const void* bytes, size_t size);
+void String_appendBytes(String *this, const void *restrict bytes, size_t size);
 
 /**
  * Append a string \param chars of length \param size to this String.
@@ -91,7 +82,7 @@ void String_appendBytes(String* this, const void* bytes, size_t size);
  * @param [in] chars the string to append
  * @param [in] size the size of string \param chars
  */
-void String_appendCharsN(String* this, const char* chars, size_t size);
+void String_appendCharsN(String *this, const char *chars, size_t size);
 
 /**
  * Append a null-terminated string \param chars to this String.
@@ -99,11 +90,13 @@ void String_appendCharsN(String* this, const char* chars, size_t size);
  * @param [in, out] this this String
  * @param [in] chars the null-terminated string to append
  */
-void String_appendChars(String* this, const char* chars);
+void String_appendChars(String *this, const char *chars);
 
 #define String_appendLiteral(this, literalString) String_appendCharsN(this, literalString, sizeof(literalString) - 1)
 
-void String_append(String *this, String string);
+#define String_appendNewLine(this) String_appendLiteral(out, "\n")
+
+void String_append(String *this, const String *string);
 
 /**
  * Append the contents of a \param file stream to this String.
@@ -112,7 +105,7 @@ void String_append(String *this, String string);
  * @param [in] file the file to append
  * @return the number of bytes read from the stream
  */
-size_t String_appendStream(String* this, FILE* file);
+size_t String_appendStream(String *this, FILE *file);
 
 /**
  * Clear this String,
@@ -122,14 +115,31 @@ size_t String_appendStream(String* this, FILE* file);
  */
 void String_clear(String *this);
 
-String *String_reReference(String this);
+String *String_reReference(const String *this);
 
-String *String_copy(String this);
+String *String_copy(const String *this);
 
-String *String_concat(String s1, String s2);
+String *String_concat(const String *s1, const String *s2);
 
 void String_format(String *this, const char *format, ...);
 
-Strings* String_split(String this, String separator);
+Strings *String_split(const String *this, const String *separator);
+
+String *String_subString(const String *this, size_t begin, size_t end);
+
+ssize_t String_find(const String *this, char c);
+
+ssize_t String_findFrom(const String *this, size_t offset, char c);
+
+ssize_t String_rfind(const String *this, char c);
+
+const char *String_nullableChars(const String *this);
+
+// might modify this->hash, but will act as a const object
+u64 String_hash(const String *this);
+
+bool String_equals(const String *s1, const String *s2);
+
+int String_compare(const String *s1, const String *s2);
 
 #endif // STRING_BUILDER_H

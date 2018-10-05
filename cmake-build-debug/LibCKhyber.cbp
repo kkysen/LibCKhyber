@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="LibCKhyber"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Khyber">
+				<Option output="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/libKhyber.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 Khyber"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Khyber/fast">
+				<Option output="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/libKhyber.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 Khyber/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="LibCKhyber">
+				<Option output="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/LibCKhyber" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 LibCKhyber"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="LibCKhyber/fast">
+				<Option output="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/LibCKhyber" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 LibCKhyber/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/bfd/elf-bfd.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/bfdlink.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/common.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/external.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/internal.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/collections/HashMap/HashMap_String_Addr2Line.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/collections/HashMap/HashMap_String_Addr2Line.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/addr2Line/Addr2Line.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/addr2Line/Addr2Line.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/bfd/BinaryFileDescriptor.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/bfd/BinaryFileDescriptor.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackFrame.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackFrame.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackTrace.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackTrace.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/stack_size_t.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/String.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/String.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/StringStructs.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/Strings.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/Strings.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/buffer/buffer.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/buffer/buffer.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/hash/fnv1a.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/hash/fnv1a.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/numbers.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/programName/programName.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/programName/programName.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/setField.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/Signal.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/Signal.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/sigAction.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/sigAction.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/utils.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/utils.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/test.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/test.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStackTrace.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStackTrace.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStringFormat.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStringFormat.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

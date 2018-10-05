@@ -5,9 +5,9 @@
 #include <bfd.h>
 #include "testStackTrace.h"
 
-#include "../src2/stackTrace/StackTrace.h"
-#include "../src2/stackTraceSignalHandler/StackTraceSignalHandler.h"
-#include "../src2/programName/programName.h"
+#include "../src/stackTrace/stackTrace/StackTrace.h"
+#include "../src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
+#include "../src/util/programName/programName.h"
 
 static void toInline() {
     StackTrace_printNow(stdout);

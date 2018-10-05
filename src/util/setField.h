@@ -5,6 +5,8 @@
 #ifndef SET_FIELD_H
 #define SET_FIELD_H
 
+#include <string.h>
+
 /**
  * Sets a \param field with the memory pointed to by a \param ptr
  * using memcpy(), which circumvents const modifiers.

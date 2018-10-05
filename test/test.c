@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <values.h>
 
-#include "../src2/util/utils.h"
+#include "../src/util/utils.h"
 #include "testStringFormat.h"
 #include "testStackTrace.h"
 
