@@ -41,16 +41,21 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIR) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
+.PHONY: all
 all: $(EXE) $(TEST) $(LIB)
 
+.PHONY: run
 run: $(EXE)
 	./$(EXE)
 
+.PHONY: test
 test: $(TEST)
 	./$(TEST)
 
+.PHONY: lib
 lib: $(LIB)
 
+.PHONY: debug
 debug:
 	echo $(TEST_OBJS)
 	echo $(LIB_OBJS)
@@ -86,7 +91,6 @@ $(BIN_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp
 
 
 .PHONY: clean
-
 clean:
 	$(RM) -r $(BIN_DIR)
 
