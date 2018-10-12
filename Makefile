@@ -1,6 +1,6 @@
 CC := gcc
 
-LTO = -flto
+LTO := -flto
 OPT := -O3 -march=native $(LTO)
 WARNINGS := all error extra
 NO_WARNINGS := unused-parameter unused-function
@@ -18,11 +18,11 @@ RANLIB := gcc-ranlib
 
 MKDIR_P := mkdir -p
 
+VALGRIND := valgrind --leak-check=full --show-leak-kinds=all
+
 
 
 MAIN := Khyber
-EXE := LibCKhyber
-LIB := Khyber
 
 BIN_DIR := bin
 SRC_DIR := src
@@ -56,15 +56,18 @@ test: $(TEST)
 
 .PHONY: valgrind
 valgrind: $(TEST)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(TEST) $(TEST_ARGS)
+	$(VALGRIND) ./$(TEST) $(TEST_ARGS)
 
 .PHONY: lib
 lib: $(LIB)
 
 .PHONY: debug
 debug:
-	echo $(TEST_OBJS)
-	echo $(LIB_OBJS)
+ifeq ($(BIN_DIR), $(SRC_DIR))
+	echo "equal"
+else
+	echo "not equal"
+endif
 
 $(EXE): $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o $@ $(LDFLAGS)
@@ -98,6 +101,10 @@ $(BIN_DIR)/%.cpp.o: $(SRC_DIR)/%.cpp
 
 .PHONY: clean
 clean:
+ifeq ($(BIN_DIR), $(SRC_DIR))
+	$(RM) $(OBJS) $(DEPS) $(EXE) $(TEST) $(LIB)
+else
 	$(RM) -r $(BIN_DIR)
+endif
 
 -include $(DEPS)
