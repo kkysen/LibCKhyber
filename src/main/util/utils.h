@@ -77,6 +77,8 @@ void init_home();
 
 #define perror(s) _perror(strerror(errno), s)
 
+//#undef perror
+
 #define perror_assert_expr(expr) do {if (!(expr)) perror(#expr); _Static_assert(false, #expr);} while (false)
 
 #define perror_assert(expr, s) do {if (!(expr)) perror(s); _Static_assert(false, #expr);} while (false)

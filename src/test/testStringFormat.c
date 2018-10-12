@@ -4,7 +4,7 @@
 
 #include "testStringFormat.h"
 
-#include "../src/string/String.h"
+#include "../main/string/String.h"
 
 bool testStringFormat() {
     printf("start\n");

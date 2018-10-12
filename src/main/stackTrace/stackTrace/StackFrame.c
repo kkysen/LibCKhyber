@@ -35,7 +35,7 @@ void StackFrame_toString(const StackFrame *const this, String *const out) {
         return;
     }
     
-    String_format(out, "%s%s: %s:%zu (%s:%zu)",
+    String_format(out, "%s%s(): %s:%zu (%s:%zu)",
                   this->inlinedDepth ? "[inlined] " : "",
                   charsOrQuestionMarks(this->functionName),
                   charsOrQuestionMarks(this->fileName),

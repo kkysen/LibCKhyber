@@ -118,175 +118,175 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/bfd/elf-bfd.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/lib/binutils-bfd/bfd/elf-bfd.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/bfdlink.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/lib/binutils-bfd/include/bfdlink.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/common.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/lib/binutils-bfd/include/elf/common.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/external.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/lib/binutils-bfd/include/elf/external.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/lib/binutils-bfd/include/elf/internal.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/lib/binutils-bfd/include/elf/internal.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/collections/HashMap/HashMap_String_Addr2Line.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/collections/HashMap/HashMap_String_Addr2Line.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/collections/HashMap/HashMap_String_Addr2Line.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/collections/HashMap/HashMap_String_Addr2Line.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/addr2Line/Addr2Line.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/addr2Line/Addr2Line.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/bfd/BinaryFileDescriptor.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/bfd/BinaryFileDescriptor.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/bfd/BinaryFileDescriptor.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/bfd/BinaryFileDescriptor.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackFrame.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/StackFrame.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackFrame.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/StackFrame.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackTrace.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/StackTrace.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/StackTrace.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/StackTrace.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTrace/stack_size_t.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/stack_size_t.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/String.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/string/String.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/String.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/string/String.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/StringStructs.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/string/StringStructs.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/Strings.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/string/Strings.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/string/Strings.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/string/Strings.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/buffer/buffer.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/buffer/buffer.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/buffer/buffer.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/buffer/buffer.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/hash/fnv1a.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/hash/fnv1a.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/hash/fnv1a.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/hash/fnv1a.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/numbers.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/numbers.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/programName/programName.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/programName/programName.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/programName/programName.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/programName/programName.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/setField.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/setField.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/Signal.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/signal/Signal.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/Signal.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/signal/Signal.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/sigAction.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/signal/sigAction.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/signal/sigAction.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/signal/sigAction.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/utils.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/utils.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/util/utils.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/util/utils.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/test.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/test.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/test.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/test.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStackTrace.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/testStackTrace.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStackTrace.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/testStackTrace.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStringFormat.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/testStringFormat.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/test/testStringFormat.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/testStringFormat.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>

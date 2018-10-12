@@ -12,7 +12,7 @@
 #include <libiberty/demangle.h>
 #include <string.h>
 #include <fcntl.h>
-#include "../../../../binutils-gdb/bfd/elf-bfd.h"
+#include "../../../lib/binutils-bfd/bfd/elf-bfd.h"
 
 #include "../../util/utils.h"
 #include "../../collections/HashMap/HashMap_String_Addr2Line.h"
@@ -306,8 +306,8 @@ static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *
     };
 }
 
-static void StackFrame_convertSharedLibrary(StackFrame *const frame) {
-    const SharedLibraryAddress libraryAddress = SharedLibraryAddress_parseFromMessage(frame->message);
+static void StackFrame_convertSharedLibrary(StackFrame *const this) {
+    const SharedLibraryAddress libraryAddress = SharedLibraryAddress_parseFromMessage(this->message);
     if (!libraryAddress.ok) {
         return;
     }
@@ -317,15 +317,22 @@ static void StackFrame_convertSharedLibrary(StackFrame *const frame) {
         Addr2LineArgs args = {.filePath = libraryAddress.filePath};
         addr2Line = Addr2Line_new(&args);
         if (!addr2Line) {
+            perror("Addr2Line_new");
             return;
         }
         HashMap_String_Addr2Line_put(cache, libraryAddress.filePath, addr2Line);
     }
-    Addr2Line_convert(addr2Line, frame, libraryAddress.address, frame->message);
+    Addr2Line_convert(addr2Line, this, libraryAddress.address, this->message);
 }
 
 void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,
                        const void *const address, const String *const message) {
+    const bool isCurrentExecutable = this->filePath == getProgramName();
+    const bool isSharedLibrary = !isCurrentExecutable;
+    if (isSharedLibrary) {
+        return; // TODO get it working for shared libraries
+    }
+    
     memClear(frame);
     memClear(this->frame);
     
@@ -353,7 +360,7 @@ void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,
     return;
     
     error:
-    if (this->filePath == getProgramName()) {
+    if (isCurrentExecutable) {
         StackFrame_convertSharedLibrary(frame);
     }
 }

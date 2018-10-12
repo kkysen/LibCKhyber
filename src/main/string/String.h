@@ -5,9 +5,10 @@
 #ifndef STRING_BUILDER_H
 #define STRING_BUILDER_H
 
-#include <stdio.h>
+#include <sys/types.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "StringStructs.h"
 #include "../util/numbers.h"

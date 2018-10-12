@@ -136,515 +136,515 @@ LibCKhyber/fast:
 	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/build
 .PHONY : LibCKhyber/fast
 
-src/collections/HashMap/HashMap_String_Addr2Line.o: src/collections/HashMap/HashMap_String_Addr2Line.c.o
+src/main/collections/HashMap/HashMap_String_Addr2Line.o: src/main/collections/HashMap/HashMap_String_Addr2Line.c.o
 
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.o
-
-# target to build an object file
-src/collections/HashMap/HashMap_String_Addr2Line.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.o
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.c.o
-
-src/collections/HashMap/HashMap_String_Addr2Line.i: src/collections/HashMap/HashMap_String_Addr2Line.c.i
-
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.i
-
-# target to preprocess a source file
-src/collections/HashMap/HashMap_String_Addr2Line.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.i
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.c.i
-
-src/collections/HashMap/HashMap_String_Addr2Line.s: src/collections/HashMap/HashMap_String_Addr2Line.c.s
-
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.s
-
-# target to generate assembly for a file
-src/collections/HashMap/HashMap_String_Addr2Line.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/collections/HashMap/HashMap_String_Addr2Line.c.s
-.PHONY : src/collections/HashMap/HashMap_String_Addr2Line.c.s
-
-src/stackTrace/addr2Line/Addr2Line.o: src/stackTrace/addr2Line/Addr2Line.c.o
-
-.PHONY : src/stackTrace/addr2Line/Addr2Line.o
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.o
 
 # target to build an object file
-src/stackTrace/addr2Line/Addr2Line.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/addr2Line/Addr2Line.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/addr2Line/Addr2Line.c.o
-.PHONY : src/stackTrace/addr2Line/Addr2Line.c.o
+src/main/collections/HashMap/HashMap_String_Addr2Line.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.o
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.c.o
 
-src/stackTrace/addr2Line/Addr2Line.i: src/stackTrace/addr2Line/Addr2Line.c.i
+src/main/collections/HashMap/HashMap_String_Addr2Line.i: src/main/collections/HashMap/HashMap_String_Addr2Line.c.i
 
-.PHONY : src/stackTrace/addr2Line/Addr2Line.i
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.i
 
 # target to preprocess a source file
-src/stackTrace/addr2Line/Addr2Line.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/addr2Line/Addr2Line.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/addr2Line/Addr2Line.c.i
-.PHONY : src/stackTrace/addr2Line/Addr2Line.c.i
+src/main/collections/HashMap/HashMap_String_Addr2Line.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.i
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.c.i
 
-src/stackTrace/addr2Line/Addr2Line.s: src/stackTrace/addr2Line/Addr2Line.c.s
+src/main/collections/HashMap/HashMap_String_Addr2Line.s: src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 
-.PHONY : src/stackTrace/addr2Line/Addr2Line.s
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.s
 
 # target to generate assembly for a file
-src/stackTrace/addr2Line/Addr2Line.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/addr2Line/Addr2Line.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/addr2Line/Addr2Line.c.s
-.PHONY : src/stackTrace/addr2Line/Addr2Line.c.s
+src/main/collections/HashMap/HashMap_String_Addr2Line.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
+.PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 
-src/stackTrace/bfd/BinaryFileDescriptor.o: src/stackTrace/bfd/BinaryFileDescriptor.c.o
+src/main/stackTrace/addr2Line/Addr2Line.o: src/main/stackTrace/addr2Line/Addr2Line.c.o
 
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.o
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.o
 
 # target to build an object file
-src/stackTrace/bfd/BinaryFileDescriptor.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.o
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.c.o
+src/main/stackTrace/addr2Line/Addr2Line.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.c.o
 
-src/stackTrace/bfd/BinaryFileDescriptor.i: src/stackTrace/bfd/BinaryFileDescriptor.c.i
+src/main/stackTrace/addr2Line/Addr2Line.i: src/main/stackTrace/addr2Line/Addr2Line.c.i
 
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.i
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.i
 
 # target to preprocess a source file
-src/stackTrace/bfd/BinaryFileDescriptor.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.i
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.c.i
+src/main/stackTrace/addr2Line/Addr2Line.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.i
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.c.i
 
-src/stackTrace/bfd/BinaryFileDescriptor.s: src/stackTrace/bfd/BinaryFileDescriptor.c.s
+src/main/stackTrace/addr2Line/Addr2Line.s: src/main/stackTrace/addr2Line/Addr2Line.c.s
 
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.s
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.s
 
 # target to generate assembly for a file
-src/stackTrace/bfd/BinaryFileDescriptor.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/bfd/BinaryFileDescriptor.c.s
-.PHONY : src/stackTrace/bfd/BinaryFileDescriptor.c.s
+src/main/stackTrace/addr2Line/Addr2Line.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s
+.PHONY : src/main/stackTrace/addr2Line/Addr2Line.c.s
 
-src/stackTrace/stackTrace/StackFrame.o: src/stackTrace/stackTrace/StackFrame.c.o
+src/main/stackTrace/bfd/BinaryFileDescriptor.o: src/main/stackTrace/bfd/BinaryFileDescriptor.c.o
 
-.PHONY : src/stackTrace/stackTrace/StackFrame.o
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.o
 
 # target to build an object file
-src/stackTrace/stackTrace/StackFrame.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackFrame.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackFrame.c.o
-.PHONY : src/stackTrace/stackTrace/StackFrame.c.o
+src/main/stackTrace/bfd/BinaryFileDescriptor.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.o
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.c.o
 
-src/stackTrace/stackTrace/StackFrame.i: src/stackTrace/stackTrace/StackFrame.c.i
+src/main/stackTrace/bfd/BinaryFileDescriptor.i: src/main/stackTrace/bfd/BinaryFileDescriptor.c.i
 
-.PHONY : src/stackTrace/stackTrace/StackFrame.i
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.i
 
 # target to preprocess a source file
-src/stackTrace/stackTrace/StackFrame.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackFrame.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackFrame.c.i
-.PHONY : src/stackTrace/stackTrace/StackFrame.c.i
+src/main/stackTrace/bfd/BinaryFileDescriptor.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.i
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.c.i
 
-src/stackTrace/stackTrace/StackFrame.s: src/stackTrace/stackTrace/StackFrame.c.s
+src/main/stackTrace/bfd/BinaryFileDescriptor.s: src/main/stackTrace/bfd/BinaryFileDescriptor.c.s
 
-.PHONY : src/stackTrace/stackTrace/StackFrame.s
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.s
 
 # target to generate assembly for a file
-src/stackTrace/stackTrace/StackFrame.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackFrame.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackFrame.c.s
-.PHONY : src/stackTrace/stackTrace/StackFrame.c.s
+src/main/stackTrace/bfd/BinaryFileDescriptor.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.s
+.PHONY : src/main/stackTrace/bfd/BinaryFileDescriptor.c.s
 
-src/stackTrace/stackTrace/StackTrace.o: src/stackTrace/stackTrace/StackTrace.c.o
+src/main/stackTrace/stackTrace/StackFrame.o: src/main/stackTrace/stackTrace/StackFrame.c.o
 
-.PHONY : src/stackTrace/stackTrace/StackTrace.o
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.o
 
 # target to build an object file
-src/stackTrace/stackTrace/StackTrace.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackTrace.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackTrace.c.o
-.PHONY : src/stackTrace/stackTrace/StackTrace.c.o
+src/main/stackTrace/stackTrace/StackFrame.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.c.o
 
-src/stackTrace/stackTrace/StackTrace.i: src/stackTrace/stackTrace/StackTrace.c.i
+src/main/stackTrace/stackTrace/StackFrame.i: src/main/stackTrace/stackTrace/StackFrame.c.i
 
-.PHONY : src/stackTrace/stackTrace/StackTrace.i
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.i
 
 # target to preprocess a source file
-src/stackTrace/stackTrace/StackTrace.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackTrace.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackTrace.c.i
-.PHONY : src/stackTrace/stackTrace/StackTrace.c.i
+src/main/stackTrace/stackTrace/StackFrame.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.i
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.c.i
 
-src/stackTrace/stackTrace/StackTrace.s: src/stackTrace/stackTrace/StackTrace.c.s
+src/main/stackTrace/stackTrace/StackFrame.s: src/main/stackTrace/stackTrace/StackFrame.c.s
 
-.PHONY : src/stackTrace/stackTrace/StackTrace.s
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.s
 
 # target to generate assembly for a file
-src/stackTrace/stackTrace/StackTrace.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTrace/StackTrace.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTrace/StackTrace.c.s
-.PHONY : src/stackTrace/stackTrace/StackTrace.c.s
+src/main/stackTrace/stackTrace/StackFrame.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.s
+.PHONY : src/main/stackTrace/stackTrace/StackFrame.c.s
 
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o: src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
+src/main/stackTrace/stackTrace/StackTrace.o: src/main/stackTrace/stackTrace/StackTrace.c.o
 
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.o
 
 # target to build an object file
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
+src/main/stackTrace/stackTrace/StackTrace.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.o
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.c.o
 
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i: src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
+src/main/stackTrace/stackTrace/StackTrace.i: src/main/stackTrace/stackTrace/StackTrace.c.i
 
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.i
 
 # target to preprocess a source file
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
+src/main/stackTrace/stackTrace/StackTrace.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.i
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.c.i
 
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s: src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
+src/main/stackTrace/stackTrace/StackTrace.s: src/main/stackTrace/stackTrace/StackTrace.c.s
 
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.s
 
 # target to generate assembly for a file
-src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
-.PHONY : src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
+src/main/stackTrace/stackTrace/StackTrace.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.s
+.PHONY : src/main/stackTrace/stackTrace/StackTrace.c.s
 
-src/string/String.o: src/string/String.c.o
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o: src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
 
-.PHONY : src/string/String.o
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o
 
 # target to build an object file
-src/string/String.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/String.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/String.c.o
-.PHONY : src/string/String.c.o
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
 
-src/string/String.i: src/string/String.c.i
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i: src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
 
-.PHONY : src/string/String.i
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i
 
 # target to preprocess a source file
-src/string/String.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/String.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/String.c.i
-.PHONY : src/string/String.c.i
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.i
 
-src/string/String.s: src/string/String.c.s
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s: src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
 
-.PHONY : src/string/String.s
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s
 
 # target to generate assembly for a file
-src/string/String.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/String.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/String.c.s
-.PHONY : src/string/String.c.s
+src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
+.PHONY : src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.s
 
-src/string/Strings.o: src/string/Strings.c.o
+src/main/string/String.o: src/main/string/String.c.o
 
-.PHONY : src/string/Strings.o
+.PHONY : src/main/string/String.o
 
 # target to build an object file
-src/string/Strings.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/Strings.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/Strings.c.o
-.PHONY : src/string/Strings.c.o
+src/main/string/String.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/String.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/String.c.o
+.PHONY : src/main/string/String.c.o
 
-src/string/Strings.i: src/string/Strings.c.i
+src/main/string/String.i: src/main/string/String.c.i
 
-.PHONY : src/string/Strings.i
+.PHONY : src/main/string/String.i
 
 # target to preprocess a source file
-src/string/Strings.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/Strings.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/Strings.c.i
-.PHONY : src/string/Strings.c.i
+src/main/string/String.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/String.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/String.c.i
+.PHONY : src/main/string/String.c.i
 
-src/string/Strings.s: src/string/Strings.c.s
+src/main/string/String.s: src/main/string/String.c.s
 
-.PHONY : src/string/Strings.s
+.PHONY : src/main/string/String.s
 
 # target to generate assembly for a file
-src/string/Strings.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/string/Strings.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/string/Strings.c.s
-.PHONY : src/string/Strings.c.s
+src/main/string/String.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/String.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/String.c.s
+.PHONY : src/main/string/String.c.s
 
-src/util/buffer/buffer.o: src/util/buffer/buffer.c.o
+src/main/string/Strings.o: src/main/string/Strings.c.o
 
-.PHONY : src/util/buffer/buffer.o
+.PHONY : src/main/string/Strings.o
 
 # target to build an object file
-src/util/buffer/buffer.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/buffer/buffer.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/buffer/buffer.c.o
-.PHONY : src/util/buffer/buffer.c.o
+src/main/string/Strings.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/Strings.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/Strings.c.o
+.PHONY : src/main/string/Strings.c.o
 
-src/util/buffer/buffer.i: src/util/buffer/buffer.c.i
+src/main/string/Strings.i: src/main/string/Strings.c.i
 
-.PHONY : src/util/buffer/buffer.i
+.PHONY : src/main/string/Strings.i
 
 # target to preprocess a source file
-src/util/buffer/buffer.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/buffer/buffer.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/buffer/buffer.c.i
-.PHONY : src/util/buffer/buffer.c.i
+src/main/string/Strings.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/Strings.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/Strings.c.i
+.PHONY : src/main/string/Strings.c.i
 
-src/util/buffer/buffer.s: src/util/buffer/buffer.c.s
+src/main/string/Strings.s: src/main/string/Strings.c.s
 
-.PHONY : src/util/buffer/buffer.s
+.PHONY : src/main/string/Strings.s
 
 # target to generate assembly for a file
-src/util/buffer/buffer.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/buffer/buffer.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/buffer/buffer.c.s
-.PHONY : src/util/buffer/buffer.c.s
+src/main/string/Strings.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/string/Strings.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/string/Strings.c.s
+.PHONY : src/main/string/Strings.c.s
 
-src/util/hash/fnv1a.o: src/util/hash/fnv1a.c.o
+src/main/util/buffer/buffer.o: src/main/util/buffer/buffer.c.o
 
-.PHONY : src/util/hash/fnv1a.o
+.PHONY : src/main/util/buffer/buffer.o
 
 # target to build an object file
-src/util/hash/fnv1a.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/hash/fnv1a.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/hash/fnv1a.c.o
-.PHONY : src/util/hash/fnv1a.c.o
+src/main/util/buffer/buffer.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/buffer/buffer.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/buffer/buffer.c.o
+.PHONY : src/main/util/buffer/buffer.c.o
 
-src/util/hash/fnv1a.i: src/util/hash/fnv1a.c.i
+src/main/util/buffer/buffer.i: src/main/util/buffer/buffer.c.i
 
-.PHONY : src/util/hash/fnv1a.i
+.PHONY : src/main/util/buffer/buffer.i
 
 # target to preprocess a source file
-src/util/hash/fnv1a.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/hash/fnv1a.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/hash/fnv1a.c.i
-.PHONY : src/util/hash/fnv1a.c.i
+src/main/util/buffer/buffer.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/buffer/buffer.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/buffer/buffer.c.i
+.PHONY : src/main/util/buffer/buffer.c.i
 
-src/util/hash/fnv1a.s: src/util/hash/fnv1a.c.s
+src/main/util/buffer/buffer.s: src/main/util/buffer/buffer.c.s
 
-.PHONY : src/util/hash/fnv1a.s
+.PHONY : src/main/util/buffer/buffer.s
 
 # target to generate assembly for a file
-src/util/hash/fnv1a.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/hash/fnv1a.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/hash/fnv1a.c.s
-.PHONY : src/util/hash/fnv1a.c.s
+src/main/util/buffer/buffer.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/buffer/buffer.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/buffer/buffer.c.s
+.PHONY : src/main/util/buffer/buffer.c.s
 
-src/util/programName/programName.o: src/util/programName/programName.c.o
+src/main/util/hash/fnv1a.o: src/main/util/hash/fnv1a.c.o
 
-.PHONY : src/util/programName/programName.o
+.PHONY : src/main/util/hash/fnv1a.o
 
 # target to build an object file
-src/util/programName/programName.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/programName/programName.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/programName/programName.c.o
-.PHONY : src/util/programName/programName.c.o
+src/main/util/hash/fnv1a.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/hash/fnv1a.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/hash/fnv1a.c.o
+.PHONY : src/main/util/hash/fnv1a.c.o
 
-src/util/programName/programName.i: src/util/programName/programName.c.i
+src/main/util/hash/fnv1a.i: src/main/util/hash/fnv1a.c.i
 
-.PHONY : src/util/programName/programName.i
+.PHONY : src/main/util/hash/fnv1a.i
 
 # target to preprocess a source file
-src/util/programName/programName.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/programName/programName.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/programName/programName.c.i
-.PHONY : src/util/programName/programName.c.i
+src/main/util/hash/fnv1a.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/hash/fnv1a.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/hash/fnv1a.c.i
+.PHONY : src/main/util/hash/fnv1a.c.i
 
-src/util/programName/programName.s: src/util/programName/programName.c.s
+src/main/util/hash/fnv1a.s: src/main/util/hash/fnv1a.c.s
 
-.PHONY : src/util/programName/programName.s
+.PHONY : src/main/util/hash/fnv1a.s
 
 # target to generate assembly for a file
-src/util/programName/programName.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/programName/programName.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/programName/programName.c.s
-.PHONY : src/util/programName/programName.c.s
+src/main/util/hash/fnv1a.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/hash/fnv1a.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/hash/fnv1a.c.s
+.PHONY : src/main/util/hash/fnv1a.c.s
 
-src/util/signal/Signal.o: src/util/signal/Signal.c.o
+src/main/util/programName/programName.o: src/main/util/programName/programName.c.o
 
-.PHONY : src/util/signal/Signal.o
+.PHONY : src/main/util/programName/programName.o
 
 # target to build an object file
-src/util/signal/Signal.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/Signal.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/Signal.c.o
-.PHONY : src/util/signal/Signal.c.o
+src/main/util/programName/programName.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/programName/programName.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/programName/programName.c.o
+.PHONY : src/main/util/programName/programName.c.o
 
-src/util/signal/Signal.i: src/util/signal/Signal.c.i
+src/main/util/programName/programName.i: src/main/util/programName/programName.c.i
 
-.PHONY : src/util/signal/Signal.i
+.PHONY : src/main/util/programName/programName.i
 
 # target to preprocess a source file
-src/util/signal/Signal.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/Signal.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/Signal.c.i
-.PHONY : src/util/signal/Signal.c.i
+src/main/util/programName/programName.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/programName/programName.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/programName/programName.c.i
+.PHONY : src/main/util/programName/programName.c.i
 
-src/util/signal/Signal.s: src/util/signal/Signal.c.s
+src/main/util/programName/programName.s: src/main/util/programName/programName.c.s
 
-.PHONY : src/util/signal/Signal.s
+.PHONY : src/main/util/programName/programName.s
 
 # target to generate assembly for a file
-src/util/signal/Signal.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/Signal.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/Signal.c.s
-.PHONY : src/util/signal/Signal.c.s
+src/main/util/programName/programName.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/programName/programName.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/programName/programName.c.s
+.PHONY : src/main/util/programName/programName.c.s
 
-src/util/signal/sigAction.o: src/util/signal/sigAction.c.o
+src/main/util/signal/Signal.o: src/main/util/signal/Signal.c.o
 
-.PHONY : src/util/signal/sigAction.o
+.PHONY : src/main/util/signal/Signal.o
 
 # target to build an object file
-src/util/signal/sigAction.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/sigAction.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/sigAction.c.o
-.PHONY : src/util/signal/sigAction.c.o
+src/main/util/signal/Signal.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/Signal.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/Signal.c.o
+.PHONY : src/main/util/signal/Signal.c.o
 
-src/util/signal/sigAction.i: src/util/signal/sigAction.c.i
+src/main/util/signal/Signal.i: src/main/util/signal/Signal.c.i
 
-.PHONY : src/util/signal/sigAction.i
+.PHONY : src/main/util/signal/Signal.i
 
 # target to preprocess a source file
-src/util/signal/sigAction.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/sigAction.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/sigAction.c.i
-.PHONY : src/util/signal/sigAction.c.i
+src/main/util/signal/Signal.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/Signal.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/Signal.c.i
+.PHONY : src/main/util/signal/Signal.c.i
 
-src/util/signal/sigAction.s: src/util/signal/sigAction.c.s
+src/main/util/signal/Signal.s: src/main/util/signal/Signal.c.s
 
-.PHONY : src/util/signal/sigAction.s
+.PHONY : src/main/util/signal/Signal.s
 
 # target to generate assembly for a file
-src/util/signal/sigAction.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/signal/sigAction.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/signal/sigAction.c.s
-.PHONY : src/util/signal/sigAction.c.s
+src/main/util/signal/Signal.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/Signal.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/Signal.c.s
+.PHONY : src/main/util/signal/Signal.c.s
 
-src/util/utils.o: src/util/utils.c.o
+src/main/util/signal/sigAction.o: src/main/util/signal/sigAction.c.o
 
-.PHONY : src/util/utils.o
+.PHONY : src/main/util/signal/sigAction.o
 
 # target to build an object file
-src/util/utils.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/utils.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/utils.c.o
-.PHONY : src/util/utils.c.o
+src/main/util/signal/sigAction.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/sigAction.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/sigAction.c.o
+.PHONY : src/main/util/signal/sigAction.c.o
 
-src/util/utils.i: src/util/utils.c.i
+src/main/util/signal/sigAction.i: src/main/util/signal/sigAction.c.i
 
-.PHONY : src/util/utils.i
+.PHONY : src/main/util/signal/sigAction.i
 
 # target to preprocess a source file
-src/util/utils.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/utils.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/utils.c.i
-.PHONY : src/util/utils.c.i
+src/main/util/signal/sigAction.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/sigAction.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/sigAction.c.i
+.PHONY : src/main/util/signal/sigAction.c.i
 
-src/util/utils.s: src/util/utils.c.s
+src/main/util/signal/sigAction.s: src/main/util/signal/sigAction.c.s
 
-.PHONY : src/util/utils.s
+.PHONY : src/main/util/signal/sigAction.s
 
 # target to generate assembly for a file
-src/util/utils.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/util/utils.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/util/utils.c.s
-.PHONY : src/util/utils.c.s
+src/main/util/signal/sigAction.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/signal/sigAction.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/signal/sigAction.c.s
+.PHONY : src/main/util/signal/sigAction.c.s
 
-test/test.o: test/test.c.o
+src/main/util/utils.o: src/main/util/utils.c.o
 
-.PHONY : test/test.o
+.PHONY : src/main/util/utils.o
 
 # target to build an object file
-test/test.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/test.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/test.c.o
-.PHONY : test/test.c.o
+src/main/util/utils.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/utils.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/utils.c.o
+.PHONY : src/main/util/utils.c.o
 
-test/test.i: test/test.c.i
+src/main/util/utils.i: src/main/util/utils.c.i
 
-.PHONY : test/test.i
+.PHONY : src/main/util/utils.i
 
 # target to preprocess a source file
-test/test.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/test.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/test.c.i
-.PHONY : test/test.c.i
+src/main/util/utils.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/utils.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/utils.c.i
+.PHONY : src/main/util/utils.c.i
 
-test/test.s: test/test.c.s
+src/main/util/utils.s: src/main/util/utils.c.s
 
-.PHONY : test/test.s
+.PHONY : src/main/util/utils.s
 
 # target to generate assembly for a file
-test/test.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/test.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/test.c.s
-.PHONY : test/test.c.s
+src/main/util/utils.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/util/utils.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/util/utils.c.s
+.PHONY : src/main/util/utils.c.s
 
-test/testStackTrace.o: test/testStackTrace.c.o
+src/test/test.o: src/test/test.c.o
 
-.PHONY : test/testStackTrace.o
+.PHONY : src/test/test.o
 
 # target to build an object file
-test/testStackTrace.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStackTrace.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStackTrace.c.o
-.PHONY : test/testStackTrace.c.o
+src/test/test.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/test.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/test.c.o
+.PHONY : src/test/test.c.o
 
-test/testStackTrace.i: test/testStackTrace.c.i
+src/test/test.i: src/test/test.c.i
 
-.PHONY : test/testStackTrace.i
+.PHONY : src/test/test.i
 
 # target to preprocess a source file
-test/testStackTrace.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStackTrace.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStackTrace.c.i
-.PHONY : test/testStackTrace.c.i
+src/test/test.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/test.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/test.c.i
+.PHONY : src/test/test.c.i
 
-test/testStackTrace.s: test/testStackTrace.c.s
+src/test/test.s: src/test/test.c.s
 
-.PHONY : test/testStackTrace.s
+.PHONY : src/test/test.s
 
 # target to generate assembly for a file
-test/testStackTrace.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStackTrace.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStackTrace.c.s
-.PHONY : test/testStackTrace.c.s
+src/test/test.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/test.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/test.c.s
+.PHONY : src/test/test.c.s
 
-test/testStringFormat.o: test/testStringFormat.c.o
+src/test/testStackTrace.o: src/test/testStackTrace.c.o
 
-.PHONY : test/testStringFormat.o
+.PHONY : src/test/testStackTrace.o
 
 # target to build an object file
-test/testStringFormat.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStringFormat.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStringFormat.c.o
-.PHONY : test/testStringFormat.c.o
+src/test/testStackTrace.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStackTrace.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o
+.PHONY : src/test/testStackTrace.c.o
 
-test/testStringFormat.i: test/testStringFormat.c.i
+src/test/testStackTrace.i: src/test/testStackTrace.c.i
 
-.PHONY : test/testStringFormat.i
+.PHONY : src/test/testStackTrace.i
 
 # target to preprocess a source file
-test/testStringFormat.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStringFormat.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStringFormat.c.i
-.PHONY : test/testStringFormat.c.i
+src/test/testStackTrace.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStackTrace.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.i
+.PHONY : src/test/testStackTrace.c.i
 
-test/testStringFormat.s: test/testStringFormat.c.s
+src/test/testStackTrace.s: src/test/testStackTrace.c.s
 
-.PHONY : test/testStringFormat.s
+.PHONY : src/test/testStackTrace.s
 
 # target to generate assembly for a file
-test/testStringFormat.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/test/testStringFormat.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/test/testStringFormat.c.s
-.PHONY : test/testStringFormat.c.s
+src/test/testStackTrace.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStackTrace.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.s
+.PHONY : src/test/testStackTrace.c.s
+
+src/test/testStringFormat.o: src/test/testStringFormat.c.o
+
+.PHONY : src/test/testStringFormat.o
+
+# target to build an object file
+src/test/testStringFormat.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStringFormat.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.o
+.PHONY : src/test/testStringFormat.c.o
+
+src/test/testStringFormat.i: src/test/testStringFormat.c.i
+
+.PHONY : src/test/testStringFormat.i
+
+# target to preprocess a source file
+src/test/testStringFormat.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStringFormat.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.i
+.PHONY : src/test/testStringFormat.c.i
+
+src/test/testStringFormat.s: src/test/testStringFormat.c.s
+
+.PHONY : src/test/testStringFormat.s
+
+# target to generate assembly for a file
+src/test/testStringFormat.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/test/testStringFormat.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.s
+.PHONY : src/test/testStringFormat.c.s
 
 # Help Target
 help:
@@ -656,57 +656,57 @@ help:
 	@echo "... edit_cache"
 	@echo "... Khyber"
 	@echo "... LibCKhyber"
-	@echo "... src/collections/HashMap/HashMap_String_Addr2Line.o"
-	@echo "... src/collections/HashMap/HashMap_String_Addr2Line.i"
-	@echo "... src/collections/HashMap/HashMap_String_Addr2Line.s"
-	@echo "... src/stackTrace/addr2Line/Addr2Line.o"
-	@echo "... src/stackTrace/addr2Line/Addr2Line.i"
-	@echo "... src/stackTrace/addr2Line/Addr2Line.s"
-	@echo "... src/stackTrace/bfd/BinaryFileDescriptor.o"
-	@echo "... src/stackTrace/bfd/BinaryFileDescriptor.i"
-	@echo "... src/stackTrace/bfd/BinaryFileDescriptor.s"
-	@echo "... src/stackTrace/stackTrace/StackFrame.o"
-	@echo "... src/stackTrace/stackTrace/StackFrame.i"
-	@echo "... src/stackTrace/stackTrace/StackFrame.s"
-	@echo "... src/stackTrace/stackTrace/StackTrace.o"
-	@echo "... src/stackTrace/stackTrace/StackTrace.i"
-	@echo "... src/stackTrace/stackTrace/StackTrace.s"
-	@echo "... src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o"
-	@echo "... src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i"
-	@echo "... src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s"
-	@echo "... src/string/String.o"
-	@echo "... src/string/String.i"
-	@echo "... src/string/String.s"
-	@echo "... src/string/Strings.o"
-	@echo "... src/string/Strings.i"
-	@echo "... src/string/Strings.s"
-	@echo "... src/util/buffer/buffer.o"
-	@echo "... src/util/buffer/buffer.i"
-	@echo "... src/util/buffer/buffer.s"
-	@echo "... src/util/hash/fnv1a.o"
-	@echo "... src/util/hash/fnv1a.i"
-	@echo "... src/util/hash/fnv1a.s"
-	@echo "... src/util/programName/programName.o"
-	@echo "... src/util/programName/programName.i"
-	@echo "... src/util/programName/programName.s"
-	@echo "... src/util/signal/Signal.o"
-	@echo "... src/util/signal/Signal.i"
-	@echo "... src/util/signal/Signal.s"
-	@echo "... src/util/signal/sigAction.o"
-	@echo "... src/util/signal/sigAction.i"
-	@echo "... src/util/signal/sigAction.s"
-	@echo "... src/util/utils.o"
-	@echo "... src/util/utils.i"
-	@echo "... src/util/utils.s"
-	@echo "... test/test.o"
-	@echo "... test/test.i"
-	@echo "... test/test.s"
-	@echo "... test/testStackTrace.o"
-	@echo "... test/testStackTrace.i"
-	@echo "... test/testStackTrace.s"
-	@echo "... test/testStringFormat.o"
-	@echo "... test/testStringFormat.i"
-	@echo "... test/testStringFormat.s"
+	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.o"
+	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.i"
+	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.s"
+	@echo "... src/main/stackTrace/addr2Line/Addr2Line.o"
+	@echo "... src/main/stackTrace/addr2Line/Addr2Line.i"
+	@echo "... src/main/stackTrace/addr2Line/Addr2Line.s"
+	@echo "... src/main/stackTrace/bfd/BinaryFileDescriptor.o"
+	@echo "... src/main/stackTrace/bfd/BinaryFileDescriptor.i"
+	@echo "... src/main/stackTrace/bfd/BinaryFileDescriptor.s"
+	@echo "... src/main/stackTrace/stackTrace/StackFrame.o"
+	@echo "... src/main/stackTrace/stackTrace/StackFrame.i"
+	@echo "... src/main/stackTrace/stackTrace/StackFrame.s"
+	@echo "... src/main/stackTrace/stackTrace/StackTrace.o"
+	@echo "... src/main/stackTrace/stackTrace/StackTrace.i"
+	@echo "... src/main/stackTrace/stackTrace/StackTrace.s"
+	@echo "... src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.o"
+	@echo "... src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.i"
+	@echo "... src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.s"
+	@echo "... src/main/string/String.o"
+	@echo "... src/main/string/String.i"
+	@echo "... src/main/string/String.s"
+	@echo "... src/main/string/Strings.o"
+	@echo "... src/main/string/Strings.i"
+	@echo "... src/main/string/Strings.s"
+	@echo "... src/main/util/buffer/buffer.o"
+	@echo "... src/main/util/buffer/buffer.i"
+	@echo "... src/main/util/buffer/buffer.s"
+	@echo "... src/main/util/hash/fnv1a.o"
+	@echo "... src/main/util/hash/fnv1a.i"
+	@echo "... src/main/util/hash/fnv1a.s"
+	@echo "... src/main/util/programName/programName.o"
+	@echo "... src/main/util/programName/programName.i"
+	@echo "... src/main/util/programName/programName.s"
+	@echo "... src/main/util/signal/Signal.o"
+	@echo "... src/main/util/signal/Signal.i"
+	@echo "... src/main/util/signal/Signal.s"
+	@echo "... src/main/util/signal/sigAction.o"
+	@echo "... src/main/util/signal/sigAction.i"
+	@echo "... src/main/util/signal/sigAction.s"
+	@echo "... src/main/util/utils.o"
+	@echo "... src/main/util/utils.i"
+	@echo "... src/main/util/utils.s"
+	@echo "... src/test/test.o"
+	@echo "... src/test/test.i"
+	@echo "... src/test/test.s"
+	@echo "... src/test/testStackTrace.o"
+	@echo "... src/test/testStackTrace.i"
+	@echo "... src/test/testStackTrace.s"
+	@echo "... src/test/testStringFormat.o"
+	@echo "... src/test/testStringFormat.i"
+	@echo "... src/test/testStringFormat.s"
 .PHONY : help
 
 

@@ -11,6 +11,8 @@
 #include "../../util/signal/sigAction.h"
 #include "../../util/signal/Signal.h"
 #include "../stackTrace/StackTrace.h"
+#include "../../util/programName/programName.h"
+#include "../../util/utils.h"
 
 int stackTraceSignalHandlerLevel = 0;
 
@@ -25,6 +27,9 @@ Runnable postStackTraceSignalHandler = NULL;
  * @param context extra context about the signal caught
  */
 static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *context) {
+    // for some reason stderr is closed in a signal handler,
+    // so reassign it to stdout to prevent crashes from writing to stderr
+    stderr = stdout;
     if (stackTraceSignalHandlerLevel != 0) {
         perror("Recursive signal raised in StackTraceSignalHandler");
         _Exit(1);
@@ -71,9 +76,9 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *
 
 void setStackTraceSignalHandler() {
     {
-        static u8 alternateStack[SIGSTKSZ];
+        static u8 alternateStack[STACK_SIZE_MAX];
         // setup alternate stack
-        stack_t ss = {.ss_sp = alternateStack, .ss_size = SIGSTKSZ, .ss_flags = 0};
+        stack_t ss = {.ss_sp = alternateStack, .ss_size = STACK_SIZE_MAX, .ss_flags = 0};
         if (sigaltstack(&ss, NULL) != 0) {
             err(EXIT_FAILURE, "sigaltstack");
         }

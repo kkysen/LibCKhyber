@@ -5,9 +5,9 @@
 #include <bfd.h>
 #include "testStackTrace.h"
 
-#include "../src/stackTrace/stackTrace/StackTrace.h"
-#include "../src/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
-#include "../src/util/programName/programName.h"
+#include "../main/stackTrace/stackTrace/StackTrace.h"
+#include "../main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
+#include "../main/util/programName/programName.h"
 
 static void toInline() {
     StackTrace_printNow(stdout);
@@ -37,7 +37,7 @@ static void causeError(uint32_t level, void (*_causeError)(int level)) {
 
 bool testStackTraceSignalHandler() {
     setStackTraceSignalHandler();
-    const uint32_t level = 100;
+    const uint32_t level = 10;
     causeError(level, causeSegFault);
     causeError(level, causeDivByZero);
     return false;

@@ -13,8 +13,6 @@
 #include "../../util/signal/Signal.h"
 #include "stack_size_t.h"
 
-#define STACK_SIZE_MAX ((stack_size_t) SIGSTKSZ)
-
 typedef struct StackTrace {
     const stack_size_t maxFrames;
     const StackFrame *const frames;
