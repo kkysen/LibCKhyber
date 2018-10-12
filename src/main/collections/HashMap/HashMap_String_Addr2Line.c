@@ -45,6 +45,7 @@ static bool HashMap_String_Addr2Line_valueEquals(const Addr2Line * const value1,
 
 
 static void HashMapNode_String_Addr2Line_clear(HashMapNode_String_Addr2Line *const this) {
+    // TODO fix and free String and Addr2Line
     if (this->next) {
         HashMapNode_String_Addr2Line_clear(this->next);
     }

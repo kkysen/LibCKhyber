@@ -6,13 +6,12 @@
 
 #include "../utils.h"
 
-static String *programName = NULL;
-
 static void freeProgramName() {
-    String_free(programName);
+    String_free(getProgramName());
 }
 
 const String *getProgramName() {
+    static String *programName = NULL;
     if (programName) {
         return programName;
     }
@@ -25,6 +24,6 @@ const String *getProgramName() {
     }
     programName = String_ofChars(programNameChars);
     free(programNameChars);
-    atexit(freeProgramName);
+    atexit(&freeProgramName);
     return programName;
 }

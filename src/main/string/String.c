@@ -76,11 +76,11 @@ void String_clear(String *const this) {
     this->hash = -1;
 }
 
-void String_free(String *const this) {
+void String_free(const String *const this) {
     if (this) {
-        String_clear(this);
+        String_clear((String *) this);
     }
-    free(this);
+    free((String *) this);
 }
 
 void String_ensureCapacity(String *const this, const size_t capacity) {

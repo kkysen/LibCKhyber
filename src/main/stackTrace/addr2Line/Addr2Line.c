@@ -18,10 +18,17 @@
 #include "../../collections/HashMap/HashMap_String_Addr2Line.h"
 #include "../../util/programName/programName.h"
 
-static HashMap_String_Addr2Line *getCache() {
+static HashMap_String_Addr2Line *getAddr2LineCache();
+
+static void freeAddr2LineCache() {
+    HashMap_String_Addr2Line_free(getAddr2LineCache());
+}
+
+static HashMap_String_Addr2Line *getAddr2LineCache() {
     static HashMap_String_Addr2Line *cache = NULL;
     if (!cache) {
         cache = HashMap_String_Addr2Line_new();
+        atexit(&freeAddr2LineCache);
     }
     return cache;
 }
@@ -295,6 +302,7 @@ static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *
     const String *const filePath = String_subString(message, 0, openParenIndex);
     const String *const addressString = String_subString(message, openParenIndex + 1, closeParenIndex);
     const u64 address = strtoull(addressString->chars, NULL, 16);
+    String_free(addressString);
     if (errno == ERANGE || errno == EINVAL) {
         errno = 0;
         return error;
@@ -311,18 +319,25 @@ static void StackFrame_convertSharedLibrary(StackFrame *const this) {
     if (!libraryAddress.ok) {
         return;
     }
-    HashMap_String_Addr2Line *const cache = getCache();
+    HashMap_String_Addr2Line *const cache = getAddr2LineCache();
     const Addr2Line *addr2Line = HashMap_String_Addr2Line_get(cache, libraryAddress.filePath);
     if (!addr2Line) {
         Addr2LineArgs args = {.filePath = libraryAddress.filePath};
         addr2Line = Addr2Line_new(&args);
         if (!addr2Line) {
             perror("Addr2Line_new");
-            return;
+            goto error;
         }
         HashMap_String_Addr2Line_put(cache, libraryAddress.filePath, addr2Line);
     }
     Addr2Line_convert(addr2Line, this, libraryAddress.address, this->message);
+    
+    // TODO once HashMap is done, remove this
+    HashMap_String_Addr2Line_remove(cache, libraryAddress.filePath, addr2Line);
+    Addr2Line_free(addr2Line);
+    
+    error:
+    String_free(libraryAddress.filePath);
 }
 
 void Addr2Line_convert(const Addr2Line *const this, StackFrame *const frame,

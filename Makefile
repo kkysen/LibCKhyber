@@ -28,6 +28,8 @@ BIN_DIR := bin
 SRC_DIR := src
 TEST_DIR := test
 
+TEST_ARGS :=
+
 EXE := $(BIN_DIR)/$(MAIN)
 TEST := $(BIN_DIR)/test$(MAIN)
 LIB := $(BIN_DIR)/lib$(MAIN).a
@@ -50,7 +52,11 @@ run: $(EXE)
 
 .PHONY: test
 test: $(TEST)
-	./$(TEST)
+	./$(TEST) $(TEST_ARGS)
+
+.PHONY: valgrind
+valgrind: $(TEST)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TEST) $(TEST_ARGS)
 
 .PHONY: lib
 lib: $(LIB)

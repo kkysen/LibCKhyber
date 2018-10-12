@@ -39,7 +39,7 @@ String *String_ofChars(const char *chars);
  * Free this String, clearing this String and freeing its pointer.
  * @param [in, out] this
  */
-void String_free(String *this);
+void String_free(const String *this);
 
 /**
  * Ensure this String has a capacity of at least \param capacity.
