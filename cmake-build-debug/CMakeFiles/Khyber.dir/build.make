@@ -239,18 +239,18 @@ CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c -o CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s
 
-CMakeFiles/Khyber.dir/src/main/math/Vector.c.o: CMakeFiles/Khyber.dir/flags.make
-CMakeFiles/Khyber.dir/src/main/math/Vector.c.o: ../src/main/math/Vector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/Khyber.dir/src/main/math/Vector.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Khyber.dir/src/main/math/Vector.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c
+CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o: CMakeFiles/Khyber.dir/flags.make
+CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o: ../src/main/math/Vector2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c
 
-CMakeFiles/Khyber.dir/src/main/math/Vector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Khyber.dir/src/main/math/Vector.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c > CMakeFiles/Khyber.dir/src/main/math/Vector.c.i
+CMakeFiles/Khyber.dir/src/main/math/Vector2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Khyber.dir/src/main/math/Vector2.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c > CMakeFiles/Khyber.dir/src/main/math/Vector2.c.i
 
-CMakeFiles/Khyber.dir/src/main/math/Vector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/math/Vector.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c -o CMakeFiles/Khyber.dir/src/main/math/Vector.c.s
+CMakeFiles/Khyber.dir/src/main/math/Vector2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/math/Vector2.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c -o CMakeFiles/Khyber.dir/src/main/math/Vector2.c.s
 
 CMakeFiles/Khyber.dir/src/test/testStackTrace.c.o: CMakeFiles/Khyber.dir/flags.make
 CMakeFiles/Khyber.dir/src/test/testStackTrace.c.o: ../src/test/testStackTrace.c
@@ -291,6 +291,45 @@ CMakeFiles/Khyber.dir/src/test/test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/test/test.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/test/test.c -o CMakeFiles/Khyber.dir/src/test/test.c.s
 
+CMakeFiles/Khyber.dir/src/main/math/radians.c.o: CMakeFiles/Khyber.dir/flags.make
+CMakeFiles/Khyber.dir/src/main/math/radians.c.o: ../src/main/math/radians.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/Khyber.dir/src/main/math/radians.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Khyber.dir/src/main/math/radians.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/radians.c
+
+CMakeFiles/Khyber.dir/src/main/math/radians.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Khyber.dir/src/main/math/radians.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/radians.c > CMakeFiles/Khyber.dir/src/main/math/radians.c.i
+
+CMakeFiles/Khyber.dir/src/main/math/radians.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/math/radians.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/radians.c -o CMakeFiles/Khyber.dir/src/main/math/radians.c.s
+
+CMakeFiles/Khyber.dir/src/main/math/clamp.c.o: CMakeFiles/Khyber.dir/flags.make
+CMakeFiles/Khyber.dir/src/main/math/clamp.c.o: ../src/main/math/clamp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/Khyber.dir/src/main/math/clamp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Khyber.dir/src/main/math/clamp.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/clamp.c
+
+CMakeFiles/Khyber.dir/src/main/math/clamp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Khyber.dir/src/main/math/clamp.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/clamp.c > CMakeFiles/Khyber.dir/src/main/math/clamp.c.i
+
+CMakeFiles/Khyber.dir/src/main/math/clamp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/math/clamp.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/clamp.c -o CMakeFiles/Khyber.dir/src/main/math/clamp.c.s
+
+CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o: CMakeFiles/Khyber.dir/flags.make
+CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o: ../src/main/math/Vector3.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector3.c
+
+CMakeFiles/Khyber.dir/src/main/math/Vector3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Khyber.dir/src/main/math/Vector3.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector3.c > CMakeFiles/Khyber.dir/src/main/math/Vector3.c.i
+
+CMakeFiles/Khyber.dir/src/main/math/Vector3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Khyber.dir/src/main/math/Vector3.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector3.c -o CMakeFiles/Khyber.dir/src/main/math/Vector3.c.s
+
 # Object files for target Khyber
 Khyber_OBJECTS = \
 "CMakeFiles/Khyber.dir/src/main/string/String.c.o" \
@@ -307,10 +346,13 @@ Khyber_OBJECTS = \
 "CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o" \
 "CMakeFiles/Khyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o" \
 "CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o" \
-"CMakeFiles/Khyber.dir/src/main/math/Vector.c.o" \
+"CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o" \
 "CMakeFiles/Khyber.dir/src/test/testStackTrace.c.o" \
 "CMakeFiles/Khyber.dir/src/test/testStringFormat.c.o" \
-"CMakeFiles/Khyber.dir/src/test/test.c.o"
+"CMakeFiles/Khyber.dir/src/test/test.c.o" \
+"CMakeFiles/Khyber.dir/src/main/math/radians.c.o" \
+"CMakeFiles/Khyber.dir/src/main/math/clamp.c.o" \
+"CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o"
 
 # External object files for target Khyber
 Khyber_EXTERNAL_OBJECTS =
@@ -329,13 +371,16 @@ libKhyber.a: CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackTrace.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o
-libKhyber.a: CMakeFiles/Khyber.dir/src/main/math/Vector.c.o
+libKhyber.a: CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/test/testStackTrace.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/test/testStringFormat.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/src/test/test.c.o
+libKhyber.a: CMakeFiles/Khyber.dir/src/main/math/radians.c.o
+libKhyber.a: CMakeFiles/Khyber.dir/src/main/math/clamp.c.o
+libKhyber.a: CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o
 libKhyber.a: CMakeFiles/Khyber.dir/build.make
 libKhyber.a: CMakeFiles/Khyber.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking C static library libKhyber.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C static library libKhyber.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Khyber.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Khyber.dir/link.txt --verbose=$(VERBOSE)
 

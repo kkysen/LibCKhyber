@@ -13,7 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o"
   "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o"
   "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o"
-  "CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o"
+  "CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o"
   "CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o"
   "CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.o"
   "CMakeFiles/LibCKhyber.dir/src/test/test.c.o"

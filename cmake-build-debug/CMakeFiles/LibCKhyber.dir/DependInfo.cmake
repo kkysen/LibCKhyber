@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/collections/HashMap/HashMap_String_Addr2Line.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.o"
-  "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o"
+  "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o"
   "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o"
   "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/bfd/BinaryFileDescriptor.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/stackTrace/bfd/BinaryFileDescriptor.c.o"
   "/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/stackTrace/StackFrame.c" "/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o"

@@ -166,35 +166,116 @@ src/main/collections/HashMap/HashMap_String_Addr2Line.c.s:
 	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 .PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 
-src/main/math/Vector.o: src/main/math/Vector.c.o
+src/main/math/Vector2.o: src/main/math/Vector2.c.o
 
-.PHONY : src/main/math/Vector.o
+.PHONY : src/main/math/Vector2.o
 
 # target to build an object file
-src/main/math/Vector.c.o:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.o
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o
-.PHONY : src/main/math/Vector.c.o
+src/main/math/Vector2.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector2.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o
+.PHONY : src/main/math/Vector2.c.o
 
-src/main/math/Vector.i: src/main/math/Vector.c.i
+src/main/math/Vector2.i: src/main/math/Vector2.c.i
 
-.PHONY : src/main/math/Vector.i
+.PHONY : src/main/math/Vector2.i
 
 # target to preprocess a source file
-src/main/math/Vector.c.i:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.i
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.i
-.PHONY : src/main/math/Vector.c.i
+src/main/math/Vector2.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector2.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.i
+.PHONY : src/main/math/Vector2.c.i
 
-src/main/math/Vector.s: src/main/math/Vector.c.s
+src/main/math/Vector2.s: src/main/math/Vector2.c.s
 
-.PHONY : src/main/math/Vector.s
+.PHONY : src/main/math/Vector2.s
 
 # target to generate assembly for a file
-src/main/math/Vector.c.s:
-	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.s
-	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.s
-.PHONY : src/main/math/Vector.c.s
+src/main/math/Vector2.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector2.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.s
+.PHONY : src/main/math/Vector2.c.s
+
+src/main/math/Vector3.o: src/main/math/Vector3.c.o
+
+.PHONY : src/main/math/Vector3.o
+
+# target to build an object file
+src/main/math/Vector3.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector3.c.o
+.PHONY : src/main/math/Vector3.c.o
+
+src/main/math/Vector3.i: src/main/math/Vector3.c.i
+
+.PHONY : src/main/math/Vector3.i
+
+# target to preprocess a source file
+src/main/math/Vector3.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector3.c.i
+.PHONY : src/main/math/Vector3.c.i
+
+src/main/math/Vector3.s: src/main/math/Vector3.c.s
+
+.PHONY : src/main/math/Vector3.s
+
+# target to generate assembly for a file
+src/main/math/Vector3.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector3.c.s
+.PHONY : src/main/math/Vector3.c.s
+
+src/main/math/clamp.o: src/main/math/clamp.c.o
+
+.PHONY : src/main/math/clamp.o
+
+# target to build an object file
+src/main/math/clamp.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/clamp.c.o
+.PHONY : src/main/math/clamp.c.o
+
+src/main/math/clamp.i: src/main/math/clamp.c.i
+
+.PHONY : src/main/math/clamp.i
+
+# target to preprocess a source file
+src/main/math/clamp.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/clamp.c.i
+.PHONY : src/main/math/clamp.c.i
+
+src/main/math/clamp.s: src/main/math/clamp.c.s
+
+.PHONY : src/main/math/clamp.s
+
+# target to generate assembly for a file
+src/main/math/clamp.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/clamp.c.s
+.PHONY : src/main/math/clamp.c.s
+
+src/main/math/radians.o: src/main/math/radians.c.o
+
+.PHONY : src/main/math/radians.o
+
+# target to build an object file
+src/main/math/radians.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/radians.c.o
+.PHONY : src/main/math/radians.c.o
+
+src/main/math/radians.i: src/main/math/radians.c.i
+
+.PHONY : src/main/math/radians.i
+
+# target to preprocess a source file
+src/main/math/radians.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/radians.c.i
+.PHONY : src/main/math/radians.c.i
+
+src/main/math/radians.s: src/main/math/radians.c.s
+
+.PHONY : src/main/math/radians.s
+
+# target to generate assembly for a file
+src/main/math/radians.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/radians.c.s
+.PHONY : src/main/math/radians.c.s
 
 src/main/stackTrace/addr2Line/Addr2Line.o: src/main/stackTrace/addr2Line/Addr2Line.c.o
 
@@ -689,9 +770,18 @@ help:
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.o"
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.i"
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.s"
-	@echo "... src/main/math/Vector.o"
-	@echo "... src/main/math/Vector.i"
-	@echo "... src/main/math/Vector.s"
+	@echo "... src/main/math/Vector2.o"
+	@echo "... src/main/math/Vector2.i"
+	@echo "... src/main/math/Vector2.s"
+	@echo "... src/main/math/Vector3.o"
+	@echo "... src/main/math/Vector3.i"
+	@echo "... src/main/math/Vector3.s"
+	@echo "... src/main/math/clamp.o"
+	@echo "... src/main/math/clamp.i"
+	@echo "... src/main/math/clamp.s"
+	@echo "... src/main/math/radians.o"
+	@echo "... src/main/math/radians.i"
+	@echo "... src/main/math/radians.s"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.o"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.i"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.s"

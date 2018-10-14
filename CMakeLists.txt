@@ -66,8 +66,8 @@ set(STACK_TRACE_FILES
         )
 
 set(MATH_FILES
-        src/main/math/Vector.c
-        src/main/math/Vector.h
+        src/main/math/Vector2.c
+        src/main/math/Vector2.h
         )
 
 set(TEST_FILES
@@ -89,7 +89,7 @@ set(SOURCE_FILES
         ${TEST_FILES}
         )
 
-add_library(Khyber STATIC ${SOURCE_FILES})
+add_library(Khyber STATIC ${SOURCE_FILES} src/main/math/radians.c src/main/math/radians.h src/main/math/clamp.c src/main/math/clamp.h src/main/math/Vector3.c src/main/math/Vector3.h)
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

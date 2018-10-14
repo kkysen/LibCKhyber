@@ -239,18 +239,18 @@ CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c -o CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.s
 
-CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o: CMakeFiles/LibCKhyber.dir/flags.make
-CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o: ../src/main/math/Vector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c
+CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o: CMakeFiles/LibCKhyber.dir/flags.make
+CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o: ../src/main/math/Vector2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Khyber/workspace/LibCKhyber/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o   -c /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c
 
-CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c > CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.i
+CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c > CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.i
 
-CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c -o CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.s
+CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c -o CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.s
 
 CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o: CMakeFiles/LibCKhyber.dir/flags.make
 CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o: ../src/test/testStackTrace.c
@@ -307,7 +307,7 @@ LibCKhyber_OBJECTS = \
 "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o" \
 "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o" \
 "CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o" \
-"CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o" \
+"CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o" \
 "CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o" \
 "CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.o" \
 "CMakeFiles/LibCKhyber.dir/src/test/test.c.o"
@@ -329,7 +329,7 @@ LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackTrace.
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTrace/StackFrame.c.o
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.c.o
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/stackTrace/addr2Line/Addr2Line.c.o
-LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o
+LibCKhyber: CMakeFiles/LibCKhyber.dir/src/main/math/Vector2.c.o
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/test/testStackTrace.c.o
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/test/testStringFormat.c.o
 LibCKhyber: CMakeFiles/LibCKhyber.dir/src/test/test.c.o

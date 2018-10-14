@@ -146,13 +146,31 @@
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.h">
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector2.h">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector3.c">
+			<Option target="Khyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector3.h">
+			<Option target="Khyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/clamp.c">
+			<Option target="Khyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/clamp.h">
+			<Option target="Khyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/radians.c">
+			<Option target="Khyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/radians.h">
+			<Option target="Khyber"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c">
 			<Option target="Khyber"/>

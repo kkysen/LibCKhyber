@@ -51,7 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-repos/
+repos
 
-cmake-build-debug/
-bin/
+cmake-build-debug
+bin
