@@ -166,6 +166,36 @@ src/main/collections/HashMap/HashMap_String_Addr2Line.c.s:
 	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 .PHONY : src/main/collections/HashMap/HashMap_String_Addr2Line.c.s
 
+src/main/math/Vector.o: src/main/math/Vector.c.o
+
+.PHONY : src/main/math/Vector.o
+
+# target to build an object file
+src/main/math/Vector.c.o:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.o
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.o
+.PHONY : src/main/math/Vector.c.o
+
+src/main/math/Vector.i: src/main/math/Vector.c.i
+
+.PHONY : src/main/math/Vector.i
+
+# target to preprocess a source file
+src/main/math/Vector.c.i:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.i
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.i
+.PHONY : src/main/math/Vector.c.i
+
+src/main/math/Vector.s: src/main/math/Vector.c.s
+
+.PHONY : src/main/math/Vector.s
+
+# target to generate assembly for a file
+src/main/math/Vector.c.s:
+	$(MAKE) -f CMakeFiles/Khyber.dir/build.make CMakeFiles/Khyber.dir/src/main/math/Vector.c.s
+	$(MAKE) -f CMakeFiles/LibCKhyber.dir/build.make CMakeFiles/LibCKhyber.dir/src/main/math/Vector.c.s
+.PHONY : src/main/math/Vector.c.s
+
 src/main/stackTrace/addr2Line/Addr2Line.o: src/main/stackTrace/addr2Line/Addr2Line.c.o
 
 .PHONY : src/main/stackTrace/addr2Line/Addr2Line.o
@@ -659,6 +689,9 @@ help:
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.o"
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.i"
 	@echo "... src/main/collections/HashMap/HashMap_String_Addr2Line.s"
+	@echo "... src/main/math/Vector.o"
+	@echo "... src/main/math/Vector.i"
+	@echo "... src/main/math/Vector.s"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.o"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.i"
 	@echo "... src/main/stackTrace/addr2Line/Addr2Line.s"

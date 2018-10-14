@@ -146,6 +146,14 @@
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.c">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/math/Vector.h">
+			<Option target="Khyber"/>
+			<Option target="LibCKhyber"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/Khyber/workspace/LibCKhyber/src/main/stackTrace/addr2Line/Addr2Line.c">
 			<Option target="Khyber"/>
 			<Option target="LibCKhyber"/>

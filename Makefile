@@ -1,14 +1,18 @@
+MAIN := Khyber
+
+
+
 CC := gcc
 
 LTO := -flto
 OPT := -O3 -march=native $(LTO)
 WARNINGS := all error extra
-NO_WARNINGS := unused-parameter unused-function
+NO_ERRORS := unused-parameter unused-function
 MACROS := _POSIX_C_SOURCE=201810L _XOPEN_SOURCE=700 _DEFAULT_SOURCE=1
 DMACROS := $(MACROS:%=-D %)
 
 CPPFLAGS := $(INC_FLAGS) $(DMACROS) -MMD -MP
-CFLAGS := -std=c11 -g -ggdb $(WARNINGS:%=-W%) $(NO_WARNINGS:%=-Wno-error=%) $(OPT) $(DMACROS)
+CFLAGS := -std=c11 -g -ggdb $(WARNINGS:%=-W%) $(NO_ERRORS:%=-Wno-error=%) $(OPT) $(DMACROS)
 
 LFLAGS := -g $(LTO)
 LDFLAGS := -lm -lbfd
@@ -22,8 +26,6 @@ VALGRIND := valgrind --leak-check=full --show-leak-kinds=all
 
 
 
-MAIN := Khyber
-
 BIN_DIR := bin
 SRC_DIR := src
 TEST_DIR := test
@@ -31,10 +33,10 @@ TEST_DIR := test
 TEST_ARGS :=
 
 EXE := $(BIN_DIR)/$(MAIN)
-TEST := $(BIN_DIR)/test$(MAIN)
+TEST := $(BIN_DIR)/$(MAIN).test
 LIB := $(BIN_DIR)/lib$(MAIN).a
 
-SRCS := $(shell find $(SRC_DIR) -name *.cpp -or -name *.c -or -name *.s)
+SRCS := $(shell find $(SRC_DIR) -name "*.cpp" -or -name "*.c" -or -name "*.s")
 OBJS := $(SRCS:$(SRC_DIR)%=$(BIN_DIR)%.o)
 TEST_OBJS := $(filter $(BIN_DIR)/$(TEST_DIR)/%,$(OBJS))
 LIB_OBJS := $(filter-out $(TEST_OBJS),$(OBJS))
@@ -44,11 +46,14 @@ INC_DIRS := $(shell find $(SRC_DIR) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 .PHONY: all
-all: $(EXE) $(TEST) $(LIB)
+all: $(LIB) $(TEST) $(EXE)
 
-.PHONY: run
-run: $(EXE)
-	./$(EXE)
+.PHONY: debug
+debug:
+	echo $(INC_DIRS)
+
+.PHONY: lib
+lib: $(LIB)
 
 .PHONY: test
 test: $(TEST)
@@ -58,27 +63,19 @@ test: $(TEST)
 valgrind: $(TEST)
 	$(VALGRIND) ./$(TEST) $(TEST_ARGS)
 
-.PHONY: lib
-lib: $(LIB)
+.PHONY: run
+run: $(EXE)
+	./$(EXE)
 
-.PHONY: debug
-debug:
-ifeq ($(BIN_DIR), $(SRC_DIR))
-	echo "equal"
-else
-	echo "not equal"
-endif
+$(LIB): $(LIB_OBJS)
+	$(AR) rc $(LIB) $^
+	$(RANLIB) $(LIB)
+
+$(TEST): $(LIB) $(TEST_OBJS)
+	$(CC) $(LFLAGS) $(OBJS) -o $@ $(LDFLAGS) -L$(BIN_DIR) -l$(MAIN)
 
 $(EXE): $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-$(TEST): $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-$(LIB): $(LIB_OBJS)
-	# TODO filter out test files from OBJS
-	$(AR) rc $(LIB) $^
-	$(RANLIB) $(LIB)
 
 # assembly
 $(BIN_DIR)/%.s.o: $(SRC_DIR)/%.s
@@ -89,7 +86,6 @@ $(BIN_DIR)/%.s.o: $(SRC_DIR)/%.s
 $(BIN_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(MKDIR_P) $(dir $@)
 	$(CPP) $(CPPFLAGS) $< -MF $(@:.o=.d) -MT $@ > /dev/null
-#	$(filter-out -I$(<D),$(CPPFLAGS))
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # c++ source

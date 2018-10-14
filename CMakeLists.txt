@@ -65,6 +65,11 @@ set(STACK_TRACE_FILES
         src/main/stackTrace/stackTrace/stack_size_t.h
         )
 
+set(MATH_FILES
+        src/main/math/Vector.c
+        src/main/math/Vector.h
+        )
+
 set(TEST_FILES
         src/test/testStackTrace.c
         src/test/testStackTrace.h
@@ -80,6 +85,7 @@ set(SOURCE_FILES
         ${UTIL_FILES}
         ${COLLECTIONS_FILES}
         ${STACK_TRACE_FILES}
+        ${MATH_FILES}
         ${TEST_FILES}
         )
 
