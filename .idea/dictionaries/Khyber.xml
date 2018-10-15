@@ -11,6 +11,8 @@
       <w>memcpy</w>
       <w>popen</w>
       <w>readlink</w>
+      <w>recv</w>
+      <w>socktype</w>
       <w>strlen</w>
       <w>uint</w>
     </words>

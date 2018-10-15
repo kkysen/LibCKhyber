@@ -35,8 +35,6 @@ set(UTIL_FILES
         src/main/util/signal/sigAction.c
         src/main/util/signal/sigAction.h
         src/main/util/setField.h
-        src/main/util/buffer/buffer.h
-        src/main/util/buffer/buffer.c
         src/main/util/signal/Signal.c
         src/main/util/signal/Signal.h
         src/main/util/programName/programName.c
@@ -66,8 +64,28 @@ set(STACK_TRACE_FILES
         )
 
 set(MATH_FILES
+        src/main/math/radians.c
+        src/main/math/radians.h
+        src/main/math/clamp.c
+        src/main/math/clamp.h
         src/main/math/Vector2.c
         src/main/math/Vector2.h
+        src/main/math/Vector3.c
+        src/main/math/Vector3.h
+        )
+
+set(SERIALIZE_FILES
+        src/main/serialize/buffer/Buffer.h
+        src/main/serialize/buffer/Buffer.c
+        src/main/serialize/serialize.c
+        src/main/serialize/serialize.h
+        )
+
+set(NETWORK_FILES
+        src/main/network/socket/Socket.c
+        src/main/network/socket/Socket.h
+        src/main/network/IPAddressPort.c
+        src/main/network/IPAddressPort.h
         )
 
 set(TEST_FILES
@@ -86,10 +104,12 @@ set(SOURCE_FILES
         ${COLLECTIONS_FILES}
         ${STACK_TRACE_FILES}
         ${MATH_FILES}
+        ${SERIALIZE_FILES}
+        ${NETWORK_FILES}
         ${TEST_FILES}
         )
 
-add_library(Khyber STATIC ${SOURCE_FILES} src/main/math/radians.c src/main/math/radians.h src/main/math/clamp.c src/main/math/clamp.h src/main/math/Vector3.c src/main/math/Vector3.h)
+add_library(Khyber STATIC ${SOURCE_FILES})
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

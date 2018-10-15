@@ -6,13 +6,15 @@
 #define BUFFER_H
 
 #include <unistd.h>
+#include <stdbool.h>
 
-#include "../setField.h"
+#include "../../util/setField.h"
 
-typedef struct {
+typedef struct Buffer {
     void *data;
     size_t index;
-    ssize_t length;
+    size_t limit;
+    size_t capacity;
 } Buffer;
 
 /**
@@ -83,6 +85,14 @@ typedef struct {
         memcpy((void *) &(length_var), &casted_length, sizeof(casted_length)); \
     } while (false)
 
-extern const Buffer INVALID_BUFFER;
+bool Buffer_isValid(const Buffer *buffer);
+
+bool Buffer_hasRemaining(const Buffer *buffer);
+
+size_t Buffer_remaining(const Buffer *buffer);
+
+void *Buffer_remainingData(const Buffer *buffer);
+
+
 
 #endif // BUFFER_H
