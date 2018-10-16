@@ -5,24 +5,10 @@
 #ifndef SIG_ACTION_H
 #define SIG_ACTION_H
 
-#ifndef _POSIX_C_SOURCE
-#define _POSIX_C_SOURCE 201711L
-#endif
-
-#ifndef XOPEN_SOURCE
-#define XOPEN_SOURCE 700
-#endif
-
-#ifndef _DEFAULT_SOURCE
-#define _DEFAULT_SOURCE 1
-#endif
-
-//#ifndef _BSD_SOURCE
-//#define _BSD_SOURCE 201711L
-//#endif
-
 #include <signal.h>
 #include <sys/signal.h>
+
+// TODO clean up
 
 #ifndef SA_ONSTACK
 // Call signal handler on alternate signal stack provided by sigaltstack(2).

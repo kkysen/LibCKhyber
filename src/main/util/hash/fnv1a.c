@@ -2,7 +2,7 @@
 // Created by Khyber on 9/25/2018.
 //
 
-#include "fnv1a.h"
+#include "src/main/util/hash/fnv1a.h"
 
 #include <stdbool.h>
 

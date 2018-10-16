@@ -11,8 +11,10 @@ NO_ERRORS := unused-parameter unused-function
 MACROS := _POSIX_C_SOURCE=201810L _XOPEN_SOURCE=700 _DEFAULT_SOURCE=1
 DMACROS := $(MACROS:%=-D %)
 
-CPPFLAGS := $(INC_FLAGS) $(DMACROS) -MMD -MP
-CFLAGS := -std=c11 -g -ggdb $(WARNINGS:%=-W%) $(NO_ERRORS:%=-Wno-error=%) $(OPT) $(DMACROS)
+INC_DIRS := .
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+CPPFLAGS := ${INC_FLAGS} $(DMACROS) -MMD -MP
+CFLAGS := -std=c11 -g -ggdb $(WARNINGS:%=-W%) $(NO_ERRORS:%=-Wno-error=%) $(OPT) $(DMACROS) ${INC_FLAGS}
 
 LFLAGS := -g $(LTO)
 LDFLAGS := -lm -lbfd
@@ -41,9 +43,6 @@ OBJS := $(SRCS:$(SRC_DIR)%=$(BIN_DIR)%.o)
 TEST_OBJS := $(filter $(BIN_DIR)/$(TEST_DIR)/%,$(OBJS))
 LIB_OBJS := $(filter-out $(TEST_OBJS),$(OBJS))
 DEPS := $(OBJS:.o=.d)
-
-INC_DIRS := $(shell find $(SRC_DIR) -type d)
-INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 .PHONY: all
 all: $(LIB) $(TEST) $(EXE)

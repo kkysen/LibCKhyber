@@ -6,8 +6,9 @@
 #define STACK_SIZE_T_H
 
 #include <stdint.h>
-
 #include <signal.h>
+
+#include "src/main/util/numbers.h"
 
 typedef u16 stack_size_t; // SIGSTKSZ	= 8192
 

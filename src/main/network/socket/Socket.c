@@ -7,13 +7,14 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
-#include "../../util/utils.h"
-#include "../../serialize/buffer/Buffer.h"
+#include "src/main/util/utils.h"
 
 static const int LISTENING_BACKLOG = 10;
 
 static Socket Socket_default = {
         .fd = -1,
+        .ipAddress = NULL,
+        .port = NULL,
         .open = false,
         .bound = false,
         .listening = false,
@@ -27,13 +28,17 @@ Socket *Socket_of(const IPAddressPort *const ipAddressPort) {
         return NULL;
     }
     memcpy(this, &Socket_default, sizeof(*this));
-    memcpy(&this->ipAddressPort, ipAddressPort, sizeof(*ipAddressPort));
+    memcpy((IPAddressPort *) Socket_ipAddressPort(this), ipAddressPort, sizeof(*ipAddressPort));
     return this;
 }
 
 Socket *Socket_ofPort(const String *const port) {
     const IPAddressPort ipAddressPort = {.ipAddress = NULL, .port = port};
     return Socket_of(&ipAddressPort);
+}
+
+const IPAddressPort *Socket_ipAddressPort(const Socket *const this) {
+    return (IPAddressPort *) &this->ipAddress;
 }
 
 static void Socket_closeFlags(Socket *const this) {
@@ -84,9 +89,7 @@ static bool Socket_openUsing(Socket *const this, const ConnectOrBind connectOrBi
     };
     struct addrinfo *result = NULL;
     
-    const char *const ipAddress = this->ipAddressPort.ipAddress->chars;
-    const char *const port = this->ipAddressPort.port->chars;
-    const int status = getaddrinfo(ipAddress, port, &hints, &result);
+    const int status = getaddrinfo(this->ipAddress->chars, this->port->chars, &hints, &result);
     if (status != 0) {
         fprintf(stderr, "%s: %s\n", gai_strerror(status), "getaddrinfo(NULL, port, &hints, &result)");
         perror("getaddrinfo");
@@ -160,7 +163,7 @@ bool Socket_open(Socket *const this) {
     if (this->open) {
         return true;
     }
-    if (this->ipAddressPort.ipAddress) {
+    if (this->ipAddress) {
         return Socket_connect(this);
     } else {
         return Socket_bind(this);
@@ -241,7 +244,7 @@ bool Socket_writeRemaining(const Socket *this, Buffer *buffer) {
         return true; // no data to send
     }
     
-    const void *const data = Buffer_remainingData(buffer);
+    const void *const data = Buffer_data(buffer);
     size_t i = 0;
     while (size > 0) {
         const ssize_t bytesWritten = write(this->fd, data + i, size);
@@ -295,7 +298,7 @@ bool Socket_readRemaining(const Socket *this, Buffer *buffer) {
         return true; // no data to recv
     }
     
-    void *const data = Buffer_remainingData(buffer);
+    void *const data = Buffer_data(buffer);
     size_t i = 0;
     while (size > 0) {
         const ssize_t bytesRead = read(this->fd, data + i, size);

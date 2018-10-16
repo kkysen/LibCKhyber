@@ -2,7 +2,7 @@
 // Created by Khyber on 1/24/2018.
 //
 
-#include "Buffer.h"
+#include "src/main/serialize/buffer/Buffer.h"
 
 bool Buffer_isValid(const Buffer *const buffer) {
     return buffer->data && buffer->index < buffer->limit && buffer->limit <= buffer->capacity;

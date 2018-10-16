@@ -5,13 +5,12 @@
 #ifndef STACK_TRACE_H
 #define STACK_TRACE_H
 
-#include "StackFrame.h"
-
 #include <stdbool.h>
 
-#include "../../string/String.h"
-#include "../../util/signal/Signal.h"
-#include "stack_size_t.h"
+#include "src/main/stackTrace/stackTrace/stack_size_t.h"
+#include "src/main/stackTrace/stackTrace/StackFrame.h"
+#include "src/main/string/String.h"
+#include "src/main/util/signal/Signal.h"
 
 typedef struct StackTrace {
     const stack_size_t maxFrames;

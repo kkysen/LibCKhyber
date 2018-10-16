@@ -2,17 +2,17 @@
 // Created by Khyber on 9/16/2018.
 //
 
-#include "StackTraceSignalHandler.h"
+#include "src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
 
 #include <stdint.h>
 #include <err.h>
 
-#include "../../string/String.h"
-#include "../../util/signal/sigAction.h"
-#include "../../util/signal/Signal.h"
-#include "../stackTrace/StackTrace.h"
-#include "../../util/programName/programName.h"
-#include "../../util/utils.h"
+#include "src/main/string/String.h"
+#include "src/main/util/signal/sigAction.h"
+#include "src/main/util/signal/Signal.h"
+#include "src/main/stackTrace/stackTrace/StackTrace.h"
+#include "src/main/util/programName/programName.h"
+#include "src/main/util/utils.h"
 
 int stackTraceSignalHandlerLevel = 0;
 

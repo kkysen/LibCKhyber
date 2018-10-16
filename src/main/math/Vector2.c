@@ -2,7 +2,7 @@
 // Created by Khyber on 12/24/2017.
 //
 
-#include "Vector2.h"
+#include "src/main/math/Vector2.h"
 
 Vector2 Vector2_scale(Vector2 v, float c) {
     return Vector2_new(v.x * c, v.y * c);

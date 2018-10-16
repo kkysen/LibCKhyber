@@ -5,7 +5,7 @@
 #ifndef IP_ADDRESS_PORT_H
 #define IP_ADDRESS_PORT_H
 
-#include "../string/String.h"
+#include "src/main/string/String.h"
 
 typedef struct IPAddressPort {
     const String *ipAddress;

@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-#include "../../util/setField.h"
+#include "src/main/util/setField.h"
 
 typedef struct Buffer {
     void *data;
@@ -91,8 +91,14 @@ bool Buffer_hasRemaining(const Buffer *buffer);
 
 size_t Buffer_remaining(const Buffer *buffer);
 
-void *Buffer_remainingData(const Buffer *buffer);
+const void *Buffer_constData(const Buffer *buffer);
 
+void *Buffer_data(Buffer *buffer);
 
+bool Buffer_write(Buffer *buffer, int fd);
+
+bool Buffer_read(Buffer *buffer, int fd);
+
+// TODO implement these new methods
 
 #endif // BUFFER_H

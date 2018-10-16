@@ -7,8 +7,8 @@
 
 #include <stdbool.h>
 
-#include "../../string/String.h"
-#include "stack_size_t.h"
+#include "src/main/stackTrace/stackTrace/stack_size_t.h"
+#include "src/main/string/String.h"
 
 typedef struct StackFrame StackFrame;
 

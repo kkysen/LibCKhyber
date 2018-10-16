@@ -2,7 +2,7 @@
 // Created by Khyber on 9/17/2018.
 //
 
-#include "Signal.h"
+#include "src/main/util/signal/Signal.h"
 
 #define SIGNAL_MSG_SIZE_OVERESTIMATE 50
 

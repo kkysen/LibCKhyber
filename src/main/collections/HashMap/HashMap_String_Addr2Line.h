@@ -13,8 +13,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "../../string/String.h"
-#include "../../stackTrace/addr2Line/Addr2Line.h"
+#include "src/main/string/String.h"
+#include "src/main/stackTrace/addr2Line/Addr2Line.h"
 
 struct HashMapNode_String_Addr2Line;
 

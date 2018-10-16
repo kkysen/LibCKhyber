@@ -2,12 +2,12 @@
 // Created by Khyber on 12/19/2017.
 //
 
-#include "sigAction.h"
+#include "src/main/util/signal/sigAction.h"
 
 #include <stdlib.h>
 #include <err.h>
 
-#include "../utils.h"
+#include "src/main/util/utils.h"
 
 void addSigAction(int signal, const struct sigaction *sigAction) {
     if (sigaction(signal, sigAction, NULL) != 0) {

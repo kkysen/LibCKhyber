@@ -2,15 +2,15 @@
 // Created by Khyber on 9/16/2018.
 //
 
-#include "StackTrace.h"
+#include "src/main/stackTrace/stackTrace/StackTrace.h"
 
 #include <execinfo.h>
 #include <string.h>
 #include <syscall.h>
 
-#include "../../stackTrace/addr2Line/Addr2Line.h"
-#include "../../util/programName/programName.h"
-#include "../../util/utils.h"
+#include "src/main/stackTrace/addr2Line/Addr2Line.h"
+#include "src/main/util/programName/programName.h"
+#include "src/main/util/utils.h"
 
 bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, const stack_size_t maxDepth) {
     static void *addresses[STACK_SIZE_MAX];

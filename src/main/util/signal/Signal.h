@@ -7,7 +7,7 @@
 
 #include <signal.h>
 
-#include "../../string/String.h"
+#include "src/main/string/String.h"
 
 typedef struct Signal {
     const int signal;

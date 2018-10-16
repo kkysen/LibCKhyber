@@ -2,9 +2,9 @@
 // Created by Khyber on 9/17/2018.
 //
 
-#include "testStringFormat.h"
+#include "src/test/testStringFormat.h"
 
-#include "../main/string/String.h"
+#include "src/main/string/String.h"
 
 bool testStringFormat() {
     printf("start\n");

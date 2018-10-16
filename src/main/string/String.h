@@ -2,16 +2,17 @@
 // Created by Khyber on 12/1/2017.
 //
 
-#ifndef STRING_BUILDER_H
-#define STRING_BUILDER_H
+#ifndef STRING_H
+#define STRING_H
 
 #include <sys/types.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "StringStructs.h"
-#include "../util/numbers.h"
+#include "src/main/string/StringStructs.h"
+#include "src/main/util/numbers.h"
+#include "src/main/serialize/buffer/Buffer.h"
 
 /**
  * Create a new String with an \param initialSize.
@@ -143,4 +144,12 @@ bool String_equals(const String *s1, const String *s2);
 
 int String_compare(const String *s1, const String *s2);
 
-#endif // STRING_BUILDER_H
+void String_appendBuffer(String *this, Buffer *buffer);
+
+void String_sliceToBuffer(const String *this, Buffer *buffer, size_t begin, size_t end);
+
+void String_toBuffer(const String *this, Buffer *buffer);
+
+#endif // STRING_H
+
+// TODO check std::string and java.lang.String for realloc strategy

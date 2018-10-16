@@ -3,6 +3,8 @@ project(LibCKhyber C)
 
 set(CMAKE_C_STANDARD 11)
 
+include_directories(.)
+
 # support lto (link time optimization)
 SET(CMAKE_AR "gcc-ar")
 SET(CMAKE_RANLIB "gcc-ranlib")
@@ -86,7 +88,7 @@ set(NETWORK_FILES
         src/main/network/socket/Socket.h
         src/main/network/IPAddressPort.c
         src/main/network/IPAddressPort.h
-        )
+        src/main/network/EventLoop.c src/main/network/EventLoop.h)
 
 set(TEST_FILES
         src/test/testStackTrace.c

@@ -5,7 +5,7 @@
 #ifndef PROGRAM_NAME_H
 #define PROGRAM_NAME_H
 
-#include "../../string/String.h"
+#include "src/main/string/String.h"
 
 const String *getProgramName();
 

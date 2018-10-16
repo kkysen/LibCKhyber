@@ -2,12 +2,14 @@
 // Created by Khyber on 9/16/2018.
 //
 
-#include <stdint.h>
-#include "../stackTrace/StackFrame.h"
-#include "../bfd/BinaryFileDescriptor.h"
-
 #ifndef ADDR_2_LINE_H
 #define ADDR_2_LINE_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "src/main/stackTrace/stackTrace/StackFrame.h"
+#include "src/main/stackTrace/bfd/BinaryFileDescriptor.h"
 
 typedef struct Addr2LineFrame {
     // globals in original addr2line.c

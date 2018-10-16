@@ -2,9 +2,9 @@
 // Created by Khyber on 9/7/2018.
 //
 
-#include "Strings.h"
+#include "src/main/string/Strings.h"
 
-#include "String.h"
+#include "src/main/string/String.h"
 
 Strings *Strings_new(String *const strings, const size_t size) {
     Strings *const this = malloc(sizeof(Strings));

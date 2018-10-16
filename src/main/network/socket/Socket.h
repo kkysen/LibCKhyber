@@ -7,13 +7,14 @@
 
 #include <stdbool.h>
 
-#include "../../string/String.h"
-#include "../IPAddressPort.h"
-#include "../../serialize/buffer/Buffer.h"
+#include "src/main/string/String.h"
+#include "src/main/network/IPAddressPort.h"
+#include "src/main/serialize/buffer/Buffer.h"
 
 typedef struct Socket {
     int fd;
-    IPAddressPort ipAddressPort;
+    const String *ipAddress;
+    const String *port;
     bool open;
     bool bound;
     bool listening;
@@ -29,6 +30,8 @@ typedef enum SocketShutdownMethod {
 Socket *Socket_of(const IPAddressPort *ipAddressPort);
 
 Socket *Socket_ofPort(const String *port);
+
+const IPAddressPort *Socket_ipAddressPort(const Socket *this);
 
 bool Socket_shutdown(Socket *this, SocketShutdownMethod shutdownMethod);
 

@@ -7,16 +7,16 @@
  * https://kernel.googlesource.com/pub/scm/linux/kernel/git/hjl/binutils/+/hjl/secondary/binutils/addr2line.c
  */
 
-#include "Addr2Line.h"
+#include "src/main/stackTrace/addr2Line/Addr2Line.h"
 
 #include <libiberty/demangle.h>
 #include <string.h>
 #include <fcntl.h>
-#include "../../../lib/binutils-bfd/bfd/elf-bfd.h"
+#include "src/lib/binutils-bfd/bfd/elf-bfd.h"
 
-#include "../../util/utils.h"
-#include "../../collections/HashMap/HashMap_String_Addr2Line.h"
-#include "../../util/programName/programName.h"
+#include "src/main/util/utils.h"
+#include "src/main/collections/HashMap/HashMap_String_Addr2Line.h"
+#include "src/main/util/programName/programName.h"
 
 static HashMap_String_Addr2Line *getAddr2LineCache();
 

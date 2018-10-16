@@ -2,12 +2,13 @@
 // Created by Khyber on 9/17/2018.
 //
 
-#include <bfd.h>
-#include "testStackTrace.h"
+#include "src/test/testStackTrace.h"
 
-#include "../main/stackTrace/stackTrace/StackTrace.h"
-#include "../main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
-#include "../main/util/programName/programName.h"
+#include <bfd.h>
+
+#include "src/main/stackTrace/stackTrace/StackTrace.h"
+#include "src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
+#include "src/main/util/programName/programName.h"
 
 static void toInline() {
     StackTrace_printNow(stdout);

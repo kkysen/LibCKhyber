@@ -2,7 +2,7 @@
 // Created by Khyber on 9/16/2018.
 //
 
-#include "StackFrame.h"
+#include "src/main/stackTrace/stackTrace/StackFrame.h"
 
 void StackFrame_clear(const StackFrame *const this) {
     if (this->ok && this->inlinedBy) {

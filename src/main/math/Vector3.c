@@ -2,7 +2,7 @@
 // Created by Khyber on 10/14/2018.
 //
 
-#include "Vector3.h"
+#include "src/main/math/Vector3.h"
 
 Vector3 Vector3_scale(Vector3 v, float c) {
     return Vector3_new(v.x * c, v.y * c, v.z * c);

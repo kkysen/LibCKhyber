@@ -4,6 +4,7 @@
       <w>addr</w>
       <w>arraylen</w>
       <w>demangle</w>
+      <w>epoll</w>
       <w>inlined</w>
       <w>inliner</w>
       <w>inlining</w>

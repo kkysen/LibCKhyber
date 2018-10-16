@@ -2,14 +2,14 @@
 // Created by Khyber on 12/1/2017.
 //
 
-#include "String.h"
+#include "src/main/string/String.h"
 
 #include <string.h>
 #include <stdarg.h>
 
-#include "Strings.h"
-#include "../util/utils.h"
-#include "../util/hash/fnv1a.h"
+#include "src/main/string/Strings.h"
+#include "src/main/util/utils.h"
+#include "src/main/util/hash/fnv1a.h"
 
 #define String_terminate() this->chars[this->size] = 0
 
@@ -297,4 +297,18 @@ int String_compare(const String *const s1, const String *const s2) {
         return cmp;
     }
     return sizeDiff < 0 ? -1 : 1;
+}
+
+void String_appendBuffer(String *const this, Buffer *const buffer) {
+    String_appendBytes(this, Buffer_data(buffer), Buffer_remaining(buffer));
+}
+
+void String_sliceToBuffer(const String *const this, Buffer *const buffer, const size_t begin, const size_t end) {
+    const size_t size = min(end - begin, Buffer_remaining(buffer));
+    memcpy(Buffer_data(buffer), this->ptr, size);
+    buffer->index += size;
+}
+
+void String_toBuffer(const String *const this, Buffer *const buffer) {
+    String_sliceToBuffer(this, buffer, 0, this->size);
 }

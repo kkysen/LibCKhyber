@@ -8,8 +8,8 @@
 #include <math.h>
 #include <stdint.h>
 
-#include "clamp.h"
-#include "../util/numbers.h"
+#include "src/main/math/clamp.h"
+#include "src/main/util/numbers.h"
 
 typedef union {
     struct {

@@ -2,7 +2,7 @@
 // Created by Khyber on 11/9/2017.
 //
 
-#include "utils.h"
+#include "src/main/util/utils.h"
 
 #include <stdlib.h>
 #include <math.h>

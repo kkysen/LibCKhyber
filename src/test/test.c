@@ -2,13 +2,13 @@
 // Created by Khyber on 9/17/2018.
 //
 
-#include "test.h"
+#include "src/test/test.h"
 
 #include <stdlib.h>
 
-#include "../main/util/utils.h"
-#include "testStringFormat.h"
-#include "testStackTrace.h"
+#include "src/main/util/utils.h"
+#include "src/test/testStringFormat.h"
+#include "src/test/testStackTrace.h"
 
 typedef bool (*Test)();
 

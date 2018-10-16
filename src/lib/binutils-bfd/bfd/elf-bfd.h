@@ -22,14 +22,10 @@
 #ifndef _LIBELF_H_
 #define _LIBELF_H_ 1
 
-#include "../include/elf/common.h"
-#include "../include/elf/external.h"
-#include "../include/elf/internal.h"
-#include "../include/bfdlink.h"
-//#include "elf/common.h"
-//#include "elf/external.h"
-//#include "elf/internal.h"
-//#include "bfdlink.h"
+#include "src/lib/binutils-bfd/include/elf/common.h"
+#include "src/lib/binutils-bfd/include/elf/external.h"
+#include "src/lib/binutils-bfd/include/elf/internal.h"
+#include "src/lib/binutils-bfd/include/bfdlink.h"
 
 #ifdef __cplusplus
 extern "C" {

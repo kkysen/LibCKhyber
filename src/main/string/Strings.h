@@ -5,7 +5,7 @@
 #ifndef STRINGS_H
 #define STRINGS_H
 
-#include "StringStructs.h"
+#include "src/main/string/StringStructs.h"
 
 Strings *Strings_new(String *strings, size_t size);
 

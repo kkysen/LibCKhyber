@@ -2,9 +2,9 @@
 // Created by Khyber on 9/5/2018.
 //
 
-#include "programName.h"
+#include "src/main/util/programName/programName.h"
 
-#include "../utils.h"
+#include "src/main/util/utils.h"
 
 static void freeProgramName() {
     String_free(getProgramName());
