@@ -9,10 +9,12 @@
 #include "src/main/util/utils.h"
 #include "src/test/testStringFormat.h"
 #include "src/test/testStackTrace.h"
+#include "src/test/testStringContains.h"
+#include "src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
 
 typedef bool (*Test)();
 
-static const Test tests[] = {testStringFormat, testStackTrace, testStackTraceSignalHandler};
+static const Test tests[] = {testStringFormat, testStringContains, testStackTrace, testStackTraceSignalHandler};
 
 bool test() {
     bool all = true;
@@ -31,5 +33,6 @@ bool test() {
 }
 
 int main() {
+    setStackTraceSignalHandler();
     return test() ? EXIT_SUCCESS : EXIT_FAILURE;
 }

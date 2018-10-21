@@ -21,3 +21,7 @@ void double_sleep(const double seconds) {
     };
     nanosleep(&timespec, NULL);
 }
+
+void freeConst(const void *ptr) {
+    free((void *) ptr);
+}

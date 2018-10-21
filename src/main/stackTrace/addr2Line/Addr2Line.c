@@ -285,7 +285,7 @@ typedef struct SharedLibraryAddress {
 
 static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *const message) {
     const SharedLibraryAddress error = {.ok = false, .filePath = NULL, .address = NULL};
-    const ssize_t iOpenParenIndex = String_find(message, '(');
+    const ssize_t iOpenParenIndex = String_findChar(message, '(');
     if (iOpenParenIndex == -1) {
         return error;
     }
@@ -294,7 +294,7 @@ static SharedLibraryAddress SharedLibraryAddress_parseFromMessage(const String *
         // address always starts with '+'
         return error;
     }
-    const ssize_t iCloseParenIndex = String_findFrom(message, openParenIndex, ')');
+    const ssize_t iCloseParenIndex = String_findCharFrom(message, openParenIndex, ')');
     const size_t closeParenIndex = (size_t) iCloseParenIndex;
     if (iCloseParenIndex == -1) {
         return error;

@@ -14,6 +14,7 @@
       <w>readlink</w>
       <w>recv</w>
       <w>socktype</w>
+      <w>ssize</w>
       <w>strlen</w>
       <w>uint</w>
     </words>

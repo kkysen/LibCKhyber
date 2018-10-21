@@ -4,28 +4,48 @@
 
 #include "src/main/string/String.h"
 
-#include <string.h>
 #include <stdarg.h>
 
 #include "src/main/string/Strings.h"
 #include "src/main/util/utils.h"
 #include "src/main/util/hash/fnv1a.h"
+#include "src/main/util/cast.h"
 
-#define String_terminate() this->chars[this->size] = 0
+#define String_strictResizeMultiplier 1
+
+// TODO check std::string and java.lang.String for realloc strategy
+float String_resizeMultiplier = String_strictResizeMultiplier;
+
+void String_resetResizeMultiplier() {
+    String_resizeMultiplier = String_strictResizeMultiplier;
+}
+
+String String_usingCharsN(char *const chars, const size_t size) {
+    return (String) {
+            .chars = chars,
+            .size = size,
+            .capacity = size,
+            .hash = -1,
+    };
+}
+
+String String_usingChars(char *const chars) {
+    return String_usingCharsN(chars, strlen(chars));
+}
 
 static String *String_allocate() {
     String *const this = (String *) malloc(sizeof(String));
     this->size = 0;
     this->capacity = 0;
-    this->ptr = NULL;
+    this->chars = NULL;
     this->hash = -1;
     return this;
 }
 
 static String *String_allocateChars(String *const this, const size_t initialSize) {
-    this->ptr = malloc(initialSize + 1);
+    this->chars = malloc(initialSize + 1);
     this->capacity = initialSize;
-    String_terminate();
+    String_terminate(this);
     return this;
 }
 
@@ -70,8 +90,8 @@ String *String_ofChars(const char *const chars) {
 }
 
 void String_clear(String *const this) {
-    free(this->ptr);
-    this->ptr = NULL;
+    free(this->chars);
+    this->chars = NULL;
     this->size = this->capacity = 0;
     this->hash = -1;
 }
@@ -83,22 +103,39 @@ void String_free(const String *const this) {
     free((String *) this);
 }
 
-void String_ensureCapacity(String *const this, const size_t capacity) {
+void String_terminate(const String *const this) {
+    this->chars[this->size] = 0;
+}
+
+static void String_ensureCapacityMultiplied(String *const this, const size_t capacity, const float resizeMultiplier) {
+    if (resizeMultiplier < 1) {
+        return;
+    }
     if (this->capacity < capacity) {
-        this->capacity = capacity;
-        this->ptr = realloc(this->ptr, capacity + 1);
-        String_terminate();
+        const size_t newCapacity = (size_t) (capacity * resizeMultiplier);
+        this->capacity = newCapacity;
+        this->chars = realloc(this->chars, newCapacity + 1);
+        String_terminate(this);
     }
 }
 
+void String_ensureCapacity(String *const this, const size_t capacity) {
+    String_ensureCapacityMultiplied(this, capacity, String_strictResizeMultiplier);
+}
+
+static void
+String_ensureMoreCapacityMultiplied(String *const this, const size_t moreCapacity, const float resizeMultiplier) {
+    String_ensureCapacityMultiplied(this, moreCapacity + this->size, resizeMultiplier);
+}
+
 void String_ensureMoreCapacity(String *const this, const size_t moreCapacity) {
-    String_ensureCapacity(this, moreCapacity + this->size);
+    String_ensureMoreCapacityMultiplied(this, moreCapacity, String_strictResizeMultiplier);
 }
 
 void String_shrinkToSize(String *const this) {
     this->capacity = this->size;
-    this->ptr = realloc(this->ptr, this->capacity + 1);
-    String_terminate();
+    this->chars = realloc(this->chars, this->capacity + 1);
+    String_terminate(this);
 }
 
 void String_shrinkToMoreCapacity(String *this, size_t moreCapacity) {
@@ -107,8 +144,8 @@ void String_shrinkToMoreCapacity(String *this, size_t moreCapacity) {
         String_ensureMoreCapacity(this, moreCapacity);
     } else {
         this->capacity = newCapacity;
-        this->ptr = realloc(this->ptr, newCapacity + 1);
-        String_terminate();
+        this->chars = realloc(this->chars, newCapacity + 1);
+        String_terminate(this);
     }
 }
 
@@ -116,14 +153,14 @@ static void String_appendBytesUnchecked(String *const this, const void *restrict
     if (size == 0) {
         return;
     }
-    memcpy(this->ptr + this->size, bytes, size);
+    memcpy(this->chars + this->size, bytes, size);
     this->size += size;
     this->hash = -1;
-    String_terminate();
+    String_terminate(this);
 }
 
 void String_appendBytes(String *const this, const void *restrict const bytes, const size_t size) {
-    String_ensureMoreCapacity(this, size);
+    String_ensureMoreCapacityMultiplied(this, size, String_resizeMultiplier);
     String_appendBytesUnchecked(this, bytes, size);
 }
 
@@ -159,7 +196,7 @@ String *String_reReference(const String *const this) {
 
 String *String_copy(const String *const this) {
     String *const copy = String_withCapacity(this->size);
-    String_appendBytesUnchecked(copy, this->ptr, this->size);
+    String_appendBytesUnchecked(copy, this->chars, this->size);
     copy->hash = this->hash;
     return copy;
 }
@@ -167,8 +204,8 @@ String *String_copy(const String *const this) {
 String *String_concat(const String *const s1, const String *const s2) {
     const size_t size = s1->size + s2->size;
     String *const result = String_withCapacity(size);
-    String_appendBytesUnchecked(result, s1->ptr, s1->size);
-    String_appendBytesUnchecked(result, s2->ptr, s2->size);
+    String_appendBytesUnchecked(result, s1->chars, s1->size);
+    String_appendBytesUnchecked(result, s2->chars, s2->size);
     return result;
 }
 
@@ -222,7 +259,7 @@ Strings *String_split(const String *const this, const String *const separator) {
         }
         // fill in removed separator (from splitInPlaceAndCountTokens)
         nextToken += tokenLength;
-        memcpy(nextToken, separator->ptr, separator->size);
+        memcpy(nextToken, separator->chars, separator->size);
         nextToken += separator->size;
     }
     return Strings_new(tokens, numTokens);
@@ -232,11 +269,11 @@ String *String_subString(const String *this, size_t begin, size_t end) {
     return String_ofCharsN(this->chars + begin, end - begin);
 }
 
-ssize_t String_find(const String *const this, const char c) {
-    return String_findFrom(this, 0, c);
+ssize_t String_findChar(const String *this, char c) {
+    return String_findCharFrom(this, 0, c);
 }
 
-ssize_t String_findFrom(const String *this, size_t offset, char c) {
+ssize_t String_findCharFrom(const String *this, size_t offset, char c) {
     if (offset >= this->size) {
         return -1;
     }
@@ -262,7 +299,7 @@ const char *String_nullableChars(const String *const this) {
 }
 
 static u64 computeHash(const String *const this) {
-    return fnv1a64Hash(this->ptr, this->size);
+    return fnv1a64Hash(this->chars, this->size);
 }
 
 u64 String_hash(const String *const this) {
@@ -292,7 +329,7 @@ bool String_equals(const String *const s1, const String *const s2) {
 
 int String_compare(const String *const s1, const String *const s2) {
     ssize_t sizeDiff = s1->size - s2->size;
-    const int cmp = memcmp(s1->ptr, s2->ptr, min(s1->size, s2->size));
+    const int cmp = memcmp(s1->chars, s2->chars, min(s1->size, s2->size));
     if (sizeDiff == 0 || cmp != 0) {
         return cmp;
     }
@@ -300,15 +337,102 @@ int String_compare(const String *const s1, const String *const s2) {
 }
 
 void String_appendBuffer(String *const this, Buffer *const buffer) {
-    String_appendBytes(this, Buffer_data(buffer), Buffer_remaining(buffer));
+    String_appendBytes(this, Buffer_constData(buffer), Buffer_remaining(buffer));
 }
 
 void String_sliceToBuffer(const String *const this, Buffer *const buffer, const size_t begin, const size_t end) {
     const size_t size = min(end - begin, Buffer_remaining(buffer));
-    memcpy(Buffer_data(buffer), this->ptr, size);
+    memcpy(Buffer_data(buffer), this->chars, size);
     buffer->index += size;
 }
 
 void String_toBuffer(const String *const this, Buffer *const buffer) {
     String_sliceToBuffer(this, buffer, 0, this->size);
+}
+
+ssize_t String_findLongSubString(const String *const this, const String *const subString) {
+    if (subString->size > this->size) {
+        return -1;
+    }
+    const size_t size = this->size - (subString->size - 1);
+    for (size_t i = 0; i < size; i++) {
+        if (memcmp(this->chars + i, subString->chars, subString->size) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+ssize_t String_find(const String *this, const String *subString) {
+    const u8 *const bytes = (u8 *) this->chars;
+    
+    // use a bitfield to truncate target,
+    // not in hot loop so bitfield optimization performance not an issue
+    // ssize_t used instead of size_t in edge loop b/c 0u < 0u triggers a warning
+    
+    #define searchForTarget(_target, type, shift) \
+        const type target = _target; \
+        const size_t edgeSize = this->size - (sizeof(target) - 1u); \
+        for (size_t i = 0; i < edgeSize; i++) { \
+            const type candidate = as(type, bytes + i) << ((shift) * 8u) >> ((shift) * 8u); \
+            if (candidate == target) { \
+                return i; \
+            } \
+        } \
+        const type edge = as(type, bytes + edgeSize); \
+        for (ssize_t i = 1; i <= (shift); i++) { \
+            const type candidate = edge << (i * 8u) >> (i * 8u); \
+            if (candidate == target) { \
+                return edgeSize + i; \
+            } \
+        } \
+        return -1 \
+
+    #define searchAligned(type) { \
+        searchForTarget(as(type, subString->chars), type, 0u); \
+    }
+    
+    #define searchUnAligned(type, shift) { \
+        struct { \
+            type target: (sizeof(type) - (shift)) * 8u; \
+        } targetStruct; \
+        memcpy(&targetStruct, subString->chars, sizeof(targetStruct)); \
+        searchForTarget(targetStruct.target, type, shift); \
+    }
+    
+    switch (subString->size) {
+        case 0:
+            return -1;
+        case 1: searchAligned(u8)
+        case 2: searchAligned(u16)
+        case 3: searchUnAligned(u32, 1u)
+        case 4: searchAligned(u32)
+        case 5: searchUnAligned(u64, 3u)
+        case 6: searchUnAligned(u64, 2u)
+        case 7: searchUnAligned(u64, 1u)
+        case 8: searchAligned(u64)
+            // no support for 128, 256 integers vector optimization yet
+        default:
+            return String_findLongSubString(this, subString);
+    }
+    
+    #undef searchUnAligned
+    #undef searchAligned
+    #undef searchForTarget
+}
+
+bool String_contains(const String *const this, const String *const subString) {
+    return String_find(this, subString) != -1;
+}
+
+bool String_toFd(const String *this, int fd) {
+    return write(fd, this->chars, this->size) == (ssize_t) this->size;
+}
+
+bool String_toFile(const String *this, FILE *out) {
+    return String_toFd(this, fileno(out));
+}
+
+bool String_print(const String *this) {
+    return String_toFile(this, stdout);
 }

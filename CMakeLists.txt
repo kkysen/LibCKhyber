@@ -10,7 +10,7 @@ SET(CMAKE_AR "gcc-ar")
 SET(CMAKE_RANLIB "gcc-ranlib")
 
 
-set(CMAKE_C_OPTIMIZATION_FLAGS "-O3 -flto")
+set(CMAKE_C_OPTIMIZATION_FLAGS "-O0 -flto")
 set(CMAKE_C_ERROR_FLAGS "-Wall -Werror -Wextra")
 set(CMAKE_C_NO_ERROR_FLAGS "-Wno-error=unused-function -Wno-error=unused-parameter")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_ERROR_FLAGS} ${CMAKE_C_NO_ERROR_FLAGS} ${CMAKE_C_OPTIMIZATION_FLAGS}")
@@ -44,12 +44,12 @@ set(UTIL_FILES
         src/main/util/hash/fnv1a.c
         src/main/util/hash/fnv1a.h
         src/main/util/numbers.h
-        )
+        src/main/util/functional.h src/main/util/cast.h)
 
 set(COLLECTIONS_FILES
         src/main/collections/HashMap/HashMap_String_Addr2Line.c
         src/main/collections/HashMap/HashMap_String_Addr2Line.h
-        )
+        src/main/collections/Trie/Trie.c src/main/collections/Trie/Trie.h)
 
 set(STACK_TRACE_FILES
         src/main/stackTrace/bfd/BinaryFileDescriptor.c
@@ -97,7 +97,7 @@ set(TEST_FILES
         src/test/testStringFormat.h
         src/test/test.c
         src/test/test.h
-        )
+        src/test/testStringContains.c src/test/testStringContains.h)
 
 set(SOURCE_FILES
         ${LIB_BFD_FILES}
@@ -111,7 +111,7 @@ set(SOURCE_FILES
         ${TEST_FILES}
         )
 
-add_library(Khyber STATIC ${SOURCE_FILES})
+add_library(Khyber STATIC ${SOURCE_FILES} src/main/collections/Trie/Trie.h src/main/util/cast.h)
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

@@ -14,6 +14,16 @@
 #include "src/main/util/numbers.h"
 #include "src/main/serialize/buffer/Buffer.h"
 
+extern float String_resizeMultiplier;
+
+void String_resetResizeMultiplier();
+
+String String_usingCharsN(char *chars, size_t size);
+
+String String_usingChars(char *chars);
+
+#define String_usingLiteral(literalString) String_usingCharsN(literalString, sizeof(literalString) - 1)
+
 /**
  * Create a new String with an \param initialSize.
  *
@@ -37,10 +47,20 @@ String *String_ofChars(const char *chars);
 #define String_of(literalString) String_ofCharsN(literalString, sizeof(literalString) - 1)
 
 /**
+ * Clear this String,
+ * freeing its chars and setting its size and capacity to 0.
+ *
+ * @param [in, out] this this String
+ */
+void String_clear(String *this);
+
+/**
  * Free this String, clearing this String and freeing its pointer.
  * @param [in, out] this
  */
 void String_free(const String *this);
+
+void String_terminate(const String *this);
 
 /**
  * Ensure this String has a capacity of at least \param capacity.
@@ -109,14 +129,6 @@ void String_append(String *this, const String *string);
  */
 size_t String_appendStream(String *this, FILE *file);
 
-/**
- * Clear this String,
- * freeing its chars and setting its size and capacity to 0.
- *
- * @param [in, out] this this String
- */
-void String_clear(String *this);
-
 String *String_reReference(const String *this);
 
 String *String_copy(const String *this);
@@ -129,9 +141,9 @@ Strings *String_split(const String *this, const String *separator);
 
 String *String_subString(const String *this, size_t begin, size_t end);
 
-ssize_t String_find(const String *this, char c);
+ssize_t String_findChar(const String *this, char c);
 
-ssize_t String_findFrom(const String *this, size_t offset, char c);
+ssize_t String_findCharFrom(const String *this, size_t offset, char c);
 
 ssize_t String_rfind(const String *this, char c);
 
@@ -150,6 +162,14 @@ void String_sliceToBuffer(const String *this, Buffer *buffer, size_t begin, size
 
 void String_toBuffer(const String *this, Buffer *buffer);
 
-#endif // STRING_H
+ssize_t String_find(const String *this, const String *subString);
 
-// TODO check std::string and java.lang.String for realloc strategy
+bool String_contains(const String *this, const String *subString);
+
+bool String_toFd(const String *this, int fd);
+
+bool String_toFile(const String *this, FILE *out);
+
+bool String_print(const String *this);
+
+#endif // STRING_H

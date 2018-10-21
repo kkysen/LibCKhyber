@@ -10,19 +10,10 @@
 #include "src/main/util/numbers.h"
 
 typedef struct String {
-    
-    union {
-        char *chars;
-        
-        void *ptr;
-    };
-    
+    char *chars;
     size_t size;
-    
     size_t capacity;
-    
-   i64 hash;
-    
+    i64 hash;
 } String;
 
 typedef struct Strings {

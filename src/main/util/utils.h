@@ -92,4 +92,6 @@ void double_sleep(double seconds);
 
 #define memClear(ptr) memset(ptr, 0, sizeof(*(ptr)))
 
+void freeConst(const void *ptr);
+
 #endif // UTILS_H

@@ -8,6 +8,7 @@
 #include <err.h>
 
 #include "src/main/string/String.h"
+#include "src/main/util/functional.h"
 #include "src/main/util/signal/sigAction.h"
 #include "src/main/util/signal/Signal.h"
 #include "src/main/stackTrace/stackTrace/StackTrace.h"
@@ -75,6 +76,11 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *
 #define addAction(signal) addSigAction(signal, &sigAction)
 
 void setStackTraceSignalHandler() {
+    static bool alreadySet = false;
+    if (alreadySet) {
+        return;
+    }
+    alreadySet = true;
     {
         static u8 alternateStack[STACK_SIZE_MAX];
         // setup alternate stack

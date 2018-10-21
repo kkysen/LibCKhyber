@@ -234,31 +234,7 @@ bool Socket_writeSize(const Socket *this, size_t size) {
 
 bool Socket_writeRemaining(const Socket *this, Buffer *buffer) {
     Socket_checkOpen(this);
-    if (!Buffer_isValid(buffer)) {
-        perror("Buffer_isValid");
-        return false;
-    }
-    
-    size_t size = Buffer_remaining(buffer);
-    if (size == 0) {
-        return true; // no data to send
-    }
-    
-    const void *const data = Buffer_data(buffer);
-    size_t i = 0;
-    while (size > 0) {
-        const ssize_t bytesWritten = write(this->fd, data + i, size);
-        if (bytesWritten == -1) {
-            perror("write");
-            buffer->index += i;
-            return false;
-        }
-        size -= bytesWritten;
-        i += bytesWritten;
-    }
-    buffer->index += i;
-    
-    return true;
+    return Buffer_write(buffer, this->fd);
 }
 
 bool Socket_writeAll(const Socket *this, Buffer *buffer) {
@@ -270,8 +246,8 @@ bool Socket_writeAll(const Socket *this, Buffer *buffer) {
         perror("Socket_writeSize");
         return false;
     }
-    if (!Socket_writeRemaining(this, buffer)) {
-        perror("Socket_writeRemaining");
+    if (!Buffer_write(buffer, this->fd)) {
+        perror("Buffer_write");
         return false;
     }
     return true;
@@ -288,31 +264,7 @@ bool Socket_readSize(const Socket *this, size_t *size) {
 
 bool Socket_readRemaining(const Socket *this, Buffer *buffer) {
     Socket_checkOpen(this);
-    if (!Buffer_isValid(buffer)) {
-        perror("Buffer_isValid");
-        return false;
-    }
-    
-    size_t size = Buffer_remaining(buffer);
-    if (size == 0) {
-        return true; // no data to recv
-    }
-    
-    void *const data = Buffer_data(buffer);
-    size_t i = 0;
-    while (size > 0) {
-        const ssize_t bytesRead = read(this->fd, data + i, size);
-        if (bytesRead == -1) {
-            perror("read");
-            buffer->index += i;
-            return false;
-        }
-        size -= bytesRead;
-        i += bytesRead;
-    }
-    buffer->index += i;
-    
-    return true;
+    return Buffer_read(buffer, this->fd);
 }
 
 bool Socket_readAll(const Socket *this, Buffer *buffer) {
@@ -331,8 +283,8 @@ bool Socket_readAll(const Socket *this, Buffer *buffer) {
     }
     const size_t prevLimit = buffer->limit;
     buffer->limit = buffer->index + size;
-    if (!Socket_readRemaining(this, buffer)) {
-        perror("Socket_readRemaining");
+    if (!Buffer_read(buffer, this->fd)) {
+        perror("Buffer_read");
         buffer->limit = prevLimit;
         return false;
     }
