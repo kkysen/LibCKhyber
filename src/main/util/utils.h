@@ -62,13 +62,14 @@ void init_home();
 
 #define p(s) printf(s"\n")
 #define pn() p("")
-#define ps(var) printf(#var": '%s' (%zu)\n", (char *) (var), strlen(var))
+#define ps(var) printf(#var": `%s` (%zu)\n", (char *) (var), strlen(var))
 #define pz(var) printf(#var": %zu\n", (size_t) (var))
 #define pd(var) printf(#var": %zd\n", (ssize_t) (var))
 #define pp(var) printf(#var": %p\n", var)
 #define pb(var) printf(#var": %s\n", (var) ? "true" : "false")
 #define pc(var) printf(#var": %c\n", (char) (var))
 #define pf(var) printf(#var": %f\n", (double) (var))
+#define pS(var) printf(#var": `%s` (%zu)\n", (var)->chars, (var)->size)
 
 #define _perror(strerror_call, s) \
     fprintf(stderr, \

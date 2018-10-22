@@ -44,12 +44,16 @@ set(UTIL_FILES
         src/main/util/hash/fnv1a.c
         src/main/util/hash/fnv1a.h
         src/main/util/numbers.h
-        src/main/util/functional.h src/main/util/cast.h)
+        src/main/util/functional.h
+        src/main/util/cast.h
+        )
 
 set(COLLECTIONS_FILES
         src/main/collections/HashMap/HashMap_String_Addr2Line.c
         src/main/collections/HashMap/HashMap_String_Addr2Line.h
-        src/main/collections/Trie/Trie.c src/main/collections/Trie/Trie.h)
+        src/main/collections/Trie/Trie.c
+        src/main/collections/Trie/Trie.h
+        )
 
 set(STACK_TRACE_FILES
         src/main/stackTrace/bfd/BinaryFileDescriptor.c
@@ -111,7 +115,7 @@ set(SOURCE_FILES
         ${TEST_FILES}
         )
 
-add_library(Khyber STATIC ${SOURCE_FILES} src/main/collections/Trie/Trie.h src/main/util/cast.h)
+add_library(Khyber STATIC ${SOURCE_FILES})
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

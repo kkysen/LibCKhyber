@@ -22,7 +22,7 @@ String String_usingCharsN(char *chars, size_t size);
 
 String String_usingChars(char *chars);
 
-#define String_usingLiteral(literalString) String_usingCharsN(literalString, sizeof(literalString) - 1)
+#define String_usingLiteral(literalString) String_usingCharsN((char *) (literalString), sizeof(literalString) - 1)
 
 /**
  * Create a new String with an \param initialSize.

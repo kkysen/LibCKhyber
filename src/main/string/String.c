@@ -120,7 +120,7 @@ static void String_ensureCapacityMultiplied(String *const this, const size_t cap
 }
 
 void String_ensureCapacity(String *const this, const size_t capacity) {
-    String_ensureCapacityMultiplied(this, capacity, String_strictResizeMultiplier);
+    String_ensureCapacityMultiplied(this, capacity, String_resizeMultiplier);
 }
 
 static void
@@ -129,7 +129,7 @@ String_ensureMoreCapacityMultiplied(String *const this, const size_t moreCapacit
 }
 
 void String_ensureMoreCapacity(String *const this, const size_t moreCapacity) {
-    String_ensureMoreCapacityMultiplied(this, moreCapacity, String_strictResizeMultiplier);
+    String_ensureMoreCapacityMultiplied(this, moreCapacity, String_resizeMultiplier);
 }
 
 void String_shrinkToSize(String *const this) {
