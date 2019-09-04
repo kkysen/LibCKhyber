@@ -5,7 +5,7 @@ MAIN := Khyber
 CC := gcc
 
 LTO := -flto
-OPT := -O0 -march=native $(LTO)
+OPT := -O3 -march=native $(LTO)
 WARNINGS := all error extra
 NO_ERRORS := unused-parameter unused-function
 MACROS := _POSIX_C_SOURCE=201810L _XOPEN_SOURCE=700 _DEFAULT_SOURCE=1

@@ -10,11 +10,13 @@
 #include "src/test/testStringFormat.h"
 #include "src/test/testStackTrace.h"
 #include "src/test/testStringContains.h"
+#include "src/test/testException.h"
 #include "src/main/stackTrace/stackTraceSignalHandler/StackTraceSignalHandler.h"
 
 typedef bool (*Test)();
 
-static const Test tests[] = {testStringFormat, testStringContains, testStackTrace, testStackTraceSignalHandler};
+static const Test tests[] = {testStringFormat, testStringContains, testStackTrace, testException,
+                             testStackTraceSignalHandler};
 
 bool test() {
     bool all = true;

@@ -18,6 +18,7 @@ typedef struct StackTrace {
     const stack_size_t numFrames;
     const stack_size_t totalNumFrames; // includes inlined frames
     const Signal *const signal;
+    const int errorNum;
     const pid_t processId;
     const pid_t threadId;
 } StackTrace;
@@ -36,9 +37,9 @@ void StackTrace_free(const StackTrace *this);
 
 void StackTrace_toString(const StackTrace *this, String *out);
 
-void StackTrace_print(const StackTrace *this, FILE *out);
+void StackTrace_toFile(const StackTrace *this, FILE *out);
 
-void StackTrace_printNow(FILE *out);
+void StackTrace_printNow();
 
 typedef bool (*const StackWalkerArg)(const StackFrame *frame, stack_size_t i, const StackTrace *this, void *arg);
 

@@ -52,7 +52,7 @@ static void stackTraceSignalHandlerPosix(int _signal, siginfo_t *sigInfo, void *
             perror("StackTrace_init");
             goto exit;
         }
-        StackTrace_print(&stackTrace, stderr);
+        StackTrace_toFile(&stackTrace, stderr);
         StackTrace_clear(&stackTrace);
     }
     

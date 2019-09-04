@@ -123,8 +123,8 @@ void String_ensureCapacity(String *const this, const size_t capacity) {
     String_ensureCapacityMultiplied(this, capacity, String_resizeMultiplier);
 }
 
-static void
-String_ensureMoreCapacityMultiplied(String *const this, const size_t moreCapacity, const float resizeMultiplier) {
+static void String_ensureMoreCapacityMultiplied(String *const this, const size_t moreCapacity,
+                                                const float resizeMultiplier) {
     String_ensureCapacityMultiplied(this, moreCapacity + this->size, resizeMultiplier);
 }
 
@@ -219,7 +219,7 @@ void String_format(String *const this, const char *const format, ...) {
         return;
     }
     if (iFormattedSize < 0) {
-        perror("vsnprinf");
+        perror("vsnprintf");
     }
     const size_t formattedSize = (size_t) iFormattedSize;
     String_ensureMoreCapacity(this, formattedSize);
@@ -430,7 +430,7 @@ bool String_toFd(const String *this, int fd) {
 }
 
 bool String_toFile(const String *this, FILE *out) {
-    return String_toFd(this, fileno(out));
+    return fwrite(this->chars, 1, this->size, out) == this->size;
 }
 
 bool String_print(const String *this) {

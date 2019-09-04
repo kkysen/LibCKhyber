@@ -30,4 +30,6 @@
         setFieldMemory(field, &_val); \
     } while (false)
 
+#define clearField(field) memset(field, 0, sizeof(field))
+
 #endif // SET_FIELD_H

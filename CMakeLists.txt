@@ -67,7 +67,7 @@ set(STACK_TRACE_FILES
         src/main/stackTrace/addr2Line/Addr2Line.c
         src/main/stackTrace/addr2Line/Addr2Line.h
         src/main/stackTrace/stackTrace/stack_size_t.h
-        )
+        src/main/stackTrace/exception/Exception.c src/main/stackTrace/exception/Exception.h)
 
 set(MATH_FILES
         src/main/math/radians.c
@@ -90,9 +90,13 @@ set(SERIALIZE_FILES
 set(NETWORK_FILES
         src/main/network/socket/Socket.c
         src/main/network/socket/Socket.h
+        src/main/network/Port.c
+        src/main/network/Port.h
         src/main/network/IPAddressPort.c
         src/main/network/IPAddressPort.h
-        src/main/network/EventLoop.c src/main/network/EventLoop.h)
+        src/main/network/EventLoop.c
+        src/main/network/EventLoop.h
+        )
 
 set(TEST_FILES
         src/test/testStackTrace.c
@@ -101,7 +105,7 @@ set(TEST_FILES
         src/test/testStringFormat.h
         src/test/test.c
         src/test/test.h
-        src/test/testStringContains.c src/test/testStringContains.h)
+        src/test/testStringContains.c src/test/testStringContains.h src/test/testException.c src/test/testException.h)
 
 set(SOURCE_FILES
         ${LIB_BFD_FILES}
@@ -115,7 +119,7 @@ set(SOURCE_FILES
         ${TEST_FILES}
         )
 
-add_library(Khyber STATIC ${SOURCE_FILES})
+add_library(Khyber STATIC ${SOURCE_FILES} src/main/stackTrace/exception/Exception.h)
 
 add_executable(LibCKhyber ${SOURCE_FILES})
 

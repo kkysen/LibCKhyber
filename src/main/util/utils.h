@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include <stdbool.h>
 
 typedef unsigned int uint;
 
@@ -84,7 +85,9 @@ void init_home();
 
 #define debug() printf("[%d] %s at %s:%d\n", getpid(), __func__, __FILE__, __LINE__)
 
-void double_sleep(double seconds);
+void doubleSleep(double seconds);
+
+double secondsElapsed(clock_t start, clock_t end);
 
 //#define new_const(type, var_name, initializer)
 //    const type _type = initializer;
@@ -94,5 +97,62 @@ void double_sleep(double seconds);
 #define memClear(ptr) memset(ptr, 0, sizeof(*(ptr)))
 
 void freeConst(const void *ptr);
+
+#define uintToStr(s, u, base) \
+do { \
+    if ((base) < 2 || (base) > 36) { \
+        break; \
+    } \
+    \
+    typeof(u) val = u; \
+    char *ptr = s; \
+    char *start = s; \
+    typeof(u) tmp = val; \
+    do { \
+        tmp = val; \
+        val /= (base); \
+        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" \
+                 [(36 - 1) + (tmp - val * (base))]; \
+    } while (val); \
+    \
+    (s) = ptr; \
+    *ptr-- = 0; \
+    \
+    while (start < ptr) { \
+        const char tmp = *ptr; \
+        *ptr--= *start; \
+        *start++ = tmp; \
+    } \
+} while (false)
+
+#define intToStr(s, i, base) \
+do { \
+    if ((base) < 2 || (base) > 36) { \
+        break; \
+    } \
+    \
+    typeof(i) val = i; \
+    char *ptr = s; \
+    char *start = s; \
+    typeof(i) tmp = val; \
+    do { \
+        tmp = val; \
+        val /= (base); \
+        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" \
+                 [(36 - 1) + (tmp - val * (base))]; \
+    } while (val); \
+    \
+    if (tmp < 0) { \
+        *ptr++ = '-'; \
+    } \
+    (s) = ptr; \
+    *ptr-- = 0; \
+    \
+    while (start < ptr) { \
+        const char tmp = *ptr; \
+        *ptr--= *start; \
+        *start++ = tmp; \
+    } \
+} while (false)
 
 #endif // UTILS_H

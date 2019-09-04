@@ -12,7 +12,7 @@
 #include "src/main/util/programName/programName.h"
 #include "src/main/util/utils.h"
 
-bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, const stack_size_t maxDepth) {
+bool StackTrace_initToDepthErrno(StackTrace *const this, const Signal *const signal, const stack_size_t maxDepth, const int errorNum) {
     static void *addresses[STACK_SIZE_MAX];
     const int traceSize = backtrace(addresses, STACK_SIZE_MAX);
     if (traceSize < 0) {
@@ -69,6 +69,7 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
             .totalNumFrames = totalNumFrames,
             .frames = frames,
             .signal = signal,
+            .errorNum = errorNum,
             .processId = getpid(),
             .threadId = (pid_t) syscall(SYS_gettid),
     };
@@ -76,21 +77,26 @@ bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, 
     return true;
 }
 
-bool StackTrace_init(StackTrace *const stackTrace, const Signal *const signal) {
-    return StackTrace_initToDepth(stackTrace, signal, STACK_SIZE_MAX);
+bool StackTrace_initToDepth(StackTrace *const this, const Signal *const signal, const stack_size_t maxDepth) {
+    return StackTrace_initToDepthErrno(this, signal, maxDepth, errno);
+}
+
+bool StackTrace_init(StackTrace *const this, const Signal *const signal) {
+    return StackTrace_initToDepth(this, signal, STACK_SIZE_MAX);
 }
 
 const StackTrace *StackTrace_newToDepth(const Signal *const signal, const stack_size_t maxDepth) {
-    StackTrace *const stackTrace = malloc(sizeof(*stackTrace));
-    if (!stackTrace) {
+    const int errorNum = errno; // must save errno before malloc(), which may call a syscall
+    StackTrace *const this = malloc(sizeof(*this));
+    if (!this) {
         perror("malloc");
         return NULL;
     }
-    if (!StackTrace_initToDepth(stackTrace, signal, maxDepth)) {
-        free(stackTrace);
+    if (!StackTrace_initToDepthErrno(this, signal, maxDepth, errorNum)) {
+        free(this);
         return NULL;
     }
-    return stackTrace;
+    return this;
 }
 
 const StackTrace *StackTrace_new(const Signal *const signal) {
@@ -146,17 +152,17 @@ void StackTrace_toString(const StackTrace *const this, String *out) {
     String_shrinkToSize(out); // trim extra malloc'd memory
 }
 
-void StackTrace_print(const StackTrace *this, FILE *out) {
+void StackTrace_toFile(const StackTrace *this, FILE *out) {
     String *const stringOut = String_empty();
     StackTrace_toString(this, stringOut);
     fputs(stringOut->chars, out);
     String_free(stringOut);
 }
 
-void StackTrace_printNow(FILE *out) {
+void StackTrace_printNow() {
     StackTrace this;
     StackTrace_init(&this, NULL);
-    StackTrace_print(&this, out);
+    StackTrace_toFile(&this, stderr);
     StackTrace_clear(&this);
 }
 

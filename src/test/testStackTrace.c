@@ -11,7 +11,7 @@
 #include "src/main/util/programName/programName.h"
 
 static void toInline() {
-    StackTrace_printNow(stdout);
+    StackTrace_printNow();
 }
 
 bool testStackTrace() {

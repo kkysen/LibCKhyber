@@ -7,6 +7,7 @@
 
 #include <unistd.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "src/main/util/setField.h"
 
@@ -102,5 +103,11 @@ void Buffer_getMemory(Buffer *this, void *data, size_t size);
 bool Buffer_write(Buffer *this, int fd);
 
 bool Buffer_read(Buffer *this, int fd);
+
+bool Buffer_writeFile(Buffer *this, FILE *file);
+
+bool Buffer_readFile(Buffer *this, FILE *file);
+
+
 
 #endif // BUFFER_H

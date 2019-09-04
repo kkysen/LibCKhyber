@@ -2,7 +2,7 @@
 // Created by Khyber on 10/14/2018.
 //
 
-#include "Socket.h"
+#include "src/main/network/socket/Socket.h"
 
 #include <sys/socket.h>
 #include <netdb.h>
@@ -32,7 +32,7 @@ Socket *Socket_of(const IPAddressPort *const ipAddressPort) {
     return this;
 }
 
-Socket *Socket_ofPort(const String *const port) {
+Socket *Socket_ofPort(const Port *const port) {
     const IPAddressPort ipAddressPort = {.ipAddress = NULL, .port = port};
     return Socket_of(&ipAddressPort);
 }
@@ -89,7 +89,7 @@ static bool Socket_openUsing(Socket *const this, const ConnectOrBind connectOrBi
     };
     struct addrinfo *result = NULL;
     
-    const int status = getaddrinfo(this->ipAddress->chars, this->port->chars, &hints, &result);
+    const int status = getaddrinfo(this->ipAddress->chars, this->port->string, &hints, &result);
     if (status != 0) {
         fprintf(stderr, "%s: %s\n", gai_strerror(status), "getaddrinfo(NULL, port, &hints, &result)");
         perror("getaddrinfo");

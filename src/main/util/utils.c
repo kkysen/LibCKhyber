@@ -14,12 +14,16 @@ void init_home() {
     HOME = getenv("HOME");
 }
 
-void double_sleep(const double seconds) {
+void doubleSleep(double seconds) {
     struct timespec timespec = {
             .tv_sec = (time_t) seconds,
             .tv_nsec = (long) ((seconds - floor(seconds)) * 1e9)
     };
     nanosleep(&timespec, NULL);
+}
+
+double secondsElapsed(const clock_t start, const clock_t end) {
+    return (end - start) / (double) CLOCKS_PER_SEC;
 }
 
 void freeConst(const void *ptr) {

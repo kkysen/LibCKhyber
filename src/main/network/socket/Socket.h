@@ -14,7 +14,7 @@
 typedef struct Socket {
     int fd;
     const String *ipAddress;
-    const String *port;
+    const Port *port;
     bool open;
     bool bound;
     bool listening;
@@ -29,7 +29,7 @@ typedef enum SocketShutdownMethod {
 
 Socket *Socket_of(const IPAddressPort *ipAddressPort);
 
-Socket *Socket_ofPort(const String *port);
+Socket *Socket_ofPort(const Port *port);
 
 const IPAddressPort *Socket_ipAddressPort(const Socket *this);
 
